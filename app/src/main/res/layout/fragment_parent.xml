@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--가게 검색창과 자식 Fragment-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="14dp"
+        android:paddingHorizontal="20dp"
+        >
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_search"
+            android:background="@drawable/map_search_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <FrameLayout
+            android:id="@+id/field_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/editTextFilter"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:inputType="textPersonName"
+                android:hint="장소, 브랜드, 상품 종류 검색"
+                android:textSize="17dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:background="@android:color/transparent" />
+
+            <ImageButton
+                android:id="@+id/img_search_icon"
+                android:src="@drawable/map_search_icon"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:background="@android:color/transparent"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="14dp"
+                android:layout_gravity="right"
+                />
+        </FrameLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/child_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
