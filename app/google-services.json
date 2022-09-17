@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "687677789334",
+    "project_id": "stac-cheum",
+    "storage_bucket": "stac-cheum.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:687677789334:android:8ab577684177d2f3901eb7",
+        "android_client_info": {
+          "package_name": "com.mirim.cheum_stac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "687677789334-g6n45mhjin8nfbgkksri48i1g6fq9gnc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mirim.cheum_stac",
+            "certificate_hash": "1540fb5c5bffc8955ba3ec98513791623230d0b5"
+          }
+        },
+        {
+          "client_id": "687677789334-cehf5fsbqh5mac2e6dtv1p59155du20k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtLpb4v8muqNJsgWHFYq_h0XTUedKotkE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "687677789334-cehf5fsbqh5mac2e6dtv1p59155du20k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
