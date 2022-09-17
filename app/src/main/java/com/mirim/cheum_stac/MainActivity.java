@@ -15,6 +15,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.mirim.cheum_stac.Map.Fragment.ChildResultFragment;
+import com.mirim.cheum_stac.Map.Fragment.ChildSearchFragment;
+import com.mirim.cheum_stac.Map.Fragment.ParentFragment;
+import com.mirim.cheum_stac.util.UserUtils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

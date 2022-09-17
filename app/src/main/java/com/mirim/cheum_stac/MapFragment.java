@@ -10,9 +10,10 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.mirim.cheum_stac.Map.Fragment.ParentFragment;
+
 import net.daum.mf.map.api.MapView;
 
-import mirim.cheum_stac.Map.Fragment.ParentFragment;
 
 public class MapFragment extends Fragment {
     MainActivity activity;
