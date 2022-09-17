@@ -1,4 +1,4 @@
-package com.mirim.Map.Fragment;
+package com.mirim.cheum_stac.Map.Fragment;
 
 import android.content.Context;
 import android.os.Bundle;

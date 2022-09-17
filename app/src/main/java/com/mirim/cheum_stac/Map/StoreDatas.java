@@ -1,4 +1,4 @@
-package com.mirim.Map;
+package com.mirim.cheum_stac.Map;
 
 public class StoreDatas {
     public String[][] storeText = {
