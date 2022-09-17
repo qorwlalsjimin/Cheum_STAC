@@ -12,12 +12,12 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.cheum_stac.FragmentListener;
-import com.cheum_stac.MainActivity;
-import com.cheum_stac.Map.ListView.ListViewAdapter;
-import com.cheum_stac.Map.ListView.ListViewItem;
-import com.cheum_stac.Map.StoreDatas;
-import com.cheum_stac.R;
+import com.mirim.cheum_stac.FragmentListener;
+import com.mirim.cheum_stac.MainActivity;
+import com.mirim.cheum_stac.Map.ListView.ListViewAdapter;
+import com.mirim.cheum_stac.Map.ListView.ListViewItem;
+import com.mirim.cheum_stac.Map.StoreDatas;
+import com.mirim.cheum_stac.R;
 
 public class ChildFavorFragment extends Fragment {
     public static ChildFavorFragment newInstance(){
@@ -57,7 +57,7 @@ public class ChildFavorFragment extends Fragment {
                 fragmentListener.onCommand(1, Integer.toString(storeId));
                 Log.d("값 옮기기를 추적하자 -_-", "onCommand로 값을 보냇어요! storeId: "+storeId);
 
-                ((MainActivity)getActivity()).replaceFragment(ChildMapFragment.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(com.mirim.cheum_stac.Map.Fragment.ChildMapFragment.newInstance());
             }
         });
 

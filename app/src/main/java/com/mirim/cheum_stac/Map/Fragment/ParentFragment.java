@@ -19,8 +19,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.cheum_stac.FragmentListener;
-import com.cheum_stac.R;
+import com.mirim.cheum_stac.FragmentListener;
+import com.mirim.cheum_stac.R;
 
 public class ParentFragment extends Fragment implements View.OnClickListener {
 
@@ -45,7 +45,7 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
 
         //즐겨찾기로 이동
         Fragment fg;
-        fg = ChildFavorFragment.newInstance();
+        fg = com.mirim.cheum_stac.Map.Fragment.ChildFavorFragment.newInstance();
         setChildFragment(fg);
 
         editSearch = (EditText) v.findViewById(R.id.editTextFilter);
@@ -61,20 +61,20 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 Fragment fg;
-                fg = ChildSearchFragment.newInstance();
+                fg = com.mirim.cheum_stac.Map.Fragment.ChildSearchFragment.newInstance();
                 setChildFragment(fg);
             }
             @Override
             public void afterTextChanged(Editable s) {
                 //입력했다가 다시 다 지웠을때 즐겨찾기 Fragment로
                 if(editSearch.getText().length() == 0){
-                    Fragment fg = ChildFavorFragment.newInstance();
+                    Fragment fg = com.mirim.cheum_stac.Map.Fragment.ChildFavorFragment.newInstance();
                     setChildFragment(fg);
                 }
                 else{
                     //데이터 보내기
                     fragmentListener.onCommand(0, editSearch.getText().toString());
-                    ChildSearchFragment childSearchFragment = new ChildSearchFragment();
+                    com.mirim.cheum_stac.Map.Fragment.ChildSearchFragment childSearchFragment = new com.mirim.cheum_stac.Map.Fragment.ChildSearchFragment();
                     childSearchFragment.isSearch(true);
                 }
             }
@@ -108,7 +108,7 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
         public void onClick(View v) {
             Log.d("Fragment 전환", "첫번째 자식 전");
             Fragment fg;
-            fg = ChildFavorFragment.newInstance();
+            fg = com.mirim.cheum_stac.Map.Fragment.ChildFavorFragment.newInstance();
             setChildFragment(fg);
             Log.d("Fragment 전환", "첫번째 자식 후");
         }
@@ -119,7 +119,7 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             Fragment fg;
-            fg = ChildSearchFragment.newInstance();
+            fg = com.mirim.cheum_stac.Map.Fragment.ChildSearchFragment.newInstance();
             setChildFragment(fg);
         }
     };

@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/CHEUM/Cheum_STAC/app/src/main/res/font/noto_sans.xml" value="0.2796875" />
         <entry key="..\:/CHEUM/Cheum_STAC/app/src/main/res/layout/activity_main.xml" value="0.19746376811594202" />
+        <entry key="..\:/CHEUM/Cheum_STAC/app/src/main/res/layout/fragment_child_map.xml" value="0.109375" />
+        <entry key="..\:/CHEUM/Cheum_STAC/app/src/main/res/layout/fragment_child_result.xml" value="0.19746376811594202" />
         <entry key="..\:/CHEUM/Cheum_STAC/app/src/main/res/layout/network_security_config.xml" value="0.19746376811594202" />
       </map>
     </option>

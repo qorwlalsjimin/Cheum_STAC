@@ -13,11 +13,11 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.mirim.cheum_stac.FragmentListener;
+import com.mirim.cheum_stac.MainActivity;
 import com.mirim.cheum_stac.Map.ListView.ListViewAdapter;
 import com.mirim.cheum_stac.Map.ListView.ListViewItem;
 import com.mirim.cheum_stac.Map.StoreDatas;
-import com.mirim.cheum_stac.FragmentListener;
-import com.mirim.cheum_stac.MainActivity;
 import com.mirim.cheum_stac.R;
 
 public class ChildSearchFragment extends Fragment {
@@ -70,7 +70,7 @@ public class ChildSearchFragment extends Fragment {
                 Log.d("값 옮기기를 추적하자 -_-", "서치프래그먼트 storeId: "+storeId);
 
                 fragmentListener.onCommand(1, Integer.toString(storeId));
-                ((MainActivity)getActivity()).replaceFragment(ChildMapFragment.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(com.mirim.cheum_stac.Map.Fragment.ChildMapFragment.newInstance());
             }
         });
 

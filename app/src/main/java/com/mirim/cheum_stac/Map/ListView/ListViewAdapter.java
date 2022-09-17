@@ -9,7 +9,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
 
-import com.cheum_stac.R;
+import com.mirim.cheum_stac.R;
 
 import java.util.ArrayList;
 

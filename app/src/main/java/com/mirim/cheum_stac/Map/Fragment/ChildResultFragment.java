@@ -10,14 +10,17 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.cheum_stac.Map.StoreDatas;
-import com.cheum_stac.R;
-import com.cheum_stac.util.FirebaseUtils;
-import com.cheum_stac.util.UserUtils;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.mirim.cheum_stac.MainActivity;
+import com.mirim.cheum_stac.Map.StoreDatas;
+import com.mirim.cheum_stac.R;
+import com.mirim.cheum_stac.util.FirebaseUtils;
+import com.mirim.cheum_stac.util.UserUtils;
+
+import net.daum.mf.map.api.MapView;
 
 public class ChildResultFragment extends Fragment {
 
@@ -56,23 +59,12 @@ public class ChildResultFragment extends Fragment {
 
         //가게 정보 가져와서 text 바꾸기
         StoreDatas storeDatas = new StoreDatas();
-//        Log.d("가게 정보를 추적하자 (`.')", "가져오는 데이터! storeName: "+storeDatas.storeText[3][1]);
-//        storeName.setText(storeDatas.storeText[3][1]);
         for(int i = 0; i< storeDatas.dataCnt; i++){
-            if(storeDatas.storeText[i][0] == Integer.toString(storeId)){
+            if(storeDatas.storeText[i][0].equals(Integer.toString(storeId))){
                 storeName.setText(storeDatas.storeText[i][1]);
                 storeLoct.setText(storeDatas.storeText[i][2]);
-//                storeOper.setText(storeDatas.storeText[i][2]);
-//                storePage.setText(storeDatas.storeText[i][2]);
-//                storeDial.setText(storeDatas.storeText[i][2]);
             }
         }
-
-        Log.d("가게 정보를 추적하자 (`.')", "\n가게 이름: "+storeName.getText()
-                +"\n가게 위치: "+storeLoct.getText()
-                +"\n가게 운영: "+storeOper.getText()
-                +"\n가게 페잇: "+storePage.getText()
-                +"\n가게 번호: "+storeDial.getText());
 
         //파이어베이스 실시간 DB 연동
         Log.d("파이어베이스를 추적하자 -_-", "데이터베이스레퍼런스 연결 직전!");
@@ -123,22 +115,22 @@ public class ChildResultFragment extends Fragment {
                 Log.d("파이어베이스를 추적하자 -_-", "DB에 true/flase값 set 2 favorite: "+favorite);
             }
         });
-        
+
         //지도 화면에 보이게 함
-//        MapView mapView = new MapView(getActivity());
-//        mapViewContainer = (ViewGroup) v.findViewById(R.id.map_view);
-//        mapViewContainer.addView(mapView);
+        MapView mapView = new MapView(getActivity());
+        mapViewContainer = (ViewGroup) v.findViewById(R.id.map_view);
+        mapViewContainer.addView(mapView);
 
         //상세정보 내리는 이미지 버튼
-//        imgbtnDown = v.findViewById(R.id.imgbtn_down);
-//        imgbtnDown.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //Fragment창 닫는 코드로 추후 수정(FragmentManager)
-//                ((MainActivity)getActivity()).replaceFragment(ChildMapFragment.newInstance());
-//                mapViewContainer.removeAllViews();
-//            }
-//        });
+        imgbtnDown = v.findViewById(R.id.imgbtn_down);
+        imgbtnDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Fragment창 닫는 코드로 추후 수정(FragmentManager)
+                ((MainActivity)getActivity()).replaceFragment(com.mirim.cheum_stac.Map.Fragment.ChildMapFragment.newInstance());
+                mapViewContainer.removeAllViews();
+            }
+        });
 
 
         Log.d("storeId를 추적합니다. 쭈고 -_-", "reference에 user 연동 storeId: "+storeId);
