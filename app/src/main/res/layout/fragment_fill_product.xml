@@ -13,11 +13,12 @@
             android:layout_height="match_parent"
             android:src="#CCCCCC"/>
         <Button
-            android:layout_width="11dp"
-            android:layout_height="20dp"
-            android:background="@drawable/left_arrow"
-            android:layout_marginTop="23dp"
-            android:layout_marginLeft="20dp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/left_arrow"
+            android:background="#00ff0000"
+            android:id="@+id/backBtn"
+            android:layout_marginTop="15dp"/>
     </FrameLayout>
     <ScrollView
         android:layout_width="match_parent"
