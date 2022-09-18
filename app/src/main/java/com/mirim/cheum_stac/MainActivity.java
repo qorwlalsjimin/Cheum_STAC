@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
                         break;
 
                 }
-                return false;
+                return true;
             }
         });
         //지도 검색 Fragment들 정의
