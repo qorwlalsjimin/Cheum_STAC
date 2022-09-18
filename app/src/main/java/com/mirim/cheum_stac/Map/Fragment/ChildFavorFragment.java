@@ -16,7 +16,8 @@ import com.mirim.cheum_stac.FragmentListener;
 import com.mirim.cheum_stac.MainActivity;
 import com.mirim.cheum_stac.Map.ListView.ListViewAdapter;
 import com.mirim.cheum_stac.Map.ListView.ListViewItem;
-import com.mirim.cheum_stac.Map.StoreDatas;
+import com.mirim.cheum_stac.Map.Store;
+import com.mirim.cheum_stac.Map.StoreList;
 import com.mirim.cheum_stac.R;
 
 public class ChildFavorFragment extends Fragment {
@@ -43,9 +44,10 @@ public class ChildFavorFragment extends Fragment {
         listData.setAdapter(adapter);
 
         //리스트뷰에 데이터 추가
-        StoreDatas storeDatas = new StoreDatas(); //추후 파이어베이스 DB로 교체
-        for(int i = 0; i<storeDatas.dataCnt; i++)
-            adapter.addItem(storeDatas.storeText[i][1], storeDatas.storeText[i][2], i);
+        for(int i = 0; i< StoreList.storeList.size(); i++){
+            Store s = (Store) (StoreList.storeList.get(i));
+            adapter.addItem(s.title, s.address, s.id);
+        }
 
         //즐겨찾기 가게 클릭시
         listData.setOnItemClickListener(new AdapterView.OnItemClickListener() {

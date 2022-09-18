@@ -15,13 +15,13 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.mirim.cheum_stac.Map.Fragment.ChildMapFragment;
 import com.mirim.cheum_stac.Map.Fragment.ChildResultFragment;
 import com.mirim.cheum_stac.Map.Fragment.ChildSearchFragment;
 import com.mirim.cheum_stac.Map.Fragment.ParentFragment;
 import com.mirim.cheum_stac.util.UserUtils;
 
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity implements FragmentListener {
     private FragmentManager fragmentManager = getSupportFragmentManager();
@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
     private ParentFragment parentFragment;
     private ChildSearchFragment childSearchFragment;
     private ChildResultFragment childResultFragment;
+    private ChildMapFragment childMapFragment;
 
     FragmentTransaction transaction;
 
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         parentFragment = new ParentFragment();
         childSearchFragment = new ChildSearchFragment();
         childResultFragment = new ChildResultFragment();
+        childMapFragment = new ChildMapFragment();
 
         gethash(); //키해시 값 구하는 메서드
 
@@ -92,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
                 break;
             case 1: //ChildFavorFragment, ChildSearchFragment =>
                 childResultFragment.displayMessage(data);
+                childMapFragment.displayMessage(data);
                 Log.d("값 옮기기를 추적하자 -_-", "2 Favor에서 받은 값으로 displayMessage를 호출하셧나요? data: "+data);
                 break;
         }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -15,7 +16,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.mirim.cheum_stac.MainActivity;
-import com.mirim.cheum_stac.Map.StoreDatas;
+import com.mirim.cheum_stac.Map.Store;
+import com.mirim.cheum_stac.Map.StoreList;
 import com.mirim.cheum_stac.R;
 import com.mirim.cheum_stac.util.FirebaseUtils;
 import com.mirim.cheum_stac.util.UserUtils;
@@ -58,13 +60,23 @@ public class ChildResultFragment extends Fragment {
         Log.d("파이어베이스를 추적하자 -_-", "가게 아이디"+Integer.toString(storeId));
 
         //가게 정보 가져와서 text 바꾸기
-        StoreDatas storeDatas = new StoreDatas();
-        for(int i = 0; i< storeDatas.dataCnt; i++){
-            if(storeDatas.storeText[i][0].equals(Integer.toString(storeId))){
-                storeName.setText(storeDatas.storeText[i][1]);
-                storeLoct.setText(storeDatas.storeText[i][2]);
+        Store s;
+        for(int i = 0; i< StoreList.storeList.size(); i++){
+            s = (Store) (StoreList.storeList.get(i));
+            if(s.id == storeId){
+                if(s.id == 0) Toast.makeText(getContext(), "엄마 얘 또 0이야ㅠ", Toast.LENGTH_SHORT).show();
+                storeName.setText(s.title);
+                storeLoct.setText(s.address);
             }
         }
+
+        //StoreDatas storeDatas = new StoreDatas();
+        //for(int i = 0; i< storeDatas.dataCnt; i++){
+        //    if(storeDatas.storeText[i][0].equals(Integer.toString(storeId))){
+        //        storeName.setText(storeDatas.storeText[i][1]);
+        //        storeLoct.setText(storeDatas.storeText[i][2]);
+        //    }
+        //}
 
         //파이어베이스 실시간 DB 연동
         Log.d("파이어베이스를 추적하자 -_-", "데이터베이스레퍼런스 연결 직전!");

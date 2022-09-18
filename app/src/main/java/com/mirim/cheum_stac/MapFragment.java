@@ -62,6 +62,7 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
         mapViewContainer.addView(mapView);
 
         EditText editSearch = v.findViewById(R.id.editTextFilter);
+
         editSearch.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
