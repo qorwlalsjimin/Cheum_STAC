@@ -11,11 +11,13 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.mirim.cheum_stac.MainActivity;
+
 import com.mirim.cheum_stac.Map.Store;
 import com.mirim.cheum_stac.Map.StoreList;
 import com.mirim.cheum_stac.R;
@@ -139,7 +141,7 @@ public class ChildResultFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //Fragment창 닫는 코드로 추후 수정(FragmentManager)
-                ((MainActivity)getActivity()).replaceFragment(com.mirim.cheum_stac.Map.Fragment.ChildMapFragment.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(ChildMapFragment.newInstance());
                 mapViewContainer.removeAllViews();
             }
         });
