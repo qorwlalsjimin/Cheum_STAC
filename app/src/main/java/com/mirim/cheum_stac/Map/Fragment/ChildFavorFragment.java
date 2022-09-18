@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.mirim.cheum_stac.FragmentListener;
 import com.mirim.cheum_stac.MainActivity;
+import com.mirim.cheum_stac.Map.FavorList;
 import com.mirim.cheum_stac.Map.ListView.ListViewAdapter;
 import com.mirim.cheum_stac.Map.ListView.ListViewItem;
 import com.mirim.cheum_stac.Map.Store;
@@ -43,11 +44,26 @@ public class ChildFavorFragment extends Fragment {
         listData = (ListView) v.findViewById(R.id.list_favorite);
         listData.setAdapter(adapter);
 
+        FavorList.favorList.add(0);
+        FavorList.favorList.add(4);
+        FavorList.favorList.add(5);
+        FavorList.favorList.add(9);
+
         //리스트뷰에 데이터 추가
-        for(int i = 0; i< StoreList.storeList.size(); i++){
-            Store s = (Store) (StoreList.storeList.get(i));
-            adapter.addItem(s.title, s.address, s.id);
+        Store s;
+        for(int i = 0; i< FavorList.favorList.size(); i++){
+            for(int j = 0; j<StoreList.storeList.size(); j++){
+                s = (Store) (StoreList.storeList.get(j));
+                if(FavorList.favorList.get(i) == s.id){
+                    adapter.addItem(s.title, s.address, s.id);
+                }
+            }
         }
+
+        //for(int i = 0; i< StoreList.storeList.size(); i++){
+        //    Store s = (Store) (StoreList.storeList.get(i));
+        //    adapter.addItem(s.title, s.address, s.id);
+        //}
 
         //즐겨찾기 가게 클릭시
         listData.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -1,7 +1,10 @@
 package com.mirim.cheum_stac;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class SignUpActivity extends AppCompatActivity {
-
+    private  EditText emailEdit;
     private static final String TAG = "SignUpActivity";
     private FirebaseAuth mAuth;
     private Button sign_up;
@@ -27,8 +30,33 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-
+        emailEdit = findViewById(R.id.edit_signup_email);
         mAuth = FirebaseAuth.getInstance();
+
+        emailEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() > 0) {
+                    sign_up.setClickable(true);
+                    sign_up.setBackgroundResource(R.drawable.login_btn_active);
+                    sign_up.setTextColor(Color.WHITE);
+
+                } else {
+                    sign_up.setClickable(false);
+                    sign_up.setBackgroundResource(R.drawable.login_btn);
+                }
+            }
+        });
 
         sign_up = findViewById(R.id.signupBtn);
         sign_up.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +78,6 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void signUp() {
         // 이메일
-        EditText emailEdit = findViewById(R.id.edit_signup_email);
         String email = emailEdit.getText().toString();
         // 비밀번호
         EditText passEdit = findViewById(R.id.edit_signup_pass);
@@ -69,12 +96,10 @@ public class SignUpActivity extends AppCompatActivity {
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                                 startActivity(intent);
-                                Toast.makeText(SignUpActivity.this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
                                 finish();
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                Toast.makeText(SignUpActivity.this, "등록되지 않았습니다.", Toast.LENGTH_SHORT).show();
                                 return;
                             }
                         }
