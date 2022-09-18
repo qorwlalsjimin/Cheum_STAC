@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -75,7 +74,6 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         btnLogin = (Button) findViewById(R.id.loginBtn);
-        btnLogin.setEnabled(false);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

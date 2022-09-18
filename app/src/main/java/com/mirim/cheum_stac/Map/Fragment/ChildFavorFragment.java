@@ -56,7 +56,6 @@ public class ChildFavorFragment extends Fragment {
                 s = (Store) (StoreList.storeList.get(j));
                 if(FavorList.favorList.get(i) == s.id){
                     adapter.addItem(s.title, s.address, s.id);
-                    Log.d("확인", s.title+Integer.toString(j));
                 }
             }
         }
