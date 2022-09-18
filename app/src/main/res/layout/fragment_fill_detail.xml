@@ -90,6 +90,7 @@
                 android:textStyle="bold"
                 android:fontFamily="@font/noto_sans"
                 android:layout_marginLeft="28dp"
+                android:id="@+id/news1_1"
                 android:layout_marginTop="6dp"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -99,6 +100,7 @@
                 android:text="샴푸 리필스테이션 가이드"
                 android:textColor="#000000"
                 android:textSize="14dp"
+                android:id="@+id/news1_2"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -107,7 +109,8 @@
                 android:textColor="#000000"
                 android:textSize="10dp"
                 android:fontFamily="@font/noto_sans"
-                android:layout_marginTop="18dp"
+                android:paddingTop="18dp"
+                android:id="@+id/news1_3"
                 android:layout_marginLeft="28dp"/>
             <FrameLayout
                 android:layout_width="154dp"
@@ -136,6 +139,7 @@
                 android:textStyle="bold"
                 android:fontFamily="@font/noto_sans"
                 android:layout_marginLeft="28dp"
+                android:id="@+id/news2_1"
                 android:layout_marginTop="6dp"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -143,6 +147,7 @@
                 android:layout_marginLeft="28dp"
                 android:fontFamily="@font/noto_sans"
                 android:text="샴푸 리필스테이션 가이드"
+                android:id="@+id/news2_2"
                 android:textColor="#000000"
                 android:textSize="14dp"
                 android:textStyle="bold"/>
@@ -153,7 +158,8 @@
                 android:textColor="#000000"
                 android:textSize="10dp"
                 android:fontFamily="@font/noto_sans"
-                android:layout_marginTop="18dp"
+                android:paddingTop="18dp"
+                android:id="@+id/news2_3"
                 android:layout_marginLeft="28dp"/>
             <FrameLayout
                 android:layout_width="154dp"
@@ -181,6 +187,7 @@
                 android:textSize="12dp"
                 android:textStyle="bold"
                 android:fontFamily="@font/noto_sans"
+                android:id="@+id/news3_1"
                 android:layout_marginLeft="28dp"
                 android:layout_marginTop="6dp"/>
             <TextView
@@ -190,6 +197,7 @@
                 android:fontFamily="@font/noto_sans"
                 android:text="샴푸 리필스테이션 가이드"
                 android:textColor="#000000"
+                android:id="@+id/news3_2"
                 android:textSize="14dp"
                 android:textStyle="bold"/>
             <TextView
@@ -199,7 +207,8 @@
                 android:textColor="#000000"
                 android:textSize="10dp"
                 android:fontFamily="@font/noto_sans"
-                android:layout_marginTop="18dp"
+                android:paddingTop="18dp"
+                android:id="@+id/news3_3"
                 android:layout_marginLeft="28dp"/>
             <FrameLayout
                 android:layout_width="154dp"
@@ -228,6 +237,7 @@
                 android:textSize="12dp"
                 android:textStyle="bold"
                 android:fontFamily="@font/noto_sans"
+                android:id="@+id/news4_1"
                 android:layout_marginLeft="54dp"
                 android:layout_marginTop="6dp"/>
             <TextView
@@ -238,6 +248,7 @@
                 android:text="샴푸 리필스테이션 가이드"
                 android:textColor="#000000"
                 android:textSize="14dp"
+                android:id="@+id/news4_2"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -246,8 +257,9 @@
                 android:textColor="#000000"
                 android:textSize="10dp"
                 android:fontFamily="@font/noto_sans"
+                android:id="@+id/news4_3"
                 android:layout_marginLeft="54dp"
-                android:layout_marginTop="18dp"/>
+                android:paddingTop="18dp"/>
             <FrameLayout
                 android:layout_width="154dp"
                 android:layout_height="154dp"
@@ -275,6 +287,7 @@
                 android:textSize="12dp"
                 android:textStyle="bold"
                 android:fontFamily="@font/noto_sans"
+                android:id="@+id/news5_1"
                 android:layout_marginLeft="54dp"
                 android:layout_marginTop="6dp"/>
             <TextView
@@ -284,6 +297,7 @@
                 android:fontFamily="@font/noto_sans"
                 android:text="샴푸 리필스테이션 가이드"
                 android:textColor="#000000"
+                android:id="@+id/news5_2"
                 android:textSize="14dp"
                 android:textStyle="bold"/>
             <TextView
@@ -293,8 +307,9 @@
                 android:textColor="#000000"
                 android:textSize="10dp"
                 android:fontFamily="@font/noto_sans"
+                android:id="@+id/news5_3"
                 android:layout_marginLeft="54dp"
-                android:layout_marginTop="18dp"/>
+                android:paddingTop="18dp"/>
             <FrameLayout
                 android:layout_width="154dp"
                 android:layout_height="154dp"
@@ -323,6 +338,7 @@
                 android:textStyle="bold"
                 android:fontFamily="@font/noto_sans"
                 android:layout_marginLeft="54dp"
+                android:id="@+id/news6_1"
                 android:layout_marginTop="6dp"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -330,6 +346,7 @@
                 android:layout_marginLeft="54dp"
                 android:fontFamily="@font/noto_sans"
                 android:text="샴푸 리필스테이션 가이드"
+                android:id="@+id/news6_2"
                 android:textColor="#000000"
                 android:textSize="14dp"
                 android:textStyle="bold"/>
@@ -340,8 +357,9 @@
                 android:textColor="#000000"
                 android:textSize="10dp"
                 android:fontFamily="@font/noto_sans"
+                android:id="@+id/news6_3"
                 android:layout_marginLeft="54dp"
-                android:layout_marginTop="18dp"/>
+                android:paddingTop="18dp"/>
         </GridLayout>
     </ScrollView>
 </LinearLayout>

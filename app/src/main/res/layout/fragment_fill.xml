@@ -249,7 +249,7 @@
                 android:textColor="#000000"
                 android:textSize="10dp"
                 android:fontFamily="@font/noto_sans"
-                android:layout_marginTop="18dp"
+                android:paddingTop="18dp"
                 android:layout_marginLeft="28dp"
                 android:id="@+id/news1_3"/>
             <FrameLayout
@@ -298,7 +298,7 @@
                 android:textColor="#000000"
                 android:textSize="10dp"
                 android:fontFamily="@font/noto_sans"
-                android:layout_marginTop="18dp"
+                android:paddingTop="18dp"
                 android:layout_marginLeft="28dp"
                 android:id="@+id/news2_3"/>
             <FrameLayout
@@ -349,7 +349,7 @@
                 android:textSize="10dp"
                 android:fontFamily="@font/noto_sans"
                 android:layout_marginLeft="54dp"
-                android:layout_marginTop="18dp"
+                android:paddingTop="18dp"
                 android:id="@+id/news3_3"/>
             <FrameLayout
                 android:layout_width="154dp"
@@ -399,7 +399,7 @@
                 android:textSize="10dp"
                 android:fontFamily="@font/noto_sans"
                 android:layout_marginLeft="54dp"
-                android:layout_marginTop="18dp"
+                android:paddingTop="18dp"
                 android:id="@+id/news4_3"/>
         </GridLayout>
     </ScrollView>

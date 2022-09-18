@@ -10,21 +10,50 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="215dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
+                android:id="@+id/userTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="28dp"
-                android:fontFamily="@font/noto_sans_bold"
-                android:textStyle="bold"
-                android:id="@+id/userTv"
-                android:text="로그인해주세요"
+                android:layout_marginLeft="21dp"
                 android:layout_marginTop="58dp"
-                android:layout_marginLeft="21dp"/>
+                android:fontFamily="@font/noto_sans_bold"
+                android:text="_ _ _ 님"
+                android:textSize="28dp"
+                android:textStyle="bold" />
 
+            <Button
+                android:id="@+id/noticeBtn"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="23dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#ffffff"
+                android:drawableEnd="@drawable/right_arrow"
+                android:drawableTint="#8A8A8A"
+                android:text="공지사항"
+                android:textColor="#707070"
+                android:textSize="10dp" />
+
+            <Button
+                android:id="@+id/likeBtn"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginLeft="23dp"
+                android:backgroundTint="#ffffff"
+                android:drawableEnd="@drawable/right_arrow"
+                android:drawableTint="#8A8A8A"
+                android:text="Like"
+                android:textColor="#707070"
+                android:textSize="10dp" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -49,7 +78,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="로그인"
+                    android:text="일반 회원"
                     android:layout_gravity="center"
                     android:fontFamily="@font/noto_sans"
                     android:textSize="12dp"
@@ -65,7 +94,6 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/goodbtn"
             android:src="@drawable/goodbtn"/>
         <ImageView
             android:layout_width="wrap_content"
@@ -153,8 +181,7 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:id="@+id/check">
+        android:layout_height="44dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -172,8 +199,7 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:id="@+id/customer">
+        android:layout_height="44dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

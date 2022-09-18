@@ -93,28 +93,28 @@ public class FillFragment extends Fragment {
         news1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
             }
         });
         TextView news1_1 = v.findViewById(R.id.news1_1);
         news1_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
             }
         });
         TextView news1_2 = v.findViewById(R.id.news1_2);
         news1_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
             }
         });
         TextView news1_3 = v.findViewById(R.id.news1_3);
         news1_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
             }
         });
 
@@ -122,28 +122,28 @@ public class FillFragment extends Fragment {
         news2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
             }
         });
         TextView news2_1 = v.findViewById(R.id.news2_1);
         news2_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
             }
         });
         TextView news2_2 = v.findViewById(R.id.news2_2);
         news2_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
             }
         });
         TextView news2_3 = v.findViewById(R.id.news2_3);
         news2_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
             }
         });
 
@@ -151,28 +151,28 @@ public class FillFragment extends Fragment {
         news3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
             }
         });
         TextView news3_1 = v.findViewById(R.id.news3_1);
         news3_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
             }
         });
         TextView news3_2 = v.findViewById(R.id.news3_2);
         news3_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
             }
         });
         TextView news3_3 = v.findViewById(R.id.news3_3);
         news3_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
             }
         });
 
@@ -180,28 +180,28 @@ public class FillFragment extends Fragment {
         news4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
             }
         });
         TextView news4_1 = v.findViewById(R.id.news4_1);
         news4_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
             }
         });
         TextView news4_2 = v.findViewById(R.id.news4_2);
         news4_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
             }
         });
         TextView news4_3 = v.findViewById(R.id.news4_3);
         news4_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
             }
         });
         return v;

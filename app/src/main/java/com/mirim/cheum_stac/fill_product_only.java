@@ -10,8 +10,7 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-
-public class good_product extends Fragment {
+public class fill_product_only extends Fragment {
     MainActivity activity;
 
     @Override
@@ -26,14 +25,12 @@ public class good_product extends Fragment {
         activity = null;
     }
 
-    public good_product() {
+    public fill_product_only() {
         // Required empty public constructor
     }
 
-
-    public static good_product newInstance(String param1, String param2) {
-        return new good_product();
-
+    public static fill_product_only newInstance(String param1, String param2) {
+        return new fill_product_only();
     }
 
     @Override
@@ -46,12 +43,12 @@ public class good_product extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_good_product, container, false);
+        View v = inflater.inflate(R.layout.fragment_fill_product_only, container, false);
         Button backBtn = v.findViewById(R.id.backBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(MypageFragment.newInstance(null,null));
+                ((MainActivity)getActivity()).replaceFragment(FillFragment.newInstance());
             }
         });
         return v;
