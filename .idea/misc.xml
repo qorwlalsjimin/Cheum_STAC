@@ -8,12 +8,23 @@
         <entry key="..\:/CHEUM/Cheum_STAC/app/src/main/res/layout/fragment_child_map.xml" value="0.109375" />
         <entry key="..\:/CHEUM/Cheum_STAC/app/src/main/res/layout/fragment_child_result.xml" value="0.19746376811594202" />
         <entry key="..\:/CHEUM/Cheum_STAC/app/src/main/res/layout/network_security_config.xml" value="0.19746376811594202" />
+        <entry key="..\:/Users/User/StudioProjects/Cheum_2022STAC/app/src/main/res/drawable/login_btn.xml" value="0.3005" />
+        <entry key="..\:/Users/User/StudioProjects/Cheum_2022STAC/app/src/main/res/drawable/login_btn_active.xml" value="0.2355" />
         <entry key="..\:/Users/User/StudioProjects/Cheum_2022STAC/app/src/main/res/drawable/menu_selector_color.xml" value="0.1705" />
-        <entry key="..\:/Users/User/StudioProjects/Cheum_2022STAC/app/src/main/res/layout/activity_login.xml" value="0.15729166666666666" />
+        <entry key="..\:/Users/User/StudioProjects/Cheum_2022STAC/app/src/main/res/drawable/signup_line.xml" value="0.2365" />
+        <entry key="..\:/Users/User/StudioProjects/Cheum_2022STAC/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/User/StudioProjects/Cheum_2022STAC/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/User/StudioProjects/Cheum_2022STAC/app/src/main/res/layout/activity_sign_up.xml" value="0.3359375" />
+        <entry key="..\:/Users/User/StudioProjects/Cheum_2022STAC/app/src/main/res/layout/fragment_child_favor.xml" value="0.3359375" />
         <entry key="..\:/Users/User/StudioProjects/Cheum_2022STAC/app/src/main/res/layout/fragment_child_map.xml" value="0.15729166666666666" />
+        <entry key="..\:/Users/User/StudioProjects/Cheum_2022STAC/app/src/main/res/layout/fragment_child_search.xml" value="0.3359375" />
         <entry key="..\:/Users/User/StudioProjects/Cheum_2022STAC/app/src/main/res/layout/fragment_home.xml" value="0.15729166666666666" />
         <entry key="..\:/Users/User/StudioProjects/Cheum_2022STAC/app/src/main/res/layout/fragment_home_news_page.xml" value="0.15729166666666666" />
+        <entry key="..\:/Users/User/StudioProjects/Cheum_2022STAC/app/src/main/res/layout/fragment_home_video.xml" value="0.12817028985507245" />
+        <entry key="..\:/Users/User/StudioProjects/Cheum_2022STAC/app/src/main/res/layout/fragment_mypage.xml" value="0.3359375" />
+        <entry key="..\:/Users/User/StudioProjects/Cheum_2022STAC/app/src/main/res/layout/fragment_mypage__customer.xml" value="0.3359375" />
+        <entry key="..\:/Users/User/StudioProjects/Cheum_2022STAC/app/src/main/res/layout/fragment_mypage_check.xml" value="0.12817028985507245" />
+        <entry key="..\:/Users/User/StudioProjects/Cheum_2022STAC/app/src/main/res/layout/fragment_parent.xml" value="0.12817028985507245" />
         <entry key="..\:/Users/User/StudioProjects/Cheum_2022STAC/app/src/main/res/menu/btn_navi_menu.xml" value="0.15729166666666666" />
       </map>
     </option>

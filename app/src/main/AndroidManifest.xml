@@ -32,6 +32,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".SignUpActivity"/>
         <meta-data android:name="com.kakao.sdk.AppKey" android:value="4dcc54f8c8d20b651f57162b434cafbb"/>
         <meta-data
             android:name="preloaded_fonts"

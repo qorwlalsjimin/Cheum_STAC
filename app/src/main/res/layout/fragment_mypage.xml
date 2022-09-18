@@ -20,7 +20,7 @@
                 android:textSize="28dp"
                 android:fontFamily="@font/noto_sans_bold"
                 android:textStyle="bold"
-                android:id="@+id/userTv"
+                android:id="@+id/loginTV"
                 android:text="로그인해주세요"
                 android:layout_marginTop="58dp"
                 android:layout_marginLeft="21dp"/>
@@ -64,21 +64,24 @@
                 android:layout_rowSpan="2"
                 android:src="@drawable/profile" />
             <FrameLayout
+                android:id="@+id/loginToFl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp">
                 <ImageView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/loginbtn"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="로그인"
                     android:layout_gravity="center"
                     android:fontFamily="@font/noto_sans"
-                    android:textSize="12dp"
-                    android:textColor="#6A6A6A"/>
+                    android:text="로그인"
+                    android:textColor="#6A6A6A"
+                    android:textSize="12dp" />
             </FrameLayout>
         </LinearLayout>
     </LinearLayout>

@@ -1,9 +1,14 @@
 package com.mirim.cheum_stac;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -12,7 +17,7 @@ import androidx.fragment.app.Fragment;
  * Use the {@link MypageFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MypageFragment extends Fragment {
+public class MypageFragment extends Fragment implements View.OnClickListener{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +27,9 @@ public class MypageFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private FrameLayout loginToFl;
+    private TextView loginToTV;
 
     public MypageFragment() {
         // Required empty public constructor
@@ -58,6 +66,32 @@ public class MypageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mypage, container, false);
+        View view = inflater.inflate(R.layout.fragment_mypage, container, false);
+
+        loginToFl = view.findViewById(R.id.loginToFl);
+        loginToTV = view.findViewById(R.id.loginTV);
+        loginToFl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        loginToTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        return view;
+    }
+
+
+    @Override
+    public void onClick(View view) {
+
+
     }
 }
