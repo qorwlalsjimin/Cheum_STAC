@@ -105,7 +105,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/product_img"
+                        android:src="@drawable/news1"
                         android:id="@+id/news1"/>
                     <ImageView
                         android:layout_width="wrap_content"
@@ -126,7 +126,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/product_img"
+                        android:src="@drawable/news2"
                         android:id="@+id/news2"/>
                     <ImageView
                         android:layout_width="wrap_content"
@@ -209,7 +209,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/product_img"
+                        android:src="@drawable/news3"
                         android:id="@+id/news3"/>
                     <ImageView
                         android:layout_width="wrap_content"
@@ -230,7 +230,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/product_img"
+                        android:src="@drawable/news4"
                         android:id="@+id/news4"/>
                     <ImageView
                         android:layout_width="wrap_content"
@@ -313,7 +313,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/product_img"
+                        android:src="@drawable/news5"
                         android:id="@+id/news5"/>
                     <ImageView
                         android:layout_width="wrap_content"
@@ -334,7 +334,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/product_img"
+                        android:src="@drawable/news6"
                         android:id="@+id/news6"/>
                     <ImageView
                         android:layout_width="wrap_content"

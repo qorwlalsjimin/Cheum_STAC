@@ -9,6 +9,7 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/drawable/ic_launcher_background.xml" value="0.184" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.184" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/drawable/menu_selector_color.xml" value="0.184" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/drawable/radius.xml" value="0.2385" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/font/noto_sans.xml" value="0.16296296296296298" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/font/noto_sans_bold.xml" value="0.34074074074074073" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/activity_login.xml" value="0.3619791666666667" />
@@ -18,17 +19,17 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_child_map.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_child_result.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_child_search.xml" value="0.3619791666666667" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_fill.xml" value="0.33" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_fill_detail.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_fill.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_fill_detail.xml" value="0.2" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_fill_product(2).xml" value="0.3619791666666667" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_fill_product.xml" value="0.3619791666666667" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_good_product.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_good_product.xml" value="0.33" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_home.xml" value="0.25" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_home_news.xml" value="0.3619791666666667" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_home_news_page.xml" value="0.3619791666666667" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_home_video.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_home_news.xml" value="0.5" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_home_news_page.xml" value="0.2" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_home_video.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_map.xml" value="0.3619791666666667" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_mypage.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_mypage.xml" value="0.16" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_mypage__customer.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_mypage_after.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Cheum_STAC/app/src/main/res/layout/fragment_mypage_check.xml" value="0.3619791666666667" />
