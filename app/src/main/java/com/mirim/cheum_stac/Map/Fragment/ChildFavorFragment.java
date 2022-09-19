@@ -44,26 +44,43 @@ public class ChildFavorFragment extends Fragment {
         listData = (ListView) v.findViewById(R.id.list_favorite);
         listData.setAdapter(adapter);
 
-        FavorList.favorList.add(0);
-        FavorList.favorList.add(4);
-        FavorList.favorList.add(5);
-        FavorList.favorList.add(9);
+        for(int i = 0; i<FavorList.favorList.length; i++)
+            FavorList.favorList[i] = false;
+
+        //파이어베이스 연동
+//        DatabaseReference reference = FirebaseUtils.getUserReference(); //reference는 user 속성을 받음
+//        //위에서 갖고온 store 주소값의 데이터를 읽어서 버튼 상태값 바꿔주기
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {//dataSnapshot : user
+//                String path;
+//                for(int i = 0; i<StoreList.storeList.size(); i++){
+//                    path = UserUtils.getHash() + "/favorite/" + Integer.toString(i);
+//                    if(dataSnapshot.child(path).getValue(Boolean.class))
+//                        FavorList.favorList[i] = true;
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError error) {
+//                //에러 처리
+//            }
+//        });
+
+        FavorList.favorList[2] = true;
+        FavorList.favorList[8] = true;
+        FavorList.favorList[16] = true;
+        FavorList.favorList[25] = true;
 
         //리스트뷰에 데이터 추가
         Store s;
-        for(int i = 0; i< FavorList.favorList.size(); i++){
-            for(int j = 0; j<StoreList.storeList.size(); j++){
-                s = (Store) (StoreList.storeList.get(j));
-                if(FavorList.favorList.get(i) == s.id){
-                    adapter.addItem(s.title, s.address, s.id);
-                }
-            }
-        }
+        int favorId=-1;
+        for(int i = 0; i< StoreList.storeList.size(); i++){
+            if(FavorList.favorList[i]) favorId = i;
 
-        //for(int i = 0; i< StoreList.storeList.size(); i++){
-        //    Store s = (Store) (StoreList.storeList.get(i));
-        //    adapter.addItem(s.title, s.address, s.id);
-        //}
+            s = (Store) (StoreList.storeList.get(i));
+            if(s.id == favorId) adapter.addItem(s.title, s.address, s.id);
+        }
 
         //즐겨찾기 가게 클릭시
         listData.setOnItemClickListener(new AdapterView.OnItemClickListener() {

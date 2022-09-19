@@ -28,6 +28,8 @@ public class ChildMapFragment extends Fragment {
     public static int storeId;
     TextView storeName, storeLoct;
 
+    ImageView imgPlus, imgMinus;
+
     //추후 삭제
     EditText editSearch;
     ImageView imgSearch;
@@ -50,6 +52,24 @@ public class ChildMapFragment extends Fragment {
         MapView mapView = new MapView(getActivity());
         mapViewContainer = (ViewGroup) v.findViewById(R.id.map_view);
         mapViewContainer.addView(mapView);
+
+
+        // 우측 하단 zoom level 변경하는 버튼
+        imgPlus = v.findViewById(R.id.img_plus);
+        imgMinus = v.findViewById(R.id.img_minus);
+
+        imgPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mapView.zoomIn(true);
+            }
+        });
+        imgMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mapView.zoomOut(true);
+            }
+        });
 
         //하단에 가게 정보
         storeName = v.findViewById(R.id.text_store_name);

@@ -66,7 +66,7 @@ public class ChildResultFragment extends Fragment {
         for(int i = 0; i< StoreList.storeList.size(); i++){
             s = (Store) (StoreList.storeList.get(i));
             if(s.id == storeId){
-                if(s.id == 0) Toast.makeText(getContext(), "엄마 얘 또 0이야ㅠ", Toast.LENGTH_SHORT).show();
+                if(s.id == 0) Toast.makeText(getContext(), "mapView 얘 또 0이야ㅠ", Toast.LENGTH_SHORT).show();
                 storeName.setText(s.title);
                 storeLoct.setText(s.address);
             }
