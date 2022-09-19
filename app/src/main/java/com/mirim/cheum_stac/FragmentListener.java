@@ -8,5 +8,4 @@ public interface FragmentListener {
     //index
     //0: Map에서 검색어
     //1: 가게 아이디
-    //2: listview 클릭했는지 true/false
 }

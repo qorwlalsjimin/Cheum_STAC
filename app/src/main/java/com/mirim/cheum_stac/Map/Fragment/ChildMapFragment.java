@@ -1,7 +1,6 @@
 package com.mirim.cheum_stac.Map.Fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -120,6 +119,5 @@ public class ChildMapFragment extends Fragment {
     //즐겨찾기 화면, 검색된 화면에서 값 받아오기
     public void displayMessage(String data){
         storeId = Integer.parseInt(data);
-        Log.d("값 옮기기를 추적하자 -_-", "가게 아이디를 정상적으로 받았나요? 이곳은 메서드 안 storeId: "+storeId);
     }
 }

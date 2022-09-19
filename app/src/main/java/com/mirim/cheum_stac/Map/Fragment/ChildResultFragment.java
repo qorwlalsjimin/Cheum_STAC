@@ -1,7 +1,6 @@
 package com.mirim.cheum_stac.Map.Fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
-import com.mirim.cheum_stac.MainActivity;
 import com.mirim.cheum_stac.Map.Store;
 import com.mirim.cheum_stac.Map.StoreList;
 import com.mirim.cheum_stac.R;
@@ -49,7 +47,6 @@ public class ChildResultFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v =  inflater.inflate(R.layout.fragment_child_result, container, false);
-        Log.d("storeId를 추적합니다. 쭈고 -_-", "onCreateView 실행되자마자 storeId: "+storeId);
 
         imgbtnStar = v.findViewById(R.id.imgbtn_star);
         storeName = v.findViewById(R.id.text_store_name);
@@ -57,7 +54,6 @@ public class ChildResultFragment extends Fragment {
         storeOper = v.findViewById(R.id.text_store_operation);
         storePage = v.findViewById(R.id.text_store_page);
         storeDial = v.findViewById(R.id.text_store_dial);
-        Log.d("파이어베이스를 추적하자 -_-", "가게 아이디"+Integer.toString(storeId));
 
         //가게 정보 가져와서 text 바꾸기
         Store s;
@@ -87,9 +83,7 @@ public class ChildResultFragment extends Fragment {
         mapView.addPOIItem(marker);
 
         //파이어베이스 실시간 DB 연동
-        Log.d("파이어베이스를 추적하자 -_-", "데이터베이스레퍼런스 연결 직전!");
         DatabaseReference reference = FirebaseUtils.getUserReference(); //reference는 user 속성을 받음
-        Log.d("파이어베이스를 추적하자 -_-", "reference에 user 속성 받기");
 
         //위에서 갖고온 store 주소값의 데이터를 읽어서 버튼 상태값 바꿔주기
         reference.addValueEventListener(new ValueEventListener() {
@@ -124,7 +118,6 @@ public class ChildResultFragment extends Fragment {
 
             @Override
             public void onCancelled(DatabaseError error) {
-                Log.d("파이어베이스를 추적하자 -_-", "어머낫!!! 오류.");
                 //에러 처리
             }
         });
@@ -135,7 +128,6 @@ public class ChildResultFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Boolean favorite = !getBGRFavorite(imgbtnStar.getTag().toString());
-                Log.d("아니 너 여기 안 오니?", "onClickListener");
                 reference.child(path).setValue(favorite);
             }
         });
@@ -145,14 +137,11 @@ public class ChildResultFragment extends Fragment {
         imgbtnDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Fragment창 닫는 코드로 추후 수정(FragmentManager)
-                ((MainActivity)getActivity()).replaceFragment(ChildMapFragment.newInstance());
+                ParentFragment.btnCheck.performClick();
+//                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.(액티비티_콘테이너), new 프래그먼트이름()).addToBackStack(null).commit();
                 mapViewContainer.removeAllViews();
             }
         });
-
-
-        Log.d("storeId를 추적합니다. 쭈고 -_-", "reference에 user 연동 storeId: "+storeId);
 
         return v;
     }
@@ -175,7 +164,6 @@ public class ChildResultFragment extends Fragment {
     //즐겨찾기 화면, 검색된 화면에서 값 받아오기
     public void displayMessage(String data){
         storeId = Integer.parseInt(data);
-        Log.d("값 옮기기를 추적하자 -_-", "가게 아이디를 정상적으로 받았나요? storeId: "+storeId);
     }
 
 }

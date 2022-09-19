@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -162,15 +161,10 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
         if (!child.isAdded()) {
             childFt.replace(R.id.child_fragment_container, child);
             childFt.addToBackStack(null);
-            childFt.commit();
+            childFt.commitAllowingStateLoss();
         }
     }
 
-    public static void displayMessage(String message){
-        isOnItemClick = Boolean.valueOf(message);
-        if(isOnItemClick == true) Log.d("디스플레이메시지 성공?", "성공입니다");
-        else Log.d("디스플레이메시지 성공?", "실패입니다");
-    }
 
 
 }

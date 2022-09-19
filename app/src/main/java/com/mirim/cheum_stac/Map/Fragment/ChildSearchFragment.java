@@ -2,7 +2,6 @@ package com.mirim.cheum_stac.Map.Fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,7 +67,6 @@ public class ChildSearchFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ListViewItem obj = (ListViewItem) parent.getAdapter().getItem(position);
                 storeId = obj.getId();
-                Log.d("값 옮기기를 추적하자 -_-", "서치프래그먼트 storeId: "+storeId);
 
                 fragmentListener.onCommand(1, Integer.toString(storeId));
                 ParentFragment.btnCheck.performClick();
@@ -91,7 +89,6 @@ public class ChildSearchFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-
         if(context instanceof FragmentListener) fragmentListener = (FragmentListener) context;
     }
 

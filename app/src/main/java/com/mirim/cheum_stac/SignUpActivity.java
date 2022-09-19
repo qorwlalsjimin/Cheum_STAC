@@ -21,8 +21,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
 
@@ -133,8 +131,6 @@ public class SignUpActivity extends AppCompatActivity {
             // 비밀번호와 확인이 일치하지 않는 경우
             Toast.makeText(SignUpActivity.this, "비밀번호 확인이 다릅니다.", Toast.LENGTH_LONG).show();
         }
-
-
 
     }
 

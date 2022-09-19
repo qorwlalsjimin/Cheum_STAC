@@ -2,7 +2,6 @@ package com.mirim.cheum_stac.Map.Fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,8 +43,6 @@ public class ChildFavorFragment extends Fragment {
         listData = (ListView) v.findViewById(R.id.list_favorite);
         listData.setAdapter(adapter);
 
-        Log.d("순서 확인", "즐겨찾기 화면");
-
         //리스트뷰에 데이터 추가
         Store s;
         int favorId=-1;
@@ -64,7 +61,6 @@ public class ChildFavorFragment extends Fragment {
                 storeId = obj.getId();
 
                 fragmentListener.onCommand(1, Integer.toString(storeId));
-                Log.d("값 옮기기를 추적하자 -_-", "onCommand로 값을 보냇어요! storeId: "+storeId);
 
                 ((MainActivity)getActivity()).replaceFragment(com.mirim.cheum_stac.Map.Fragment.ChildMapFragment.newInstance());
             }
