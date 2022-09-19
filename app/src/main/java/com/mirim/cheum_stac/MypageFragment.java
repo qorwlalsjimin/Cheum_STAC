@@ -1,10 +1,12 @@
 package com.mirim.cheum_stac;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -71,6 +73,14 @@ public class MypageFragment extends Fragment {
                 ((MainActivity)getActivity()).replaceFragment(good_product.newInstance(null,null));
             }
         });
+//        ImageButton loginBtn = v.findViewById(R.id.loginBtn);
+//        loginBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getActivity(),LoginActivity.class);
+//                startActivity(intent);
+//            }
+//        });
         return v;
     }
 }

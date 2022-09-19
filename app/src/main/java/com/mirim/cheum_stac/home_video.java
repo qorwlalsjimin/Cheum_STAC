@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -60,6 +61,20 @@ public class home_video extends Fragment {
             @Override
             public void onClick(View view) {
                 ((MainActivity)getActivity()).replaceFragment(home_news.newInstance());
+            }
+        });
+        TextView uptitle = v.findViewById(R.id.uptitle);
+        uptitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity)getActivity()).replaceFragment(HomeFragment.newInstance());
+            }
+        });
+        TextView title = v.findViewById(R.id.title);
+        title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity)getActivity()).replaceFragment(HomeFragment.newInstance());
             }
         });
         return v;

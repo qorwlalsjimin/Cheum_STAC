@@ -195,6 +195,20 @@ public class home_news extends Fragment {
                 ((MainActivity)getActivity()).replaceFragment(home_news_page.newInstance());
             }
         });
+        TextView uptitle = v.findViewById(R.id.uptitle);
+        uptitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity)getActivity()).replaceFragment(HomeFragment.newInstance());
+            }
+        });
+        TextView title = v.findViewById(R.id.title);
+        title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity)getActivity()).replaceFragment(HomeFragment.newInstance());
+            }
+        });
 
         return v;
     }
