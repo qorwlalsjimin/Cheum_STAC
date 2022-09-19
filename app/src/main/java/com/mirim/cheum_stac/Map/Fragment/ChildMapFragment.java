@@ -77,6 +77,7 @@ public class ChildMapFragment extends Fragment {
         MapView mapView = new MapView(getActivity());
         mapViewContainer = (ViewGroup) v.findViewById(R.id.map_view);
         mapViewContainer.addView(mapView);
+        mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOff);
         mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(latitude, longitude), true);
 
         MapPOIItem marker = new MapPOIItem();

@@ -21,6 +21,8 @@ import com.mirim.cheum_stac.R;
 import com.mirim.cheum_stac.util.FirebaseUtils;
 import com.mirim.cheum_stac.util.UserUtils;
 
+import net.daum.mf.map.api.MapPOIItem;
+import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 
 public class ChildResultFragment extends Fragment {
@@ -35,7 +37,6 @@ public class ChildResultFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     ImageButton imgbtnDown;
@@ -60,13 +61,30 @@ public class ChildResultFragment extends Fragment {
 
         //가게 정보 가져와서 text 바꾸기
         Store s;
+        Double latitude=0.0, longitude=0.0;
         for(int i = 0; i< StoreList.storeList.size(); i++){
             s = (Store) (StoreList.storeList.get(i));
             if(s.id == storeId){
                 storeName.setText(s.title);
                 storeLoct.setText(s.address);
+                latitude = s.lat;
+                longitude = s.lug;
             }
         }
+
+        MapView mapView = new MapView(getActivity());
+        mapViewContainer = (ViewGroup) v.findViewById(R.id.map_view);
+        mapViewContainer.addView(mapView);
+        mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(latitude, longitude), true);
+
+        MapPOIItem marker = new MapPOIItem();
+        marker.setItemName(storeName.getText().toString());
+        marker.setTag(0);
+        MapPoint MARKER_POINT = MapPoint.mapPointWithGeoCoord(latitude, longitude);
+        marker.setMapPoint(MARKER_POINT);
+        marker.setMarkerType(MapPOIItem.MarkerType.RedPin); // 기본으로 제공하는 BluePin 마커 모양.
+
+        mapView.addPOIItem(marker);
 
         //파이어베이스 실시간 DB 연동
         Log.d("파이어베이스를 추적하자 -_-", "데이터베이스레퍼런스 연결 직전!");
@@ -121,11 +139,6 @@ public class ChildResultFragment extends Fragment {
                 reference.child(path).setValue(favorite);
             }
         });
-
-        //지도 화면에 보이게 함
-        MapView mapView = new MapView(getActivity());
-        mapViewContainer = (ViewGroup) v.findViewById(R.id.map_view);
-        mapViewContainer.addView(mapView);
 
         //상세정보 내리는 이미지 버튼
         imgbtnDown = v.findViewById(R.id.imgbtn_down);
