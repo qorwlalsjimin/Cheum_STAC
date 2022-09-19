@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.mirim.cheum_stac.FragmentListener;
+import com.mirim.cheum_stac.MainActivity;
 import com.mirim.cheum_stac.Map.ListView.ListViewAdapter;
 import com.mirim.cheum_stac.Map.ListView.ListViewItem;
 import com.mirim.cheum_stac.Map.Store;
@@ -73,7 +74,7 @@ public class ChildSearchFragment extends Fragment {
                 fragmentListener.onCommand(1, Integer.toString(storeId));
                 fragmentListener.onCommand(2, "true");
                 Log.d("추적추적", "리스트뷰 있는 곳에서 실행함");
-//                ((MainActivity)getActivity()).replaceFragment(com.mirim.cheum_stac.Map.Fragment.ChildMapFragment.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(com.mirim.cheum_stac.Map.Fragment.ChildMapFragment.newInstance());
             }
         });
 
