@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -31,10 +30,6 @@ public class ChildMapFragment extends Fragment {
 
     ImageView imgPlus, imgMinus;
 
-    //추후 삭제
-    EditText editSearch;
-    ImageView imgSearch;
-
     public static ChildMapFragment newInstance() {
         return new ChildMapFragment();
     }
@@ -53,13 +48,6 @@ public class ChildMapFragment extends Fragment {
         //하단에 가게 정보
         storeName = v.findViewById(R.id.text_store_name);
         storeLoct = v.findViewById(R.id.text_store_location);
-
-        //추후 삭제
-        editSearch = v.findViewById(R.id.editTextFilter);
-        imgSearch = v.findViewById(R.id.img_search_icon);
-
-
-
 
         //가게 정보 가져와서 text 바꾸기, 지도 핀 설정
         Store s;
@@ -106,22 +94,6 @@ public class ChildMapFragment extends Fragment {
             }
         });
 
-        //임시방편
-        editSearch.setText("검색어");
-        editSearch.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-            }
-        });
-
-        imgSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editSearch.setText("");
-                imgSearch.setBackgroundResource(R.drawable.map_search_icon);
-            }
-        });
-
         linearInfo = v.findViewById(R.id.linear_store_info);
         linearInfo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,6 +108,12 @@ public class ChildMapFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
+        mapViewContainer.removeAllViews();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
         mapViewContainer.removeAllViews();
     }
 
