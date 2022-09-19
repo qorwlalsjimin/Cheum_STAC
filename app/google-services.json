@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "687677789334",
+    "firebase_url": "https://stac-cheum-default-rtdb.firebaseio.com",
     "project_id": "stac-cheum",
     "storage_bucket": "stac-cheum.appspot.com"
   },

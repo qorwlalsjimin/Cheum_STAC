@@ -6,15 +6,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.mirim.cheum_stac.Map.Store;
+import com.mirim.cheum_stac.Map.StoreList;
+import com.mirim.cheum_stac.Product.Product;
+import com.mirim.cheum_stac.Product.ProductList;
+
 public class fill_detail extends Fragment {
+    Product product;
     MainActivity activity;
+    EditText editSearch;
+    String SearchWord;
+    ImageView imgSearch;
+    int id;
+    String kate;
+    int img;
+    boolean best;
+    String name;
+    String price;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -45,6 +62,30 @@ public class fill_detail extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_fill_detail, container, false);
         ImageButton backBtn = v.findViewById(R.id.backBtn);
+
+        editSearch = v.findViewById(R.id.edit_search_text);
+        SearchWord = editSearch.getText().toString();
+        imgSearch = v.findViewById(R.id.img_search_icon);
+//        String kate = getArguments().getString("kate");
+
+        imgSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                for(int i = 0; i< ProductList.productList.size(); i++){
+                    product = (Product) (ProductList.productList.get(i));
+                    //if(kate.equals(product.kate)){
+                        if(product.name.contains(SearchWord)){
+                            //새로 생성하는 코드 필요
+                            Toast.makeText(getActivity(), product.name, Toast.LENGTH_LONG).show();
+                        } else {
+                            continue;
+                        }
+                    //}
+                }
+            }
+        });
+
+
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
