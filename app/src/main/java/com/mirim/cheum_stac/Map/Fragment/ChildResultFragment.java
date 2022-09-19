@@ -7,17 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.mirim.cheum_stac.MainActivity;
-
 import com.mirim.cheum_stac.Map.Store;
 import com.mirim.cheum_stac.Map.StoreList;
 import com.mirim.cheum_stac.R;
@@ -66,19 +63,10 @@ public class ChildResultFragment extends Fragment {
         for(int i = 0; i< StoreList.storeList.size(); i++){
             s = (Store) (StoreList.storeList.get(i));
             if(s.id == storeId){
-                if(s.id == 0) Toast.makeText(getContext(), "mapView 얘 또 0이야ㅠ", Toast.LENGTH_SHORT).show();
                 storeName.setText(s.title);
                 storeLoct.setText(s.address);
             }
         }
-
-        //StoreDatas storeDatas = new StoreDatas();
-        //for(int i = 0; i< storeDatas.dataCnt; i++){
-        //    if(storeDatas.storeText[i][0].equals(Integer.toString(storeId))){
-        //        storeName.setText(storeDatas.storeText[i][1]);
-        //        storeLoct.setText(storeDatas.storeText[i][2]);
-        //    }
-        //}
 
         //파이어베이스 실시간 DB 연동
         Log.d("파이어베이스를 추적하자 -_-", "데이터베이스레퍼런스 연결 직전!");
@@ -89,25 +77,30 @@ public class ChildResultFragment extends Fragment {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {//dataSnapshot : user
-
-                Log.d("storeId를 추적합니다. 쭈고 -_-", "reference에 user 연동 storeId: "+storeId);
-                Log.d("파이어베이스를 추적하자 -_-", "onDataChange 실행");
                 String path = UserUtils.getHash() + "/favorite/" + Integer.toString(storeId);
                 Boolean favorite = false;
-                Log.d("파이어베이스를 추적하자 -_-", "경로 지정하고 favorite: "+favorite);
                 if (dataSnapshot.child(path).exists()){
                     favorite = dataSnapshot.child(path).getValue(Boolean.class);
-                    Log.d("파이어베이스를 추적하자 -_-", "favorite값을 디비에서 가져왓어요! favorite: "+favorite);
                     imgbtnStar.setBackgroundResource(getBGR(favorite));
-                    Log.d("파이어베이스를 추적하자 -_-", "favorite값에 따라 달라지는 이미지 파일 getBGR(favorite): "+getBGR(favorite)+" favorite: "+favorite);
-                    Log.d("storeId를 추적합니다. 쭈고 -_-", "reference에 user 연동 storeId: "+storeId);
                 }
                 reference.child(path).setValue(favorite);
 
                 if(favorite) imgbtnStar.setTag("star");
                 else imgbtnStar.setTag("star_empty");
 
-                Log.d("파이어베이스를 추적하자 -_-", "DB에 true/false값 set 1 favorite: "+favorite);
+                //즐겨찾기 리스트에 넣기 시도 중
+//                List<Integer> existArr = new ArrayList<>();
+//                for(int i = 0; i<42; i++){
+//                    String path3 = UserUtils.getHash() + "/favorite";
+//                    if(dataSnapshot.child(path3).getValue(Integer.class).equals(Integer.valueOf(i)))
+//                        existArr.add(Integer.valueOf(i));
+//                }
+//
+//                for(int i = 0; i<existArr.size(); i++){
+//                    String path2 = UserUtils.getHash() + "/favorite/" + Integer.toString(existArr.get(i));
+//                    if(dataSnapshot.child(path2).getValue(Boolean.class) == Boolean.valueOf(true))
+//                        FavorList.favorList[existArr.get(i)] = 1;
+//                }
 
             }
 
@@ -123,10 +116,9 @@ public class ChildResultFragment extends Fragment {
         imgbtnStar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("파이어베이스를 추적하자 -_-", "이미지 버튼 온클릭******************************************");
                 Boolean favorite = !getBGRFavorite(imgbtnStar.getTag().toString());
+                Log.d("아니 너 여기 안 오니?", "onClickListener");
                 reference.child(path).setValue(favorite);
-                Log.d("파이어베이스를 추적하자 -_-", "DB에 true/flase값 set 2 favorite: "+favorite);
             }
         });
 

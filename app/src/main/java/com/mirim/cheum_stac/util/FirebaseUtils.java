@@ -6,7 +6,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 /** 파이어베이스 데이터베이스 유틸 클래스 **/
 public class FirebaseUtils {
-    private static FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://cheum2022-9a9c3-default-rtdb.firebaseio.com");
+    private static FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://stac-cheum-default-rtdb.firebaseio.com");
 
     public static FirebaseDatabase getDatabase(){
         return firebaseDatabase;
