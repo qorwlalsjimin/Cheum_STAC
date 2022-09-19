@@ -47,7 +47,26 @@ public class ChildFavorFragment extends Fragment {
         for(int i = 0; i<FavorList.favorList.length; i++)
             FavorList.favorList[i] = false;
 
-        //추후 파이어베이스 연동
+        //파이어베이스 연동
+//        DatabaseReference reference = FirebaseUtils.getUserReference(); //reference는 user 속성을 받음
+//        //위에서 갖고온 store 주소값의 데이터를 읽어서 버튼 상태값 바꿔주기
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {//dataSnapshot : user
+//                String path;
+//                for(int i = 0; i<StoreList.storeList.size(); i++){
+//                    path = UserUtils.getHash() + "/favorite/" + Integer.toString(i);
+//                    if(dataSnapshot.child(path).getValue(Boolean.class))
+//                        FavorList.favorList[i] = true;
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError error) {
+//                //에러 처리
+//            }
+//        });
+
         FavorList.favorList[2] = true;
         FavorList.favorList[8] = true;
         FavorList.favorList[16] = true;
