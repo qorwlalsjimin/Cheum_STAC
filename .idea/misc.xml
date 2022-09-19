@@ -6,9 +6,9 @@
         <entry key="..\:/CHEUM/Cheum_STAC/app/src/main/res/drawable/round.xml" value="0.2255" />
         <entry key="..\:/CHEUM/Cheum_STAC/app/src/main/res/font/noto_sans.xml" value="0.2796875" />
         <entry key="..\:/CHEUM/Cheum_STAC/app/src/main/res/layout/activity_main.xml" value="0.19746376811594202" />
-        <entry key="..\:/CHEUM/Cheum_STAC/app/src/main/res/layout/fragment_child_map.xml" value="0.109375" />
+        <entry key="..\:/CHEUM/Cheum_STAC/app/src/main/res/layout/fragment_child_map.xml" value="1.2" />
         <entry key="..\:/CHEUM/Cheum_STAC/app/src/main/res/layout/fragment_child_result.xml" value="0.19746376811594202" />
-        <entry key="..\:/CHEUM/Cheum_STAC/app/src/main/res/layout/fragment_map.xml" value="0.1" />
+        <entry key="..\:/CHEUM/Cheum_STAC/app/src/main/res/layout/fragment_map.xml" value="0.264" />
         <entry key="..\:/CHEUM/Cheum_STAC/app/src/main/res/layout/network_security_config.xml" value="0.19746376811594202" />
         <entry key="..\:/CHEUM/Cheum_STAC/app/src/main/res/layout/round.xml" value="0.1" />
         <entry key="..\:/Users/User/StudioProjects/Cheum_2022STAC/app/src/main/res/drawable/login_btn.xml" value="0.3005" />
@@ -41,7 +41,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.264" />
+        <option name="scale" value="1.2" />
       </ProjectState>
     </option>
   </component>

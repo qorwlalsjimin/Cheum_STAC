@@ -28,6 +28,7 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
     Toolbar toolSearch;
     ImageButton imgSearch;
     FragmentListener fragmentListener;
+    static Boolean isOnItemClick;
 
     public static ParentFragment newInstance() {
         return new ParentFragment();
@@ -97,6 +98,12 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
         });
         imgSearch.setOnClickListener(twoListener);
 
+        //리스트뷰 클릭했을때 자식 프래그먼트로 ChildMapFragment 가져오기
+//        if(isOnItemClick){
+//            fg = com.mirim.cheum_stac.Map.Fragment.ChildMapFragment.newInstance();
+//            setChildFragment(fg);
+//        }
+
         return v;
     }
 
@@ -124,8 +131,6 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
         }
     };
 
-
-
     @Override
     public void onClick(View view) {}
 
@@ -150,5 +155,11 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
             childFt.commit();
         }
     }
+
+    public void displayMessage(String message){
+        Log.d("추적추적", "값 받는 프래그먼트에서 받음 "+message);
+        isOnItemClick = Boolean.valueOf(message);
+    }
+
 
 }

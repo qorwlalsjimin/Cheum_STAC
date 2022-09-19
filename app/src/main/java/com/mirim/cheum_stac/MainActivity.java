@@ -95,7 +95,10 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
             case 1: //ChildFavorFragment, ChildSearchFragment =>
                 childResultFragment.displayMessage(data);
                 childMapFragment.displayMessage(data);
-                Log.d("값 옮기기를 추적하자 -_-", "2 Favor에서 받은 값으로 displayMessage를 호출하셧나요? data: "+data);
+                break;
+            case 2: //ChildFavorFragment, ChildSearchFragment =>
+                Log.d("추적추적", "메인에서 실행함 "+data);
+                parentFragment.displayMessage(data);
                 break;
         }
     }
