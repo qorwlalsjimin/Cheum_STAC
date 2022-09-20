@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
     private ChildResultFragment childResultFragment;
     private ChildMapFragment childMapFragment;
 
+    //상품
+    private fill_detail fillDetail;
     FragmentTransaction transaction;
 
     @Override
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         childSearchFragment = new ChildSearchFragment();
         childResultFragment = new ChildResultFragment();
         childMapFragment = new ChildMapFragment();
-
+        fillDetail = new fill_detail();
         gethash(); //키해시 값 구하는 메서드
 
     }
@@ -82,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
     public void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.frameLayout, fragment).addToBackStack(null).commit();
+        transaction.replace(R.id.frameLayout, fragment).commit();
     }
 
     //FragmentListener 추상메서드 구현
@@ -96,6 +98,14 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
                 childResultFragment.displayMessage(data);
                 childMapFragment.displayMessage(data);
                 break;
+            case 2: //ChildFavorFragment, ChildSearchFragment =>
+                Log.d("추적추적", "메인에서 실행함 "+data);
+                parentFragment.displayMessage(data);
+                break;
+            case 3:
+                fillDetail.displayMessage(data);
+                break;
+
         }
     }
 

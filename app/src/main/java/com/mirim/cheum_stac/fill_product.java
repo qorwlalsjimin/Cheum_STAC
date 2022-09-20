@@ -29,7 +29,7 @@ public class fill_product extends Fragment {
         // Required empty public constructor
     }
 
-    public static fill_product newInstance(String param1, String param2) {
+    public static fill_product newInstance() {
         return new fill_product();
     }
 

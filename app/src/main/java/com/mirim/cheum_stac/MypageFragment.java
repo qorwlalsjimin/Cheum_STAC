@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -20,6 +22,8 @@ import androidx.fragment.app.Fragment;
  */
 public class MypageFragment extends Fragment {
     MainActivity activity;
+    private FrameLayout loginToFl;
+    private TextView loginToTV;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -73,14 +77,25 @@ public class MypageFragment extends Fragment {
                 ((MainActivity)getActivity()).replaceFragment(good_product.newInstance(null,null));
             }
         });
-//        ImageButton loginBtn = v.findViewById(R.id.loginBtn);
-//        loginBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getActivity(),LoginActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+
+        loginToFl = v.findViewById(R.id.loginToFl);
+        loginToTV = v.findViewById(R.id.loginTV);
+        loginToFl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        loginToTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         return v;
     }
 }

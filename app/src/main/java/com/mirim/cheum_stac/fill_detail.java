@@ -66,7 +66,7 @@ public class fill_detail extends Fragment {
         editSearch = v.findViewById(R.id.edit_search_text);
         SearchWord = editSearch.getText().toString();
         imgSearch = v.findViewById(R.id.img_search_icon);
-//        String kate = getArguments().getString("kate");
+//
 
         imgSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,179 +92,183 @@ public class fill_detail extends Fragment {
                 ((MainActivity)getActivity()).replaceFragment(FillFragment.newInstance());
             }
         });
-        ImageView news1 = v.findViewById(R.id.news1);
-        news1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
-        TextView news1_1 = v.findViewById(R.id.news1_1);
-        news1_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
-        TextView news1_2 = v.findViewById(R.id.news1_2);
-        news1_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
-        TextView news1_3 = v.findViewById(R.id.news1_3);
-        news1_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
-
-        ImageView news2 = v.findViewById(R.id.news2);
-        news2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
-        TextView news2_1 = v.findViewById(R.id.news2_1);
-        news2_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
-        TextView news2_2 = v.findViewById(R.id.news2_2);
-        news2_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
-        TextView news2_3 = v.findViewById(R.id.news2_3);
-        news2_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
-
-        ImageView news3 = v.findViewById(R.id.news3);
-        news3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
-        TextView news3_1 = v.findViewById(R.id.news3_1);
-        news3_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
-        TextView news3_2 = v.findViewById(R.id.news3_2);
-        news3_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
-        TextView news3_3 = v.findViewById(R.id.news3_3);
-        news3_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
-
-        ImageView news4 = v.findViewById(R.id.news4);
-        news4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
-        TextView news4_1 = v.findViewById(R.id.news4_1);
-        news4_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
-        TextView news4_2 = v.findViewById(R.id.news4_2);
-        news4_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
-        TextView news4_3 = v.findViewById(R.id.news4_3);
-        news4_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
-
-        ImageView news5 = v.findViewById(R.id.news5);
-        news5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
-        TextView news5_1 = v.findViewById(R.id.news5_1);
-        news4_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
-        TextView news5_2 = v.findViewById(R.id.news5_2);
-        news5_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
-        TextView news5_3 = v.findViewById(R.id.news5_3);
-        news5_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
-
-        ImageView news6 = v.findViewById(R.id.news6);
-        news6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
-        TextView news6_1 = v.findViewById(R.id.news6_1);
-        news6_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
-        TextView news6_2 = v.findViewById(R.id.news6_2);
-        news6_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
-        TextView news6_3 = v.findViewById(R.id.news6_3);
-        news6_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
-            }
-        });
+//        ImageView news1 = v.findViewById(R.id.news1);
+//        news1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
+//        TextView news1_1 = v.findViewById(R.id.news1_1);
+//        news1_1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
+//        TextView news1_2 = v.findViewById(R.id.news1_2);
+//        news1_2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
+//        TextView news1_3 = v.findViewById(R.id.news1_3);
+//        news1_3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
+//
+//        ImageView news2 = v.findViewById(R.id.news2);
+//        news2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
+//        TextView news2_1 = v.findViewById(R.id.news2_1);
+//        news2_1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
+//        TextView news2_2 = v.findViewById(R.id.news2_2);
+//        news2_2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
+//        TextView news2_3 = v.findViewById(R.id.news2_3);
+//        news2_3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
+//
+//        ImageView news3 = v.findViewById(R.id.news3);
+//        news3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
+//        TextView news3_1 = v.findViewById(R.id.news3_1);
+//        news3_1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
+//        TextView news3_2 = v.findViewById(R.id.news3_2);
+//        news3_2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
+//        TextView news3_3 = v.findViewById(R.id.news3_3);
+//        news3_3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
+//
+//        ImageView news4 = v.findViewById(R.id.news4);
+//        news4.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
+//        TextView news4_1 = v.findViewById(R.id.news4_1);
+//        news4_1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
+//        TextView news4_2 = v.findViewById(R.id.news4_2);
+//        news4_2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
+//        TextView news4_3 = v.findViewById(R.id.news4_3);
+//        news4_3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
+//
+//        ImageView news5 = v.findViewById(R.id.news5);
+//        news5.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
+//        TextView news5_1 = v.findViewById(R.id.news5_1);
+//        news4_1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
+//        TextView news5_2 = v.findViewById(R.id.news5_2);
+//        news5_2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
+//        TextView news5_3 = v.findViewById(R.id.news5_3);
+//        news5_3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
+//
+//        ImageView news6 = v.findViewById(R.id.news6);
+//        news6.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
+//        TextView news6_1 = v.findViewById(R.id.news6_1);
+//        news6_1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
+//        TextView news6_2 = v.findViewById(R.id.news6_2);
+//        news6_2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
+//        TextView news6_3 = v.findViewById(R.id.news6_3);
+//        news6_3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance(null,null));
+//            }
+//        });
         return v;
+    }
+
+    public void displayMessage(String data) {
+        kate = data;
     }
 }
