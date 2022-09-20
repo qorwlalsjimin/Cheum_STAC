@@ -43,12 +43,13 @@ public class ChildFavorFragment extends Fragment {
         listData = (ListView) v.findViewById(R.id.list_favorite);
         listData.setAdapter(adapter);
 
-//        adapter.addItem("테", "테스트라구욧", 1);
-//        adapter.addItem("테스", "테스트라구욧", 2);
-//        adapter.addItem("테스트", "테스트라구욧", 3);
-//        adapter.addItem("테스트입", "테스트라구욧", 4);
-//        adapter.addItem("테스트입니", "테스트라구욧", 5);
-//        adapter.addItem("테스트입니다", "테스트라구욧", 6);
+        adapter.addItem("테", "테스트라구욧", 1);
+        adapter.addItem("테스", "테스트라구욧", 2);
+        adapter.addItem("테스트", "테스트라구욧", 3);
+        adapter.addItem("테스트입", "테스트라구욧", 4);
+        adapter.addItem("테스트입니", "테스트라구욧", 5);
+        adapter.addItem("테스트입니다", "테스트라구욧", 6);
+
         LinearLayout linearEmpty = v.findViewById(R.id.empty);
         linearEmpty.setVisibility(View.VISIBLE);
         listData.setEmptyView(linearEmpty);

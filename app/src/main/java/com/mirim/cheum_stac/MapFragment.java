@@ -13,11 +13,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -39,7 +39,7 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
     private static final int PERMISSIONS_REQUEST_CODE = 100;
     String[] REQUIRED_PERMISSIONS  = {Manifest.permission.ACCESS_FINE_LOCATION};
 
-    FrameLayout frameFavor;
+    CardView cardFavor;
     TextView textStoreName;
 
     public MapFragment() {
@@ -57,7 +57,7 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_map, container, false);
 
-        frameFavor = v.findViewById(R.id.frame_favorite);
+        cardFavor = v.findViewById(R.id.cardview_favorite);
         textStoreName = v.findViewById(R.id.text_store_name);
 
 //        for(int i = 0; i< FavorList.favorList.length; i++){
