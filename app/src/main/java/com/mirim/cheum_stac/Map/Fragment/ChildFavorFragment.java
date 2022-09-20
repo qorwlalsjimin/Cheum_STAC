@@ -2,7 +2,6 @@ package com.mirim.cheum_stac.Map.Fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,9 +50,6 @@ public class ChildFavorFragment extends Fragment {
         Store s;
         int favorId=-1;
         for(int i = 0; i< StoreList.storeList.size(); i++){
-            if(FavorList.favorList[i]==1)
-                Log.d("즐찾한 가게!", Integer.toString(i));
-
             if(FavorList.favorList[i]==1) favorId = i;
             s = (Store) (StoreList.storeList.get(i));
             if(s.id == favorId)

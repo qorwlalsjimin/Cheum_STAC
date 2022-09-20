@@ -74,6 +74,10 @@ public class ChildResultFragment extends Fragment {
             if(s.id == storeId){
                 storeName.setText(s.title);
                 storeLoct.setText(s.address);
+                storeOper.setText(s.opertime);
+                storePage.setText(s.page);
+                storeDial.setText(s.dial);
+
                 latitude = s.lat;
                 longitude = s.lug;
             }

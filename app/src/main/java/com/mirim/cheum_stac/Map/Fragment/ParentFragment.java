@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
@@ -29,7 +30,7 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
     ImageButton imgSearch;
     public static Button btnCheck;
     FragmentListener fragmentListener;
-    static public Boolean isOnItemClick = true;
+    public static int storeId;
 
     public static ParentFragment newInstance() {
         return new ParentFragment();
@@ -61,6 +62,20 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
                 Fragment fg;
                 fg = com.mirim.cheum_stac.Map.Fragment.ChildMapFragment.newInstance();
                 setChildFragment(fg);
+
+                imgSearch.setImageResource(R.drawable.x);
+                imgSearch.setTag("x");
+            }
+        });
+
+        //x 눌렀을때 검색어 사라지는 거
+        imgSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(imgSearch.getTag().equals("x")){
+                    editSearch.setText("");
+                    Toast.makeText(getContext(), "x클릭", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -108,12 +123,6 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
             }
         });
         imgSearch.setOnClickListener(twoListener);
-
-        //리스트뷰 클릭했을때 자식 프래그먼트로 ChildMapFragment 가져오기
-//        if(isOnItemClick){
-//            fg = com.mirim.cheum_stac.Map.Fragment.ChildMapFragment.newInstance();
-//            setChildFragment(fg);
-//        }
 
         return v;
     }
@@ -164,6 +173,11 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
             childFt.addToBackStack(null);
             childFt.commitAllowingStateLoss();
         }
+    }
+
+    //ParentFragment에서 값 받아오기
+    public void displayMessage(String message){
+        storeId = Integer.parseInt(message);
     }
 
 

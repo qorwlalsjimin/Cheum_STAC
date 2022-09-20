@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,12 +25,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mirim.cheum_stac.Map.FavorList;
 import com.mirim.cheum_stac.Map.Fragment.ParentFragment;
 import com.mirim.cheum_stac.Map.RecyclerView.StoreRecyclerVIewAdapter;
 import com.mirim.cheum_stac.Map.RecyclerView.fillStore;
 import com.mirim.cheum_stac.Map.Store;
 import com.mirim.cheum_stac.Map.StoreList;
-import com.mirim.cheum_stac.Product.ProductList;
 import com.mirim.cheum_stac.Product.fillProduct;
 
 import net.daum.mf.map.api.MapPOIItem;
@@ -41,7 +42,7 @@ import java.util.ArrayList;
 public class MapFragment extends Fragment implements MapView.CurrentLocationEventListener, MapView.MapViewEventListener, MapView.POIItemEventListener{
     MainActivity activity;
     FragmentListener fragmentListener;
-    androidx.cardview.widget.CardView cardView;
+    TextView textStoreName;
 
     //리사이클러뷰
     RecyclerView recyclerView;
@@ -81,11 +82,13 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
                              Bundle savedInstanceStte) {
         View v = inflater.inflate(R.layout.fragment_map, container, false);
 
-        //초기에 전체 내용 나옴
+        //데이터값 설정
         list = new ArrayList<fillStore>() {{
-            for(int i = 0; i< ProductList.productList.size(); i++){
+            int favorId=-1;
+            for(int i = 0; i< StoreList.storeList.size(); i++){
+                if(FavorList.favorList[i]==1) favorId = i;
                 store = (Store) (StoreList.storeList.get(i));
-                add(new fillStore(store.id, store.title));
+                if(store.id == favorId) add(new fillStore(store.id, store.title));
             }
         }};
 
@@ -105,9 +108,9 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
         recyclerView.setAdapter(adapter);
 
         View layout = inflater.inflate(R.layout.favorite_recycler_item, null);
-        cardView = layout.findViewById(R.id.cardview_favorite);
+        textStoreName = layout.findViewById(R.id.text_store_name);
 
-        cardView.setOnClickListener(new View.OnClickListener() {
+        textStoreName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //온클릭 안 됨.
