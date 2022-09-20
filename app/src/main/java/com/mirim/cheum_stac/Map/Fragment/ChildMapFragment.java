@@ -48,7 +48,7 @@ public class ChildMapFragment extends Fragment {
         storeName = v.findViewById(R.id.text_store_name);
         storeLoct = v.findViewById(R.id.text_store_location);
 
-        //가게 정보 가져와서 text 바꾸기, 지도 핀 설정
+        //가게 정보 가져오기
         Store s;
         Double latitude=0.0, longitude=0.0;
         for(int i = 0; i< StoreList.storeList.size(); i++){
@@ -61,12 +61,16 @@ public class ChildMapFragment extends Fragment {
             }
         }
 
+        //지도
         MapView mapView = new MapView(getActivity());
         mapViewContainer = (ViewGroup) v.findViewById(R.id.map_view);
         mapViewContainer.addView(mapView);
+
+        //  현재 위치 추적 기능 off
         mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOff);
         mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(latitude, longitude), true);
 
+        //  검색 결과 위치 마커로 표시
         MapPOIItem marker = new MapPOIItem();
         marker.setItemName(storeName.getText().toString());
         marker.setTag(0);
