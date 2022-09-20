@@ -41,6 +41,7 @@ import java.util.ArrayList;
 public class MapFragment extends Fragment implements MapView.CurrentLocationEventListener, MapView.MapViewEventListener, MapView.POIItemEventListener{
     MainActivity activity;
     FragmentListener fragmentListener;
+    androidx.cardview.widget.CardView cardView;
 
     //리사이클러뷰
     RecyclerView recyclerView;
@@ -103,19 +104,19 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
+        View layout = inflater.inflate(R.layout.favorite_recycler_item, null);
+        cardView = layout.findViewById(R.id.cardview_favorite);
 
-        //카드뷰 온클릭
-//        cardFavor.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                fragmentListener = (FragmentListener) getContext();
-////                fragmentListener.onCommand(1, "7");
-////                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new MapFragment()).addToBackStack(null).commit();
-////                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new ChildMapFragment()).addToBackStack(null).commit();
-////                ParentFragment.btnCheck.performClick();
-//                Toast.makeText(getContext(), "클릭!", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //온클릭 안 됨.
+                Log.d("흥", "클릭!");
+                Toast.makeText(activity, "클릭!!!!", Toast.LENGTH_SHORT).show();
+//                fragmentListener.onCommand(1, Integer.toString(store.id));
+//                ParentFragment.btnCheck.performClick();
+            }
+        });
 
         //즐겨찾기된 가게만 추가
 //        for(int i = 0; i< FavorList.favorList.length; i++){
