@@ -17,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -32,6 +31,9 @@ import net.daum.mf.map.api.MapView;
 public class MapFragment extends Fragment implements MapView.CurrentLocationEventListener, MapView.MapViewEventListener, MapView.POIItemEventListener{
     MainActivity activity;
     MapView mapView;
+    FragmentListener fragmentListener;
+
+    ViewGroup mapViewContainer;
 
     //현재 위치로 중심점 변경
     private static final String LOG_TAG = "MainActivity";
@@ -39,7 +41,6 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
     private static final int PERMISSIONS_REQUEST_CODE = 100;
     String[] REQUIRED_PERMISSIONS  = {Manifest.permission.ACCESS_FINE_LOCATION};
 
-    CardView cardFavor;
     TextView textStoreName;
 
     public MapFragment() {
@@ -57,8 +58,20 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_map, container, false);
 
-        cardFavor = v.findViewById(R.id.cardview_favorite);
+
         textStoreName = v.findViewById(R.id.text_store_name);
+
+//        cardFavor.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                fragmentListener = (FragmentListener) getContext();
+////                fragmentListener.onCommand(1, "7");
+////                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new MapFragment()).addToBackStack(null).commit();
+////                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new ChildMapFragment()).addToBackStack(null).commit();
+////                ParentFragment.btnCheck.performClick();
+//                Toast.makeText(getContext(), "클릭!", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
 //        for(int i = 0; i< FavorList.favorList.length; i++){
 //            if(FavorList.favorList[i]){
@@ -68,7 +81,7 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
 //        }
 
         mapView = new MapView(getActivity());
-        ViewGroup mapViewContainer = (ViewGroup) v.findViewById(R.id.map_view);
+        mapViewContainer = (ViewGroup) v.findViewById(R.id.map_view);
         mapViewContainer.addView(mapView);
 
         EditText editSearch = v.findViewById(R.id.editTextFilter);
@@ -100,6 +113,7 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
     @Override
     public void onDestroy() {
         super.onDestroy();
+        mapViewContainer.removeAllViews();
     }
 
     @Override
@@ -307,11 +321,16 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         activity = (MainActivity) getActivity();
+        if(context instanceof FragmentListener) fragmentListener = (FragmentListener) context;
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
+        if(fragmentListener != null) fragmentListener = null;
+        mapViewContainer.removeAllViews();
         activity = null;
     }
+
+
 }

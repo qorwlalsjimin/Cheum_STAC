@@ -1,7 +1,6 @@
 package com.mirim.cheum_stac.Map.Fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
-import com.mirim.cheum_stac.Map.FavorList;
 import com.mirim.cheum_stac.Map.Store;
 import com.mirim.cheum_stac.Map.StoreList;
 import com.mirim.cheum_stac.R;
@@ -25,9 +23,6 @@ import com.mirim.cheum_stac.util.UserUtils;
 import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ChildResultFragment extends Fragment {
 
@@ -111,20 +106,20 @@ public class ChildResultFragment extends Fragment {
                 else imgbtnStar.setTag("star_empty");
 
                 //즐겨찾기한 가게 리스트에 넣기
-                List<Integer> existArr = new ArrayList<>();
-                for(int i = 0; i<42; i++){
-                    String path3 = UserUtils.getHash() + "/favorite";
-                    if(dataSnapshot.child(path3).getValue(Integer.class).equals(Integer.valueOf(i)))
-                        existArr.add(Integer.valueOf(i));
-                }
-
-                Log.d("흠..", existArr.get(2).toString());
-
-                for(int i = 0; i<existArr.size(); i++){
-                    String path2 = UserUtils.getHash() + "/favorite/" + existArr.get(i).toString();
-                    if(dataSnapshot.child(path2).getValue(Boolean.class) == Boolean.valueOf(true))
-                        FavorList.favorList[existArr.get(i).intValue()] = 1;
-                }
+//                List<Integer> existArr = new ArrayList<>();
+//                for(int i = 0; i<42; i++){
+//                    String path3 = UserUtils.getHash() + "/favorite";
+//                    if(dataSnapshot.child(path3).getValue(Integer.class).equals(Integer.valueOf(i)))
+//                        existArr.add(Integer.valueOf(i));
+//                }
+//
+//                Log.d("흠..", existArr.get(2).toString());
+//
+//                for(int i = 0; i<existArr.size(); i++){
+//                    String path2 = UserUtils.getHash() + "/favorite/" + existArr.get(i).toString();
+//                    if(dataSnapshot.child(path2).getValue(Boolean.class) == Boolean.valueOf(true))
+//                        FavorList.favorList[existArr.get(i).intValue()] = 1;
+//                }
 
             }
 
