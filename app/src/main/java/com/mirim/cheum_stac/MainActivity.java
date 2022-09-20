@@ -48,6 +48,13 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frameLayout,homeFragment).commit(); //초기화면 HomeFragment로 지정
 
+        //Fragment들 정의
+        parentFragment = new ParentFragment();
+        childSearchFragment = new ChildSearchFragment();
+        childResultFragment = new ChildResultFragment();
+        childMapFragment = new ChildMapFragment();
+        fillDetail = new fill_detail();
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.btn_navi_menu);
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
             @Override
@@ -59,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
                         break;
                     case R.id.tab_map:
                         transaction.replace(R.id.frameLayout,mapFragment).commit();
+//                        ChildResultFragment.btnCheck.performClick();
                         break;
                     case R.id.tab_fill:
                         transaction.replace(R.id.frameLayout,fillFragment).commit();
@@ -71,12 +79,6 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
                 return true;
             }
         });
-        //지도 검색 Fragment들 정의
-        parentFragment = new ParentFragment();
-        childSearchFragment = new ChildSearchFragment();
-        childResultFragment = new ChildResultFragment();
-        childMapFragment = new ChildMapFragment();
-        fillDetail = new fill_detail();
         gethash(); //키해시 값 구하는 메서드
 
     }

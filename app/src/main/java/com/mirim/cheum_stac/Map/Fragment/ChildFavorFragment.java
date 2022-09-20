@@ -45,19 +45,19 @@ public class ChildFavorFragment extends Fragment {
         listData.setAdapter(adapter);
 
         LinearLayout linearEmpty = v.findViewById(R.id.empty);
-        linearEmpty.setVisibility(View.VISIBLE);
-        listData.setEmptyView(linearEmpty);
+        //listData.setEmptyView(linearEmpty); //아이템이 있어도 보임. 추후 수정
 
         //리스트뷰에 데이터 추가
         Store s;
         int favorId=-1;
         for(int i = 0; i< StoreList.storeList.size(); i++){
             if(FavorList.favorList[i]==1)
-                Log.d("즐찾한 가게!", Integer.toString(FavorList.favorList[i]));
+                Log.d("즐찾한 가게!", Integer.toString(i));
 
             if(FavorList.favorList[i]==1) favorId = i;
             s = (Store) (StoreList.storeList.get(i));
-            if(s.id == favorId) adapter.addItem(s.title, s.address, s.id);
+            if(s.id == favorId)
+                adapter.addItem(s.title, s.address, s.id);
         }
 
         //즐겨찾기 가게 클릭시

@@ -124,6 +124,7 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
     View.OnClickListener oneListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            ChildResultFragment.btnCheck.performClick();
             Fragment fg;
             fg = com.mirim.cheum_stac.Map.Fragment.ChildFavorFragment.newInstance();
             setChildFragment(fg);

@@ -191,5 +191,9 @@
         </LinearLayout>
     </LinearLayout>
 
-
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        android:id="@+id/btn_favorite_check"/>
 </LinearLayout>

@@ -1,13 +1,14 @@
 package com.mirim.cheum_stac.Map.Fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -43,6 +44,7 @@ public class ChildResultFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    public static Button btnCheck;
     ImageButton imgbtnDown;
     ImageButton imgbtnStar;
     ViewGroup mapViewContainer;
@@ -55,6 +57,7 @@ public class ChildResultFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v =  inflater.inflate(R.layout.fragment_child_result, container, false);
 
+        btnCheck = v.findViewById(R.id.btn_favorite_check);
         imgbtnStar = v.findViewById(R.id.imgbtn_star);
         storeName = v.findViewById(R.id.text_store_name);
         storeLoct = v.findViewById(R.id.text_store_location);
@@ -93,7 +96,7 @@ public class ChildResultFragment extends Fragment {
         //파이어베이스 실시간 DB 연동
         DatabaseReference reference = FirebaseUtils.getUserReference(); //reference는 user 속성을 받음
 
-        //위에서 갖고온 store 주소값의 데이터를 읽어서 버튼 상태값 바꿔주기
+        //  위에서 갖고온 store 주소값의 데이터를 읽어서 버튼 상태값 바꿔주기
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {//dataSnapshot : user
@@ -112,16 +115,16 @@ public class ChildResultFragment extends Fragment {
 
                 //즐겨찾기한 가게 리스트에 넣기
                 List<Integer> existArr = new ArrayList<>();
-                for(int i = 0; i<42; i++){
+                for(int i = 0; i<StoreList.storeList.size(); i++){
                     String path3 = UserUtils.getHash() + "/favorite/"+i;
                     if (dataSnapshot.child(path3).exists()) {
-                        if (dataSnapshot.child(path3).getValue(Boolean.class))
+                        if (dataSnapshot.child(path3).getValue(Boolean.class)){
                             existArr.add(Integer.valueOf(i));
+                        }
                     }
                 }
 
                 for(int i = 0; i<existArr.size(); i++){
-                    Log.d("추가된 가게 뀨", Integer.toString(existArr.get(i)));
                     String path2 = UserUtils.getHash() + "/favorite/" + existArr.get(i).toString();
                     if(dataSnapshot.child(path2).getValue(Boolean.class) == Boolean.valueOf(true))
                         FavorList.favorList[existArr.get(i).intValue()] = 1;
@@ -152,6 +155,43 @@ public class ChildResultFragment extends Fragment {
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new ChildMapFragment()).addToBackStack(null).commit();
                 mapViewContainer.removeAllViews();
+            }
+        });
+
+        //즐겨찾기 데이터 처음부터 가져와야해서...
+        btnCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                //파이어베이스 실시간 DB 연동
+//                DatabaseReference reference = FirebaseUtils.getUserReference(); //reference는 user 속성을 받음
+//
+//                //  위에서 갖고온 store 주소값의 데이터를 읽어서 버튼 상태값 바꿔주기
+//                reference.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(DataSnapshot dataSnapshot) {//dataSnapshot : user
+//                        //즐겨찾기한 가게 리스트에 넣기
+//                        List<Integer> existArr = new ArrayList<>();
+//                        for(int i = 0; i<StoreList.storeList.size(); i++){
+//                            String path3 = UserUtils.getHash() + "/favorite/"+i;
+//                            if (dataSnapshot.child(path3).exists()) {
+//                                if (dataSnapshot.child(path3).getValue(Boolean.class))
+//                                    existArr.add(Integer.valueOf(i));
+//                            }
+//                        }
+//
+//                        for(int i = 0; i<existArr.size(); i++){
+//                            String path2 = UserUtils.getHash() + "/favorite/" + existArr.get(i).toString();
+//                            if(dataSnapshot.child(path2).getValue(Boolean.class) == Boolean.valueOf(true))
+//                                FavorList.favorList[existArr.get(i).intValue()] = 1;
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(DatabaseError error) {
+//                        //에러 처리
+//                    }
+//                });
+                Toast.makeText(getContext(), "넘어옴", Toast.LENGTH_SHORT).show();
             }
         });
 
