@@ -14,20 +14,32 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.mirim.cheum_stac.Map.Store;
 import com.mirim.cheum_stac.Map.StoreList;
 import com.mirim.cheum_stac.Product.Product;
 import com.mirim.cheum_stac.Product.ProductList;
+import com.mirim.cheum_stac.Product.fillProduct;
+
+import java.util.ArrayList;
 
 public class fill_detail extends Fragment {
-    Product product;
+
     MainActivity activity;
     EditText editSearch;
     String SearchWord;
     ImageView imgSearch;
+    ArrayList<fillProduct> list;
+    Product product;
+    RecyclerView recyclerView;
+    RecyclerVIewAdapter adapter;
+    GridLayoutManager layoutManager;
+    fillProduct fillProduct;
+
     int id;
-    String kate;
+    static String kate;
     int img;
     boolean best;
     String name;
@@ -63,6 +75,37 @@ public class fill_detail extends Fragment {
         View v = inflater.inflate(R.layout.fragment_fill_detail, container, false);
         ImageButton backBtn = v.findViewById(R.id.backBtn);
 
+        //초기에 전체 내용 나오게 하는 거 필요
+
+        list = new ArrayList<fillProduct>() {{
+            for(int i=0; i<ProductList.productList.size(); i++){
+                product = (Product) (ProductList.productList.get(i));
+                if(kate.equals(product.kate)) {
+                    add(new fillProduct(product.img, product.best, product.name, product.price));
+                }
+            }
+        }};
+
+        recyclerView = (RecyclerView)v.findViewById(R.id.fill_recycler);
+        adapter = new RecyclerVIewAdapter(getActivity().getApplicationContext(), list);
+
+        layoutManager = new GridLayoutManager(getActivity().getApplicationContext(), 6);
+        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                int gridPosition = position % 2;
+                switch (gridPosition) {
+                    case 0:
+                    case 1:
+                        return 3;
+                }
+                return 0;
+            }
+        });
+
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+
         editSearch = v.findViewById(R.id.edit_search_text);
         SearchWord = editSearch.getText().toString();
         imgSearch = v.findViewById(R.id.img_search_icon);
@@ -73,14 +116,14 @@ public class fill_detail extends Fragment {
             public void onClick(View view) {
                 for(int i = 0; i< ProductList.productList.size(); i++){
                     product = (Product) (ProductList.productList.get(i));
-                    //if(kate.equals(product.kate)){
+                    if(kate.equals(product.kate)){
                         if(product.name.contains(SearchWord)){
                             //새로 생성하는 코드 필요
                             Toast.makeText(getActivity(), product.name, Toast.LENGTH_LONG).show();
                         } else {
                             continue;
                         }
-                    //}
+                    }
                 }
             }
         });

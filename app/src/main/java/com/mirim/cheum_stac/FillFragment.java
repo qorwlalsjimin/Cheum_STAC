@@ -93,7 +93,7 @@ public class FillFragment extends Fragment{
         View v = inflater.inflate(R.layout.fragment_fill, container, false);
 
         //초기에 전체 내용 나오게 하는 거 필요
-        /*
+
         list = new ArrayList<fillProduct>() {{
             for(int i=0; i<ProductList.productList.size(); i++){
                 product = (Product) (ProductList.productList.get(i));
@@ -120,15 +120,15 @@ public class FillFragment extends Fragment{
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
-        */
+
 
         //검색기능
-        editSearch = v.findViewById(R.id.edit_search_text);
-        SearchWord = editSearch.getText().toString();
         imgSearch = v.findViewById(R.id.img_search_icon);
         imgSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                editSearch = v.findViewById(R.id.edit_search_text);
+                SearchWord = editSearch.getText().toString();
                 list = new ArrayList<fillProduct>() {{
                     for(int i=0; i<ProductList.productList.size(); i++){
                         product = (Product) (ProductList.productList.get(i));
@@ -170,10 +170,7 @@ public class FillFragment extends Fragment{
         hariBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                fill_detail fragment = new fill_detail(); // Fragment 생성
-//                Bundle bundle = new Bundle();
-//                bundle.putString("kate", "hair");
-//                fragment.setArguments(bundle);
+                fragmentListener.onCommand(3, "hair");
                 ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
             }
         });
@@ -181,6 +178,7 @@ public class FillFragment extends Fragment{
         bodyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                fragmentListener.onCommand(3, "body");
                 ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
             }
         });
@@ -188,6 +186,7 @@ public class FillFragment extends Fragment{
         cosmeticBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                fragmentListener.onCommand(3, "cos");
                 ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
             }
         });
@@ -195,6 +194,7 @@ public class FillFragment extends Fragment{
         lundryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                fragmentListener.onCommand(3, "laund");
                 ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
             }
         });
@@ -202,6 +202,7 @@ public class FillFragment extends Fragment{
         dishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                fragmentListener.onCommand(3, "kit");
                 ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
             }
         });
@@ -209,6 +210,7 @@ public class FillFragment extends Fragment{
         foodBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                fragmentListener.onCommand(3, "food");
                 ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
             }
         });
