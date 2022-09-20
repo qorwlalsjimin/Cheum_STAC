@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,7 +21,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mirim.cheum_stac.Map.Fragment.ParentFragment;
@@ -44,7 +45,7 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
     //리사이클러뷰
     RecyclerView recyclerView;
     StoreRecyclerVIewAdapter adapter;
-    GridLayoutManager layoutManager;
+    LinearLayoutManager layoutManager;
     fillProduct fillProduct;
 
     //상품 정보, 레이아웃 정보 list
@@ -90,19 +91,14 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
         recyclerView = (RecyclerView)v.findViewById(R.id.recycle_favorite);
         adapter = new StoreRecyclerVIewAdapter(getActivity().getApplicationContext(), list);
 
-        layoutManager = new GridLayoutManager(getActivity().getApplicationContext(), 6);
-        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-            @Override
-            public int getSpanSize(int position) {
-                int gridPosition = position % 2;
-                switch (gridPosition) {
-                    case 0:
-                    case 1:
-                        return 3;
-                }
-                return 0;
-            }
-        });
+        layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
+        LinearLayout.LayoutParams params =
+                new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                );
+
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
