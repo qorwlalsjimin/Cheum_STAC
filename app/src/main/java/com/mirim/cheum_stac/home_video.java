@@ -1,11 +1,14 @@
 package com.mirim.cheum_stac;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -75,6 +78,22 @@ public class home_video extends Fragment {
             @Override
             public void onClick(View view) {
                 ((MainActivity)getActivity()).replaceFragment(HomeFragment.newInstance());
+            }
+        });
+        ImageView video1 = v.findViewById(R.id.video1);
+        video1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/85X8IpaoNu4"));
+                startActivity(intent);
+            }
+        });
+        ImageView video2 = v.findViewById(R.id.video2);
+        video2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/85X8IpaoNu4"));
+                startActivity(intent);
             }
         });
         return v;

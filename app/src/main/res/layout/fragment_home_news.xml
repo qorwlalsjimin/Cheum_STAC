@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".home_news">
 
@@ -101,7 +102,7 @@
                 <FrameLayout
                     android:layout_width="154dp"
                     android:layout_height="154dp"
-                    android:layout_marginLeft="30dp">
+                    android:layout_marginLeft="25dp">
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -122,7 +123,7 @@
                 <FrameLayout
                     android:layout_width="154dp"
                     android:layout_height="154dp"
-                    android:layout_marginRight="30dp">
+                    android:layout_marginRight="25dp">
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -151,7 +152,7 @@
                     android:textStyle="bold"
                     android:fontFamily="@font/noto_sans"
                     android:id="@+id/news1_1"
-                    android:layout_marginLeft="30dp"/>
+                    android:layout_marginLeft="25dp"/>
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -164,7 +165,7 @@
                     android:textSize="12dp"
                     android:textStyle="bold"
                     android:fontFamily="@font/noto_sans"
-                    android:layout_marginRight="100dp"
+                    android:layout_marginRight="95dp"
                     android:id="@+id/news2_1"/>
             </LinearLayout>
             <LinearLayout
@@ -175,11 +176,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/noto_sans"
-                    android:text="샴푸 리필스테이션 가이드"
+                    android:text="리필스테이션이란?"
                     android:textColor="#000000"
                     android:textSize="14dp"
                     android:id="@+id/news1_2"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="25dp"
                     android:textStyle="bold"/>
                 <View
                     android:layout_width="0dp"
@@ -189,7 +190,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/noto_sans"
-                    android:text="샴푸 리필스테이션 가이드"
+                    android:text="씨리얼도 리필이 되나요?"
                     android:textColor="#000000"
                     android:textSize="14dp"
                     android:textStyle="bold"
@@ -205,7 +206,7 @@
                 <FrameLayout
                     android:layout_width="154dp"
                     android:layout_height="154dp"
-                    android:layout_marginLeft="30dp">
+                    android:layout_marginLeft="25dp">
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -226,7 +227,7 @@
                 <FrameLayout
                     android:layout_width="154dp"
                     android:layout_height="154dp"
-                    android:layout_marginRight="30dp">
+                    android:layout_marginRight="25dp">
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -255,7 +256,7 @@
                     android:textStyle="bold"
                     android:fontFamily="@font/noto_sans"
                     android:id="@+id/news3_1"
-                    android:layout_marginLeft="30dp"/>
+                    android:layout_marginLeft="25dp"/>
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -268,7 +269,7 @@
                     android:textSize="12dp"
                     android:textStyle="bold"
                     android:fontFamily="@font/noto_sans"
-                    android:layout_marginRight="100dp"
+                    android:layout_marginRight="95dp"
                     android:id="@+id/news4_1"/>
             </LinearLayout>
             <LinearLayout
@@ -279,11 +280,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/noto_sans"
-                    android:text="샴푸 리필스테이션 가이드"
+                    android:text="제로웨이스트샵 환장"
                     android:textColor="#000000"
                     android:textSize="14dp"
                     android:id="@+id/news3_2"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="25dp"
                     android:textStyle="bold"/>
                 <View
                     android:layout_width="0dp"
@@ -293,11 +294,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/noto_sans"
-                    android:text="샴푸 리필스테이션 가이드"
+                    android:text="세계적 열풍, 리필스테이션"
                     android:textColor="#000000"
                     android:textSize="14dp"
                     android:textStyle="bold"
-                    android:layout_marginRight="35dp"
+                    android:layout_marginRight="27dp"
                     android:id="@+id/news4_2"/>
             </LinearLayout>
 
@@ -309,7 +310,7 @@
                 <FrameLayout
                     android:layout_width="154dp"
                     android:layout_height="154dp"
-                    android:layout_marginLeft="30dp">
+                    android:layout_marginLeft="25dp">
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -330,7 +331,7 @@
                 <FrameLayout
                     android:layout_width="154dp"
                     android:layout_height="154dp"
-                    android:layout_marginRight="30dp">
+                    android:layout_marginRight="25dp">
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -359,7 +360,7 @@
                     android:textStyle="bold"
                     android:fontFamily="@font/noto_sans"
                     android:id="@+id/news5_1"
-                    android:layout_marginLeft="30dp"/>
+                    android:layout_marginLeft="25dp"/>
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -372,7 +373,7 @@
                     android:textSize="12dp"
                     android:textStyle="bold"
                     android:fontFamily="@font/noto_sans"
-                    android:layout_marginRight="100dp"
+                    android:layout_marginRight="95dp"
                     android:id="@+id/news6_1"/>
             </LinearLayout>
             <LinearLayout
@@ -383,11 +384,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/noto_sans"
-                    android:text="샴푸 리필스테이션 가이드"
+                    android:text="기후변화, 앞으로의 길"
                     android:textColor="#000000"
                     android:textSize="14dp"
                     android:id="@+id/news5_2"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="25dp"
                     android:textStyle="bold"/>
                 <View
                     android:layout_width="0dp"
@@ -397,11 +398,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/noto_sans"
-                    android:text="샴푸 리필스테이션 가이드"
+                    android:text="건강한 실천 10가지"
                     android:textColor="#000000"
                     android:textSize="14dp"
                     android:textStyle="bold"
-                    android:layout_marginRight="35dp"
+                    android:layout_marginRight="68dp"
                     android:id="@+id/news6_2"/>
             </LinearLayout>
         </LinearLayout>

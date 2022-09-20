@@ -18,6 +18,7 @@
             android:drawableLeft="@drawable/left_arrow"
             android:background="#00ff0000"
             android:id="@+id/backBtn"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"/>
     </FrameLayout>
     <ScrollView

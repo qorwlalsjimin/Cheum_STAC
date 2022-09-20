@@ -1,6 +1,7 @@
 package com.mirim.cheum_stac;
 
 import android.content.Context;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,9 +69,10 @@ public class home_news extends Fragment {
         news1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(home_news_page.newInstance());
+                ((MainActivity) getActivity()).replaceFragment(home_news_page.newInstance());
             }
         });
+
         TextView news1_1 = v.findViewById(R.id.news1_1);
         news1_1.setOnClickListener(new View.OnClickListener() {
             @Override

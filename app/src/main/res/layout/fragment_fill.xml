@@ -163,6 +163,15 @@
             android:layout_weight="1"
             android:layout_marginTop="5dp"
             android:textStyle="bold"
+            android:text="바디제품"
+            android:textSize="12dp"
+            android:gravity="center"
+            android:textColor="#000000"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textStyle="bold"
             android:text="화장품"
             android:textSize="12dp"
             android:gravity="center"
@@ -173,15 +182,6 @@
             android:layout_weight="1"
             android:textStyle="bold"
             android:text="세탁용품"
-            android:textSize="12dp"
-            android:gravity="center"
-            android:textColor="#000000"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            android:text="주방용품"
             android:textSize="12dp"
             android:gravity="center"
             android:textColor="#000000"/>
@@ -212,13 +212,230 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <!--상품 리사이클러뷰-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/fill_recycler"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </androidx.recyclerview.widget.RecyclerView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="30dp">
+                    <FrameLayout
+                        android:layout_width="154dp"
+                        android:layout_height="154dp">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/product_img"
+                            android:id="@+id/news1"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/heart_white"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="9dp"
+                            android:layout_gravity="right"/>
+                    </FrameLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BEST [에디터픽]"
+                        android:textColor="#000000"
+                        android:textSize="12dp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/noto_sans"
+                        android:layout_marginTop="6dp"
+                        android:id="@+id/news1_1"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/noto_sans"
+                        android:text="샴푸 리필스테이션 가이드"
+                        android:textColor="#000000"
+                        android:textSize="14dp"
+                        android:id="@+id/news1_2"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="100ml       900원"
+                        android:textColor="#000000"
+                        android:textSize="10dp"
+                        android:fontFamily="@font/noto_sans"
+                        android:paddingTop="15dp"
+                        android:id="@+id/news1_3"/>
+                </LinearLayout>
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="30dp"
+                        android:orientation="vertical">
+                        <FrameLayout
+                            android:layout_width="154dp"
+                            android:layout_height="154dp">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/product_img"
+                                android:id="@+id/news2"/>
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/heart_white"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginRight="9dp"
+                                android:layout_gravity="right"/>
+                        </FrameLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="BEST [에디터픽]"
+                            android:textColor="#000000"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/noto_sans"
+                            android:layout_marginTop="6dp"
+                            android:id="@+id/news2_1"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/noto_sans"
+                            android:text="샴푸 리필스테이션 가이드"
+                            android:textColor="#000000"
+                            android:textSize="14dp"
+                            android:id="@+id/news2_2"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="100ml       900원"
+                            android:textColor="#000000"
+                            android:textSize="10dp"
+                            android:fontFamily="@font/noto_sans"
+                            android:paddingTop="15dp"
+                            android:id="@+id/news2_3"/>
+                    </LinearLayout>
+                </LinearLayout>
 
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="30dp">
+                        <FrameLayout
+                            android:layout_width="154dp"
+                            android:layout_height="154dp">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/product_img"
+                                android:id="@+id/news3"/>
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/heart_white"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginRight="9dp"
+                                android:layout_gravity="right"/>
+                        </FrameLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="BEST [에디터픽]"
+                            android:textColor="#000000"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/noto_sans"
+                            android:layout_marginTop="6dp"
+                            android:id="@+id/news3_1"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/noto_sans"
+                            android:text="샴푸 리필스테이션 가이드"
+                            android:textColor="#000000"
+                            android:textSize="14dp"
+                            android:id="@+id/news3_2"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="100ml       900원"
+                            android:textColor="#000000"
+                            android:textSize="10dp"
+                            android:fontFamily="@font/noto_sans"
+                            android:paddingTop="15dp"
+                            android:id="@+id/news3_3"/>
+                    </LinearLayout>
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="30dp"
+                        android:orientation="vertical">
+                        <FrameLayout
+                            android:layout_width="154dp"
+                            android:layout_height="154dp">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/product_img"
+                                android:id="@+id/news4"/>
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/heart_white"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginRight="9dp"
+                                android:layout_gravity="right"/>
+                        </FrameLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="BEST [에디터픽]"
+                            android:textColor="#000000"
+                            android:textSize="12dp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/noto_sans"
+                            android:layout_marginTop="6dp"
+                            android:id="@+id/news4_1"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/noto_sans"
+                            android:text="샴푸 리필스테이션 가이드"
+                            android:textColor="#000000"
+                            android:textSize="14dp"
+                            android:id="@+id/news4_2"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="100ml       900원"
+                            android:textColor="#000000"
+                            android:textSize="10dp"
+                            android:fontFamily="@font/noto_sans"
+                            android:paddingTop="15dp"
+                            android:id="@+id/news4_3"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
     </ScrollView>
 </LinearLayout>
