@@ -178,7 +178,8 @@
                     android:id="@+id/img_store"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:background="@drawable/store_ex_img"
+                    android:src="@drawable/store_ex_img"
+                    android:background="@drawable/round"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"/>
 

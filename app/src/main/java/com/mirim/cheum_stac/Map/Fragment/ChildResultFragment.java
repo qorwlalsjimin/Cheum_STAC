@@ -1,10 +1,12 @@
 package com.mirim.cheum_stac.Map.Fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -13,6 +15,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.mirim.cheum_stac.Map.FavorList;
 import com.mirim.cheum_stac.Map.Store;
 import com.mirim.cheum_stac.Map.StoreList;
 import com.mirim.cheum_stac.R;
@@ -22,6 +25,9 @@ import com.mirim.cheum_stac.util.UserUtils;
 import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ChildResultFragment extends Fragment {
 
@@ -41,6 +47,7 @@ public class ChildResultFragment extends Fragment {
     ImageButton imgbtnStar;
     ViewGroup mapViewContainer;
     TextView storeName, storeLoct, storeOper, storePage, storeDial;
+    ImageView imgStore;
     static int storeId=7;
 
     @Override
@@ -54,6 +61,7 @@ public class ChildResultFragment extends Fragment {
         storeOper = v.findViewById(R.id.text_store_operation);
         storePage = v.findViewById(R.id.text_store_page);
         storeDial = v.findViewById(R.id.text_store_dial);
+        imgStore = v.findViewById(R.id.img_store);
 
         //가게 정보 가져와서 text 바꾸기
         Store s;
@@ -89,6 +97,7 @@ public class ChildResultFragment extends Fragment {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {//dataSnapshot : user
+                //즐겨찾기 유무에 따른 boolean값 DB에 insert
                 String path = UserUtils.getHash() + "/favorite/" + Integer.toString(storeId);
                 Boolean favorite = false;
                 if (dataSnapshot.child(path).exists()){
@@ -97,22 +106,25 @@ public class ChildResultFragment extends Fragment {
                 }
                 reference.child(path).setValue(favorite);
 
+                //즐겨찾기 설정 유무 분별을 위한 setTag
                 if(favorite) imgbtnStar.setTag("star");
                 else imgbtnStar.setTag("star_empty");
 
-                //즐겨찾기 리스트에 넣기 시도 중
-//                List<Integer> existArr = new ArrayList<>();
-//                for(int i = 0; i<42; i++){
-//                    String path3 = UserUtils.getHash() + "/favorite";
-//                    if(dataSnapshot.child(path3).getValue(Integer.class).equals(Integer.valueOf(i)))
-//                        existArr.add(Integer.valueOf(i));
-//                }
-//
-//                for(int i = 0; i<existArr.size(); i++){
-//                    String path2 = UserUtils.getHash() + "/favorite/" + Integer.toString(existArr.get(i));
-//                    if(dataSnapshot.child(path2).getValue(Boolean.class) == Boolean.valueOf(true))
-//                        FavorList.favorList[existArr.get(i)] = 1;
-//                }
+                //즐겨찾기한 가게 리스트에 넣기
+                List<Integer> existArr = new ArrayList<>();
+                for(int i = 0; i<42; i++){
+                    String path3 = UserUtils.getHash() + "/favorite";
+                    if(dataSnapshot.child(path3).getValue(Integer.class).equals(Integer.valueOf(i)))
+                        existArr.add(Integer.valueOf(i));
+                }
+
+                Log.d("흠..", existArr.get(2).toString());
+
+                for(int i = 0; i<existArr.size(); i++){
+                    String path2 = UserUtils.getHash() + "/favorite/" + existArr.get(i).toString();
+                    if(dataSnapshot.child(path2).getValue(Boolean.class) == Boolean.valueOf(true))
+                        FavorList.favorList[existArr.get(i).intValue()] = 1;
+                }
 
             }
 
@@ -137,8 +149,7 @@ public class ChildResultFragment extends Fragment {
         imgbtnDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ParentFragment.btnCheck.performClick();
-//                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.(액티비티_콘테이너), new 프래그먼트이름()).addToBackStack(null).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new ChildMapFragment()).addToBackStack(null).commit();
                 mapViewContainer.removeAllViews();
             }
         });
