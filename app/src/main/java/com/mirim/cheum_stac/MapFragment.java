@@ -149,7 +149,8 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
 
         //현재 위치로 중심점 변경
         mapView.setMapViewEventListener(this);
-        mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithHeading);
+        mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading);
+
         if (!checkLocationServicesStatus()) {
             showDialogForLocationServiceSetting();
         }else {

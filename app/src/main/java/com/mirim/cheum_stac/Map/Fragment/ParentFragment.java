@@ -1,5 +1,7 @@
 package com.mirim.cheum_stac.Map.Fragment;
 
+import static android.content.Context.INPUT_METHOD_SERVICE;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
@@ -9,11 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
@@ -25,12 +27,13 @@ import com.mirim.cheum_stac.R;
 
 public class ParentFragment extends Fragment implements View.OnClickListener {
 
-    EditText editSearch;
+    public static EditText editSearch;
     Toolbar toolSearch;
     ImageButton imgSearch;
     public static Button btnCheck;
     FragmentListener fragmentListener;
     public static int storeId;
+    InputMethodManager imm;
 
     public static ParentFragment newInstance() {
         return new ParentFragment();
@@ -45,6 +48,8 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_parent, container, false);
+
+        imm = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
 
         //즐겨찾기로 이동
         Fragment fg;
@@ -65,16 +70,25 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
 
                 imgSearch.setImageResource(R.drawable.x);
                 imgSearch.setTag("x");
+
+                imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
             }
         });
 
-        //x 눌렀을때 검색어 사라지는 거
+        //x 눌렀을때 검색 화면으로
         imgSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(imgSearch.getTag().equals("x")){
+                    imm.showSoftInput(editSearch, 0);
+                    imgSearch.setImageResource(R.drawable.map_search_icon);
+                    imgSearch.setTag("o");
                     editSearch.setText("");
-                    Toast.makeText(getContext(), "x클릭", Toast.LENGTH_SHORT).show();
+                }
+                else if(imgSearch.getTag().equals("o")){
+                    imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
+                    imgSearch.setImageResource(R.drawable.x);
+                    imgSearch.setTag("x");
                 }
             }
         });
@@ -116,13 +130,13 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
                 if(actionId == EditorInfo.IME_ACTION_DONE)
                 {
                     imgSearch.setImageResource(R.drawable.x);
-                    //키보드 내리는 기능 추가하기
+                    imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
                     return true;
                 }
                 return false;
             }
         });
-        imgSearch.setOnClickListener(twoListener);
+//        imgSearch.setOnClickListener(twoListener);
 
         return v;
     }
@@ -133,7 +147,6 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
     View.OnClickListener oneListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            ChildResultFragment.btnCheck.performClick();
             Fragment fg;
             fg = com.mirim.cheum_stac.Map.Fragment.ChildFavorFragment.newInstance();
             setChildFragment(fg);
@@ -141,14 +154,17 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
     };
 
     //자식 Fragment로 이동(검색 리스트뷰)
-    View.OnClickListener twoListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Fragment fg;
-            fg = com.mirim.cheum_stac.Map.Fragment.ChildSearchFragment.newInstance();
-            setChildFragment(fg);
-        }
-    };
+//    View.OnClickListener twoListener = new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            Fragment fg;
+//            fg = com.mirim.cheum_stac.Map.Fragment.ChildSearchFragment.newInstance();
+//            setChildFragment(fg);
+//            imgSearch.setImageResource(R.drawable.map_search_icon);
+//            editSearch.setText("");
+//            imm.showSoftInput(editSearch, 0);
+//        }
+//    };
 
     @Override
     public void onClick(View view) {}

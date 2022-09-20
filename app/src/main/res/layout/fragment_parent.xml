@@ -31,11 +31,13 @@
                 android:textSize="17dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="15dp"
+                android:imeOptions="actionDone"
                 android:background="@android:color/transparent" />
 
             <ImageButton
                 android:id="@+id/img_search_icon"
                 android:src="@drawable/map_search_icon"
+                android:tag="o"
                 android:layout_width="21dp"
                 android:layout_height="21dp"
                 android:background="@android:color/transparent"
