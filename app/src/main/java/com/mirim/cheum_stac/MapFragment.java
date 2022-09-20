@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,18 +20,42 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.mirim.cheum_stac.Map.Fragment.ParentFragment;
+import com.mirim.cheum_stac.Map.RecyclerView.StoreRecyclerVIewAdapter;
+import com.mirim.cheum_stac.Map.RecyclerView.fillStore;
+import com.mirim.cheum_stac.Map.Store;
+import com.mirim.cheum_stac.Map.StoreList;
+import com.mirim.cheum_stac.Product.ProductList;
+import com.mirim.cheum_stac.Product.fillProduct;
 
 import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 
+import java.util.ArrayList;
+
 public class MapFragment extends Fragment implements MapView.CurrentLocationEventListener, MapView.MapViewEventListener, MapView.POIItemEventListener{
     MainActivity activity;
-    MapView mapView;
     FragmentListener fragmentListener;
 
+    //리사이클러뷰
+    RecyclerView recyclerView;
+    StoreRecyclerVIewAdapter adapter;
+    GridLayoutManager layoutManager;
+    fillProduct fillProduct;
+
+    //상품 정보, 레이아웃 정보 list
+    Store store;
+    ArrayList<fillStore> list;
+
+    //가게 이름
+    String storeName;
+
+    //지도
+    MapView mapView;
     ViewGroup mapViewContainer;
 
     //현재 위치로 중심점 변경
@@ -40,8 +63,6 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
     private static final int PERMISSIONS_REQUEST_CODE = 100;
     String[] REQUIRED_PERMISSIONS  = {Manifest.permission.ACCESS_FINE_LOCATION};
-
-    TextView textStoreName;
 
     public MapFragment() {
         // Required empty public constructor
@@ -55,12 +76,39 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceStte) {
         View v = inflater.inflate(R.layout.fragment_map, container, false);
 
+        //초기에 전체 내용 나옴
+        list = new ArrayList<fillStore>() {{
+            for(int i = 0; i< ProductList.productList.size(); i++){
+                store = (Store) (StoreList.storeList.get(i));
+                add(new fillStore(store.id, store.title));
+            }
+        }};
 
-        textStoreName = v.findViewById(R.id.text_store_name);
+        recyclerView = (RecyclerView)v.findViewById(R.id.recycle_favorite);
+        adapter = new StoreRecyclerVIewAdapter(getActivity().getApplicationContext(), list);
 
+        layoutManager = new GridLayoutManager(getActivity().getApplicationContext(), 6);
+        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                int gridPosition = position % 2;
+                switch (gridPosition) {
+                    case 0:
+                    case 1:
+                        return 3;
+                }
+                return 0;
+            }
+        });
+
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+
+
+        //카드뷰 온클릭
 //        cardFavor.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -73,6 +121,7 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
 //            }
 //        });
 
+        //즐겨찾기된 가게만 추가
 //        for(int i = 0; i< FavorList.favorList.length; i++){
 //            if(FavorList.favorList[i]){
 //                frameFavor[1] = v.findViewById(R.id.frameLayout);
