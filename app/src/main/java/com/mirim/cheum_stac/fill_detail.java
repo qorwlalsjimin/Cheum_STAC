@@ -58,7 +58,7 @@ public class fill_detail extends Fragment {
     }
 
     public static fill_detail newInstance() {
-         return new fill_detail();
+        return new fill_detail();
 
     }
 
@@ -106,25 +106,44 @@ public class fill_detail extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
-        editSearch = v.findViewById(R.id.edit_search_text);
-        SearchWord = editSearch.getText().toString();
+
         imgSearch = v.findViewById(R.id.img_search_icon);
 //
 
         imgSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for(int i = 0; i< ProductList.productList.size(); i++){
-                    product = (Product) (ProductList.productList.get(i));
-                    if(kate.equals(product.kate)){
-                        if(product.name.contains(SearchWord)){
-                            //새로 생성하는 코드 필요
-                            Toast.makeText(getActivity(), product.name, Toast.LENGTH_LONG).show();
-                        } else {
-                            continue;
+                editSearch = v.findViewById(R.id.edit_search_text);
+                SearchWord = editSearch.getText().toString();
+                list = new ArrayList<fillProduct>() {{
+                    for(int i=0; i<ProductList.productList.size(); i++){
+                        product = (Product) (ProductList.productList.get(i));
+                        if(product.name.contains(SearchWord)&&kate.equals(product.kate)){
+                            add(new fillProduct(product.img, product.best, product.name, product.price));
                         }
                     }
-                }
+                }};
+
+
+                recyclerView = (RecyclerView)v.findViewById(R.id.fill_recycler);
+                adapter = new RecyclerVIewAdapter(getActivity().getApplicationContext(), list);
+
+                layoutManager = new GridLayoutManager(getActivity().getApplicationContext(), 6);
+                layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                    @Override
+                    public int getSpanSize(int position) {
+                        int gridPosition = position % 2;
+                        switch (gridPosition) {
+                            case 0:
+                            case 1:
+                                return 3;
+                        }
+                        return 0;
+                    }
+                });
+
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.setAdapter(adapter);
             }
         });
 

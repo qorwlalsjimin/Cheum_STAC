@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginTop="20dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="30dp"
+    android:orientation="vertical">
+        <ImageView
+        android:layout_width="154dp"
+        android:layout_height="154dp"
+        android:src="@drawable/news1"
+        android:id="@+id/news1"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BEST [에디터픽]"
+        android:textColor="#000000"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/noto_sans"
+        android:id="@+id/news1_1"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/noto_sans"
+        android:text="샴푸 리필스테이션 가이드"
+        android:textColor="#000000"
+        android:textSize="14dp"
+        android:id="@+id/news1_2"
+        android:textStyle="bold"/>
+</LinearLayout>

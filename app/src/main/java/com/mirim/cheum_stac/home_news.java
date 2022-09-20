@@ -7,11 +7,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.mirim.cheum_stac.News.News;
+import com.mirim.cheum_stac.News.NewsList;
+import com.mirim.cheum_stac.News.homeNews;
+import com.mirim.cheum_stac.Product.Product;
+import com.mirim.cheum_stac.Product.ProductList;
+import com.mirim.cheum_stac.Product.fillProduct;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,6 +31,15 @@ import androidx.fragment.app.Fragment;
  */
 public class home_news extends Fragment {
     MainActivity activity;
+    RecyclerView recyclerView;
+    RecyclerNewsAdapter adapter;
+    GridLayoutManager layoutManager;
+    ImageView imgSearch;
+    EditText editSearch;
+    String SearchWord;
+
+    News news;
+    ArrayList<homeNews> list;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -50,21 +70,78 @@ public class home_news extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home_news, container, false);
-        Button videoBtn = v.findViewById(R.id.videoBtn);
-        videoBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((MainActivity)getActivity()).replaceFragment(home_video.newInstance());
+
+        //초기에 전체 내용 나오게 하는 거 필요
+
+        list = new ArrayList<homeNews>() {{
+            for(int i = 0; i< NewsList.newsList.size(); i++){
+                news =  (News) (NewsList.newsList.get(i));
+                add(new homeNews(news.mimg, news.best, news.title));
             }
-        });
-        Button newsBtn = v.findViewById(R.id.newsBtn);
-        newsBtn.setOnClickListener(new View.OnClickListener() {
+        }};
+
+        recyclerView = (RecyclerView)v.findViewById(R.id.home_recycler);
+        adapter = new RecyclerNewsAdapter(getActivity().getApplicationContext(), list);
+
+        layoutManager = new GridLayoutManager(getActivity().getApplicationContext(), 6);
+        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(home_news.newInstance());
+            public int getSpanSize(int position) {
+                int gridPosition = position % 2;
+                switch (gridPosition) {
+                    case 0:
+                    case 1:
+                        return 3;
+                }
+                return 0;
             }
         });
 
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+
+        imgSearch = v.findViewById(R.id.img_search_icon);
+        imgSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editSearch = v.findViewById(R.id.edit_search_text);
+                SearchWord = editSearch.getText().toString();
+                list = new ArrayList<homeNews>() {{
+                    for(int i = 0; i< NewsList.newsList.size(); i++){
+                        news =  (News) (NewsList.newsList.get(i));
+                        if(news.title.contains(SearchWord)) {
+                            add(new homeNews(news.mimg, news.best, news.title));
+                        }
+                    }
+                }};
+
+
+                recyclerView = (RecyclerView)v.findViewById(R.id.home_recycler);
+                adapter = new RecyclerNewsAdapter(getActivity().getApplicationContext(), list);
+
+                layoutManager = new GridLayoutManager(getActivity().getApplicationContext(), 6);
+                layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                    @Override
+                    public int getSpanSize(int position) {
+                        int gridPosition = position % 2;
+                        switch (gridPosition) {
+                            case 0:
+                            case 1:
+                                return 3;
+                        }
+                        return 0;
+                    }
+                });
+
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.setAdapter(adapter);
+            }
+
+        });
+
+
+
+/*
         ImageView news1 = v.findViewById(R.id.news1);
         news1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -211,6 +288,7 @@ public class home_news extends Fragment {
                 ((MainActivity)getActivity()).replaceFragment(HomeFragment.newInstance());
             }
         });
+*/
 
         return v;
     }
