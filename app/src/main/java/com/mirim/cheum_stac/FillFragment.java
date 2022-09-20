@@ -1,30 +1,68 @@
 package com.mirim.cheum_stac;
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class FillFragment extends Fragment {
+import com.mirim.cheum_stac.Product.Product;
+import com.mirim.cheum_stac.Product.ProductList;
+import com.mirim.cheum_stac.Product.fillProduct;
+
+import java.util.ArrayList;
+
+public class FillFragment extends Fragment{
     MainActivity activity;
+    FragmentListener fragmentListener;
+    FragmentManager fragmentManager;
+    EditText editSearch;
+    String SearchWord;
+    ImageView imgSearch;
+    RecyclerView recyclerView;
+    RecyclerVIewAdapter adapter;
+    GridLayoutManager layoutManager;
+    fillProduct fillProduct;
+
+    //상품 정보, 레이아웃 정보 list
+    Product product;
+    ArrayList<fillProduct> list;
+
+    //상품 값
+    int id;
+    String kate;
+    int img;
+    boolean best;
+    String name;
+    String price;
+
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        activity = (MainActivity) getActivity();
+
+        if(context instanceof FragmentListener) fragmentListener = (FragmentListener) context;
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        activity = null;
+        if(fragmentListener != null) fragmentListener = null;
     }
 
     public FillFragment() {
@@ -41,15 +79,98 @@ public class FillFragment extends Fragment {
 
     }
 
+    View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance());
+        }
+    };
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_fill, container, false);
+
+        //초기에 전체 내용 나오게 하는 거 필요
+
+        list = new ArrayList<fillProduct>() {{
+            for(int i=0; i<ProductList.productList.size(); i++){
+                product = (Product) (ProductList.productList.get(i));
+                add(new fillProduct(product.img, product.best, product.name, product.price));
+            }
+        }};
+
+        recyclerView = (RecyclerView)v.findViewById(R.id.fill_recycler);
+        adapter = new RecyclerVIewAdapter(getActivity().getApplicationContext(), list);
+
+        layoutManager = new GridLayoutManager(getActivity().getApplicationContext(), 6);
+        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                int gridPosition = position % 2;
+                switch (gridPosition) {
+                    case 0:
+                    case 1:
+                        return 3;
+                }
+                return 0;
+            }
+        });
+
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+
+
+        //검색기능
+        imgSearch = v.findViewById(R.id.img_search_icon);
+        imgSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editSearch = v.findViewById(R.id.edit_search_text);
+                SearchWord = editSearch.getText().toString();
+                list = new ArrayList<fillProduct>() {{
+                    for(int i=0; i<ProductList.productList.size(); i++){
+                        product = (Product) (ProductList.productList.get(i));
+                        if(product.name.contains(SearchWord)){
+                            add(new fillProduct(product.img, product.best, product.name, product.price));
+                        }
+                    }
+                }};
+
+
+                recyclerView = (RecyclerView)v.findViewById(R.id.fill_recycler);
+                adapter = new RecyclerVIewAdapter(getActivity().getApplicationContext(), list);
+
+                layoutManager = new GridLayoutManager(getActivity().getApplicationContext(), 6);
+                layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                    @Override
+                    public int getSpanSize(int position) {
+                        int gridPosition = position % 2;
+                        switch (gridPosition) {
+                            case 0:
+                            case 1:
+                                return 3;
+                        }
+                        return 0;
+                    }
+                });
+
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.setAdapter(adapter);
+            }
+
+        });
+
+
+
+
+
         ImageButton hariBtn = v.findViewById(R.id.hariBtn);
         hariBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                fragmentListener.onCommand(3, "hair");
                 ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
             }
         });
@@ -57,6 +178,7 @@ public class FillFragment extends Fragment {
         bodyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                fragmentListener.onCommand(3, "body");
                 ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
             }
         });
@@ -64,6 +186,7 @@ public class FillFragment extends Fragment {
         cosmeticBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                fragmentListener.onCommand(3, "cos");
                 ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
             }
         });
@@ -71,6 +194,7 @@ public class FillFragment extends Fragment {
         lundryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                fragmentListener.onCommand(3, "laund");
                 ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
             }
         });
@@ -78,6 +202,7 @@ public class FillFragment extends Fragment {
         dishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                fragmentListener.onCommand(3, "kit");
                 ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
             }
         });
@@ -85,125 +210,11 @@ public class FillFragment extends Fragment {
         foodBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                fragmentListener.onCommand(3, "food");
                 ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
             }
         });
 
-        ImageView news1 = v.findViewById(R.id.news1);
-        news1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
-            }
-        });
-        TextView news1_1 = v.findViewById(R.id.news1_1);
-        news1_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
-            }
-        });
-        TextView news1_2 = v.findViewById(R.id.news1_2);
-        news1_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
-            }
-        });
-        TextView news1_3 = v.findViewById(R.id.news1_3);
-        news1_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
-            }
-        });
-
-        ImageView news2 = v.findViewById(R.id.news2);
-        news2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
-            }
-        });
-        TextView news2_1 = v.findViewById(R.id.news2_1);
-        news2_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
-            }
-        });
-        TextView news2_2 = v.findViewById(R.id.news2_2);
-        news2_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
-            }
-        });
-        TextView news2_3 = v.findViewById(R.id.news2_3);
-        news2_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
-            }
-        });
-
-        ImageView news3 = v.findViewById(R.id.news3);
-        news3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
-            }
-        });
-        TextView news3_1 = v.findViewById(R.id.news3_1);
-        news3_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
-            }
-        });
-        TextView news3_2 = v.findViewById(R.id.news3_2);
-        news3_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
-            }
-        });
-        TextView news3_3 = v.findViewById(R.id.news3_3);
-        news3_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
-            }
-        });
-
-        ImageView news4 = v.findViewById(R.id.news4);
-        news4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
-            }
-        });
-        TextView news4_1 = v.findViewById(R.id.news4_1);
-        news4_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
-            }
-        });
-        TextView news4_2 = v.findViewById(R.id.news4_2);
-        news4_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
-            }
-        });
-        TextView news4_3 = v.findViewById(R.id.news4_3);
-        news4_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance(null,null));
-            }
-        });
-        return v;
+       return v;
     }
 }

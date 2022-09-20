@@ -4,12 +4,12 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -27,8 +27,9 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
     EditText editSearch;
     Toolbar toolSearch;
     ImageButton imgSearch;
+    public static Button btnCheck;
     FragmentListener fragmentListener;
-    static Boolean isOnItemClick;
+    static public Boolean isOnItemClick = true;
 
     public static ParentFragment newInstance() {
         return new ParentFragment();
@@ -52,6 +53,16 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
         editSearch = (EditText) v.findViewById(R.id.editTextFilter);
         toolSearch = v.findViewById(R.id.toolbar_search);
         imgSearch = v.findViewById(R.id.img_search_icon);
+        btnCheck = v.findViewById(R.id.btn_listview_check);
+
+        btnCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fg;
+                fg = com.mirim.cheum_stac.Map.Fragment.ChildMapFragment.newInstance();
+                setChildFragment(fg);
+            }
+        });
 
         editSearch.setOnClickListener(oneListener);
         editSearch.addTextChangedListener(new TextWatcher() {
@@ -113,11 +124,9 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
     View.OnClickListener oneListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Log.d("Fragment 전환", "첫번째 자식 전");
             Fragment fg;
             fg = com.mirim.cheum_stac.Map.Fragment.ChildFavorFragment.newInstance();
             setChildFragment(fg);
-            Log.d("Fragment 전환", "첫번째 자식 후");
         }
     };
 
@@ -152,14 +161,10 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
         if (!child.isAdded()) {
             childFt.replace(R.id.child_fragment_container, child);
             childFt.addToBackStack(null);
-            childFt.commit();
+            childFt.commitAllowingStateLoss();
         }
     }
 
-    public void displayMessage(String message){
-        Log.d("추적추적", "값 받는 프래그먼트에서 받음 "+message);
-        isOnItemClick = Boolean.valueOf(message);
-    }
 
 
 }

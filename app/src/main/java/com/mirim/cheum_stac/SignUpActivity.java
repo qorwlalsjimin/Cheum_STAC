@@ -19,21 +19,27 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class SignUpActivity extends AppCompatActivity {
-    private  EditText emailEdit;
+    private  EditText editName;
     private static final String TAG = "SignUpActivity";
     private FirebaseAuth mAuth;
+    private FirebaseDatabase mDatabase;
     private Button sign_up;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        emailEdit = findViewById(R.id.edit_signup_email);
+        editName = findViewById(R.id.edit_signup_name);
         mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance();
 
-        emailEdit.addTextChangedListener(new TextWatcher() {
+        editName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -77,8 +83,12 @@ public class SignUpActivity extends AppCompatActivity {
 
 
     private void signUp() {
+        //이름
+        String name = editName.getText().toString();
         // 이메일
+        EditText emailEdit = findViewById(R.id.edit_signup_email);
         String email = emailEdit.getText().toString();
+
         // 비밀번호
         EditText passEdit = findViewById(R.id.edit_signup_pass);
         String password = passEdit.getText().toString();
@@ -94,6 +104,16 @@ public class SignUpActivity extends AppCompatActivity {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d(TAG, "createUserWithEmail:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
+                                final String uid = task.getResult().getUser().getUid();
+                                HashMap<Object,String> hashmap = new HashMap<>();
+
+                                hashmap.put("uid",uid);
+                                hashmap.put("name", name);
+                                hashmap.put("email",email);
+
+                                DatabaseReference reference = mDatabase.getReference("user");
+                                reference.child(uid).setValue(hashmap);
+
                                 Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                                 startActivity(intent);
                                 finish();
@@ -111,8 +131,6 @@ public class SignUpActivity extends AppCompatActivity {
             // 비밀번호와 확인이 일치하지 않는 경우
             Toast.makeText(SignUpActivity.this, "비밀번호 확인이 다릅니다.", Toast.LENGTH_LONG).show();
         }
-
-
 
     }
 

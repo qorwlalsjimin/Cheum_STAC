@@ -1,16 +1,20 @@
-package com.mirim.cheum_stac;
+package com.mirim.cheum_stac.Map.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-public class fill_product extends Fragment {
+import com.mirim.cheum_stac.MainActivity;
+import com.mirim.cheum_stac.R;
+
+public class fill_store extends Fragment {
     MainActivity activity;
 
     @Override
@@ -25,12 +29,12 @@ public class fill_product extends Fragment {
         activity = null;
     }
 
-    public fill_product() {
+    public fill_store() {
         // Required empty public constructor
     }
 
-    public static fill_product newInstance() {
-        return new fill_product();
+    public static fill_store newInstance() {
+        return new fill_store();
     }
 
     @Override
@@ -43,12 +47,14 @@ public class fill_product extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_fill_product, container, false);
-        Button backBtn = v.findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(new View.OnClickListener() {
+        View v = inflater.inflate(R.layout.favorite_recycler_item, container, false);
+        TextView textStoreName = v.findViewById(R.id.text_store_name);
+        textStoreName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
+                //ChildMapFragment로 이동해야함
+                Toast.makeText(activity, "터치됐습니다", Toast.LENGTH_SHORT).show();
+//                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance()); //기존코드
             }
         });
         return v;

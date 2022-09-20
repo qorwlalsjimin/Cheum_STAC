@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="com.mirim.cheum_stac.Map.Fragment.ChildResultFragment">
 
@@ -174,13 +175,17 @@
                 android:layout_height="wrap_content"
                 android:columnCount="2">
                 <!--이미지 round 넣으면서 여러 개 동적으로 할 수 있는..ㅠㅠ 지금은 findviewbyid로 자바에서 설정-->
-                <ImageView
-                    android:id="@+id/img_store"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:background="@drawable/store_ex_img"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp"/>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="0dp"
+                    app:cardCornerRadius="10dp">
+                    <ImageView
+                        android:id="@+id/img_store"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/store_ex_img"/>
+                </androidx.cardview.widget.CardView>
 
             </GridLayout>
         </LinearLayout>

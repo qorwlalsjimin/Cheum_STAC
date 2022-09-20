@@ -2,18 +2,17 @@ package com.mirim.cheum_stac.Map.Fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.mirim.cheum_stac.FragmentListener;
-import com.mirim.cheum_stac.MainActivity;
 import com.mirim.cheum_stac.Map.FavorList;
 import com.mirim.cheum_stac.Map.ListView.ListViewAdapter;
 import com.mirim.cheum_stac.Map.ListView.ListViewItem;
@@ -44,14 +43,21 @@ public class ChildFavorFragment extends Fragment {
         listData = (ListView) v.findViewById(R.id.list_favorite);
         listData.setAdapter(adapter);
 
-        Log.d("순서 확인", "즐겨찾기 화면");
+        adapter.addItem("테", "테스트라구욧", 1);
+        adapter.addItem("테스", "테스트라구욧", 2);
+        adapter.addItem("테스트", "테스트라구욧", 3);
+        adapter.addItem("테스트입", "테스트라구욧", 4);
+        adapter.addItem("테스트입니", "테스트라구욧", 5);
+        adapter.addItem("테스트입니다", "테스트라구욧", 6);
 
+        LinearLayout linearEmpty = v.findViewById(R.id.empty);
+        linearEmpty.setVisibility(View.VISIBLE);
+        listData.setEmptyView(linearEmpty);
         //리스트뷰에 데이터 추가
         Store s;
         int favorId=-1;
         for(int i = 0; i< StoreList.storeList.size(); i++){
             if(FavorList.favorList[i]==1) favorId = i;
-
             s = (Store) (StoreList.storeList.get(i));
             if(s.id == favorId) adapter.addItem(s.title, s.address, s.id);
         }
@@ -64,9 +70,7 @@ public class ChildFavorFragment extends Fragment {
                 storeId = obj.getId();
 
                 fragmentListener.onCommand(1, Integer.toString(storeId));
-                Log.d("값 옮기기를 추적하자 -_-", "onCommand로 값을 보냇어요! storeId: "+storeId);
-
-                ((MainActivity)getActivity()).replaceFragment(com.mirim.cheum_stac.Map.Fragment.ChildMapFragment.newInstance());
+                ParentFragment.btnCheck.performClick();
             }
         });
 
