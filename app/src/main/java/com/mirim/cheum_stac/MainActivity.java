@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
     public void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.frameLayout, fragment).commit();
+        transaction.replace(R.id.frameLayout, fragment).addToBackStack(null).commit();
     }
 
     //FragmentListener 추상메서드 구현
@@ -97,10 +97,6 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
             case 1: //ChildFavorFragment, ChildSearchFragment =>
                 childResultFragment.displayMessage(data);
                 childMapFragment.displayMessage(data);
-                break;
-            case 2: //ChildFavorFragment, ChildSearchFragment =>
-                Log.d("추적추적", "메인에서 실행함 "+data);
-                parentFragment.displayMessage(data);
                 break;
             case 3:
                 fillDetail.displayMessage(data);
