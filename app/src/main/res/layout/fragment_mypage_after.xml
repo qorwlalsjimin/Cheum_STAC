@@ -98,7 +98,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/heart"
+            android:src="@drawable/heart_empty"
             android:layout_gravity="center"
             android:layout_marginRight="120dp"/>
         <TextView
