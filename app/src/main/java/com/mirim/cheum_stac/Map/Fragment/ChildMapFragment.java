@@ -1,15 +1,19 @@
 package com.mirim.cheum_stac.Map.Fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.mirim.cheum_stac.FragmentListener;
 import com.mirim.cheum_stac.MainActivity;
 import com.mirim.cheum_stac.Map.Store;
 import com.mirim.cheum_stac.Map.StoreList;
@@ -23,11 +27,14 @@ public class ChildMapFragment extends Fragment {
 
     LinearLayout linearInfo;
     ViewGroup mapViewContainer;
+    FragmentListener fragmentListener;
 
     public static int storeId;
     TextView storeName, storeLoct;
 
     ImageView imgPlus, imgMinus;
+
+    public static Button btn;
 
     public static ChildMapFragment newInstance() {
         return new ChildMapFragment();
@@ -56,6 +63,7 @@ public class ChildMapFragment extends Fragment {
             if(s.id == storeId){
                 storeName.setText(s.title);
                 storeLoct.setText(s.address);
+                fragmentListener.onCommand(1, Integer.toString(s.id));
                 latitude = s.lat;
                 longitude = s.lug;
             }
@@ -124,4 +132,17 @@ public class ChildMapFragment extends Fragment {
     public void displayMessage(String data){
         storeId = Integer.parseInt(data);
     }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if(context instanceof FragmentListener) fragmentListener = (FragmentListener) context;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if(fragmentListener != null) fragmentListener = null;
+    }
+
 }

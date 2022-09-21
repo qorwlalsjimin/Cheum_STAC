@@ -92,21 +92,17 @@
                     android:textColor="#8F8F8F"
                     android:id="@+id/tvml"
                     android:layout_marginLeft="13dp"/>
-                <ImageButton
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="27dp"
+
+                <ImageView
+                    android:id="@+id/imgbtnHeart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="right"
+                    android:layout_marginTop="27dp"
                     android:layout_marginRight="20dp"
                     android:backgroundTint="@color/white"
-                    android:id="@+id/imgbtnHeart"
+                    android:tag="heart_empty"
                     android:src="@drawable/heart_empty"/>
-                <TextView
-                    android:text="196"
-                    android:textColor="#F44336"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="20dp"
-                    android:id="@+id/tvCount"/>
             </GridLayout>
             <View
                 android:layout_width="match_parent"

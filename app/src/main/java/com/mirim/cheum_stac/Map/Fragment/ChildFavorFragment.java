@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.mirim.cheum_stac.FragmentListener;
+import com.mirim.cheum_stac.MainActivity;
 import com.mirim.cheum_stac.Map.FavorList;
 import com.mirim.cheum_stac.Map.ListView.ListViewAdapter;
 import com.mirim.cheum_stac.Map.ListView.ListViewItem;
@@ -69,7 +70,9 @@ public class ChildFavorFragment extends Fragment {
                 storeId = obj.getId();
 
                 fragmentListener.onCommand(1, Integer.toString(storeId));
-                ParentFragment.btnCheck.performClick();
+                ((MainActivity)getActivity()).replaceFragment(ChildMapFragment.newInstance());
+                //키보드 내리기
+
             }
         });
 

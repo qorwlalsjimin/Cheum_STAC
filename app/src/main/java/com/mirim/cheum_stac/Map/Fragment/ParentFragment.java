@@ -1,7 +1,5 @@
 package com.mirim.cheum_stac.Map.Fragment;
 
-import static android.content.Context.INPUT_METHOD_SERVICE;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
@@ -10,8 +8,8 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -19,6 +17,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -34,7 +34,6 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
     public static Button btnCheck, btnFavoriteCheck;
     FragmentListener fragmentListener;
     public static int storeId;
-    InputMethodManager imm;
 
     public static ParentFragment newInstance() {
         return new ParentFragment();
@@ -49,8 +48,6 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_parent, container, false);
-
-        imm = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
 
         //즐겨찾기로 이동
         Fragment fg;
@@ -67,6 +64,8 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
         btnCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                keyBordHide();
+
                 Fragment fg;
                 fg = com.mirim.cheum_stac.Map.Fragment.ChildMapFragment.newInstance();
                 setChildFragment(fg);
@@ -74,7 +73,7 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
                 imgSearch.setImageResource(R.drawable.x);
                 imgSearch.setTag("x");
 
-                imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
+                keyBordHide();
             }
         });
 
@@ -83,6 +82,7 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 ((MainActivity)getActivity()).replaceFragment(ChildResultFragment.newInstance());
+
             }
         });
 
@@ -91,13 +91,13 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 if(imgSearch.getTag().equals("x")){
-                    imm.showSoftInput(editSearch, 0);
+                    keyBordShow();
                     imgSearch.setImageResource(R.drawable.map_search_icon);
                     imgSearch.setTag("o");
                     editSearch.setText("");
                 }
                 else if(imgSearch.getTag().equals("o")){
-                    imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
+                    keyBordHide();
                     imgSearch.setImageResource(R.drawable.x);
                     imgSearch.setTag("x");
                 }
@@ -141,7 +141,7 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
                 if(actionId == EditorInfo.IME_ACTION_DONE)
                 {
                     imgSearch.setImageResource(R.drawable.x);
-                    imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
+                    keyBordHide();
                     return true;
                 }
                 return false;
@@ -163,19 +163,6 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
             setChildFragment(fg);
         }
     };
-
-    //자식 Fragment로 이동(검색 리스트뷰)
-//    View.OnClickListener twoListener = new View.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//            Fragment fg;
-//            fg = com.mirim.cheum_stac.Map.Fragment.ChildSearchFragment.newInstance();
-//            setChildFragment(fg);
-//            imgSearch.setImageResource(R.drawable.map_search_icon);
-//            editSearch.setText("");
-//            imm.showSoftInput(editSearch, 0);
-//        }
-//    };
 
     @Override
     public void onClick(View view) {}
@@ -207,6 +194,14 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
         storeId = Integer.parseInt(message);
     }
 
+    void keyBordHide() {
+        Window window = getActivity().getWindow();
+        new WindowInsetsControllerCompat(window, window.getDecorView()).hide(WindowInsetsCompat.Type.ime());
+    }
 
+    void keyBordShow() {
+        Window window = getActivity().getWindow();
+        new WindowInsetsControllerCompat(window, window.getDecorView()).show(WindowInsetsCompat.Type.ime());
+    }
 
 }

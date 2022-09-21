@@ -37,7 +37,6 @@ public class ChildResultFragment extends Fragment {
         return new ChildResultFragment();
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
