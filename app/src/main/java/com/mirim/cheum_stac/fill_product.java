@@ -108,7 +108,7 @@ public class fill_product extends Fragment {
         imgbtnHeart.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    boolean heart = !getBGRHeart(imgbtnHeart.getTag().toString());
+                    Boolean heart = !getBGRHeart(imgbtnHeart.getTag().toString());
                     reference.child(path).setValue(heart);
                 }
             });
