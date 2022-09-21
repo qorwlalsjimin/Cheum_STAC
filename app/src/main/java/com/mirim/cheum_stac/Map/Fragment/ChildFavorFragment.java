@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -27,7 +27,7 @@ public class ChildFavorFragment extends Fragment {
     }
 
     ListView listData; //즐겨찾기 보이는 리스트뷰
-    int storeId=7; //ChildResultFragment로 값이 안 넘어가서 넣은 임의의 초기값
+    int storeId=-1; //가게 아이디 0부터 시작
     FragmentListener fragmentListener;
 
     @Override
@@ -44,35 +44,32 @@ public class ChildFavorFragment extends Fragment {
         listData = (ListView) v.findViewById(R.id.list_favorite);
         listData.setAdapter(adapter);
 
-        LinearLayout linearEmpty = v.findViewById(R.id.empty);
-//        if(adapter.getCount()==0)
-//            listData.setEmptyView(linearEmpty);
-//        else if(adapter.getCount()!=0){
             //리스트뷰에 데이터 추가
             Store s;
             int favorId=-1;
             for(int i = 0; i< StoreList.storeList.size(); i++){
-                if(FavorList.favorList[i]==1) {
-                    favorId = i;
-                }
+                if(FavorList.favorList[i]==1) favorId = i; //즐겨찾기가 설정된 가게라면 favorId에 가게 아이디 주기
+                //***여기 수정***
                 s = (Store) (StoreList.storeList.get(i));
-                if(s.id == favorId)
+                if(s.id == favorId) //
                     adapter.addItem(s.title, s.address, s.id);
             }
-//        }
 
+        //리스트뷰에 아이템 없을때 안내 텍스트
+        TextView textEmpty = v.findViewById(R.id.text_empty);
+        listData.setEmptyView(textEmpty);
 
         //즐겨찾기 가게 클릭시
         listData.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ListViewItem obj = (ListViewItem) parent.getAdapter().getItem(position);
-                storeId = obj.getId();
+                storeId = obj.getId(); //클릭한 가게의 아이디 받기
 
-                fragmentListener.onCommand(1, Integer.toString(storeId));
-                ((MainActivity)getActivity()).replaceFragment(ChildMapFragment.newInstance());
-                //키보드 내리기
+                fragmentListener.onCommand(1, Integer.toString(storeId)); //가게 아이디 다른 프래그먼트에 넘겨주기
+                ((MainActivity)getActivity()).replaceFragment(ChildMapFragment.newInstance()); //가게 위치가 보이는 지도화면으로 이동
 
+                //키보드 내리는 코드 추가. 추후 수정
             }
         });
 
