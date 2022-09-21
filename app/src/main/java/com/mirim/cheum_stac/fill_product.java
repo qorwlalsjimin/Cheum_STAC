@@ -97,24 +97,24 @@ public class fill_product extends Fragment {
                     }
                 }
             }
-                @Override
-                public void onCancelled(DatabaseError error) {
-                    //에러 처리
-                }
-            });
+            @Override
+            public void onCancelled(DatabaseError error) {
+                //에러 처리
+            }
+        });
 
         String path = UserUtils.getHash() + "/heart/" + Integer.toString(productId);
         imgbtnHeart.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Boolean heart = !getBGRHeart(imgbtnHeart.getTag().toString());
-                    reference.child(path).setValue(heart);
-                }
-            });
+            @Override
+            public void onClick(View view) {
+                Boolean heart = !getBGRHeart(imgbtnHeart.getTag().toString());
+                reference.child(path).setValue(heart);
+            }
+        });
 
-            return v;
+        return v;
 
-        }
+    }
 
 
     public Boolean getBGRHeart(String d) {
