@@ -94,6 +94,14 @@ public class MypageFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        LinearLayout notice = v.findViewById(R.id.notice);
+        notice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),Viewpager_main.class);
+                startActivity(intent);
+            }
+        });
 
 
         return v;

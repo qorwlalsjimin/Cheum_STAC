@@ -14,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,7 +30,6 @@ import com.mirim.cheum_stac.Map.RecyclerView.StoreRecyclerVIewAdapter;
 import com.mirim.cheum_stac.Map.RecyclerView.fillStore;
 import com.mirim.cheum_stac.Map.Store;
 import com.mirim.cheum_stac.Map.StoreList;
-import com.mirim.cheum_stac.Product.fillProduct;
 
 import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
@@ -42,14 +40,12 @@ import java.util.ArrayList;
 public class MapFragment extends Fragment implements MapView.CurrentLocationEventListener, MapView.MapViewEventListener, MapView.POIItemEventListener{
     MainActivity activity;
     FragmentListener fragmentListener;
-    TextView textStoreName;
     LinearLayout linearFavorite;
 
     //리사이클러뷰
     RecyclerView recyclerView;
     StoreRecyclerVIewAdapter adapter;
     LinearLayoutManager layoutManager;
-    fillProduct fillProduct;
 
     //상품 정보, 레이아웃 정보 list
     Store store;
@@ -61,9 +57,6 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
     //지도
     MapView mapView;
     ViewGroup mapViewContainer;
-
-    //현재 위치로 중심점 변경
-    private static final String LOG_TAG = "MainActivity";
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
     private static final int PERMISSIONS_REQUEST_CODE = 100;
     String[] REQUIRED_PERMISSIONS  = {Manifest.permission.ACCESS_FINE_LOCATION};
@@ -83,7 +76,7 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
                              Bundle savedInstanceStte) {
         View v = inflater.inflate(R.layout.fragment_map, container, false);
 
-        //데이터값 설정
+        //리사이클러뷰 데이터값 설정
         list = new ArrayList<fillStore>() {{
             int favorId=-1;
             for(int i = 0; i< StoreList.storeList.size(); i++){
@@ -93,28 +86,27 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
             }
         }};
 
-        //즐겨찾기 아이콘 클릭
-        View layout = inflater.inflate(R.layout.favorite_recycler_item, container, false);
-        linearFavorite = layout.findViewById(R.id.linear_favorite);
-        linearFavorite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "클릭!", Toast.LENGTH_SHORT).show();
-            }
-        });
-
         //리사이클러뷰 구현
         recyclerView = (RecyclerView)v.findViewById(R.id.recycle_favorite);
         adapter = new StoreRecyclerVIewAdapter(getActivity().getApplicationContext(), list);
 
+        //클릭 이벤트 구현
+        adapter.setOnItemClickListener(new StoreRecyclerVIewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClicked(int position, String data) {
+                int storeId=-1;
+                for(int i = 0; i<StoreList.storeList.size(); i++){
+                    Store s = StoreList.storeList.get(i);
+                    if(s.title.equals(data)) storeId = s.id;
+                }
+                fragmentListener.onCommand(1, Integer.toString(storeId));
+                ParentFragment.btnFavoriteCheck.performClick();
+                mapViewContainer.removeAllViews();
+            }
+        });
+
         layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         layoutManager.setOrientation(RecyclerView.HORIZONTAL);
-        LinearLayout.LayoutParams params =
-                new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT
-                );
-
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
@@ -141,7 +133,6 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
         //현재 위치로 중심점 변경
         mapView.setMapViewEventListener(this);
         mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading);
-
         if (!checkLocationServicesStatus()) {
             showDialogForLocationServiceSetting();
         }else {
@@ -160,8 +151,6 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
     @Override
     public void onCurrentLocationUpdate(MapView mapView, MapPoint currentLocation, float accuracyInMeters) {
         MapPoint.GeoCoordinate mapPointGeo = currentLocation.getMapPointGeoCoord();
-        mapView.setMapCenterPoint(currentLocation, true);
-        Log.i(LOG_TAG, String.format("MapView onCurrentLocationUpdate (%f,%f) accuracy (%f)", mapPointGeo.latitude, mapPointGeo.longitude, accuracyInMeters));
     }
     @Override
     public void onCurrentLocationDeviceHeadingUpdate(MapView mapView, float v) {
@@ -232,11 +221,13 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
                 // 3-2. 요청을 진행하기 전에 사용자가에게 퍼미션이 필요한 이유 설명
                 Toast.makeText(getContext(), "이 앱을 실행하려면 위치 접근 권한이 필요합니다.", Toast.LENGTH_LONG).show();
                 // 3-3. 사용자게에 퍼미션 요청. 요청 결과는 onRequestPermissionResult에서 수신
-                requestPermissions(REQUIRED_PERMISSIONS, PERMISSIONS_REQUEST_CODE);
+                ActivityCompat.requestPermissions(getActivity(), REQUIRED_PERMISSIONS,
+                        PERMISSIONS_REQUEST_CODE);
             } else {
                 // 4-1. 사용자가 퍼미션 거부를 한 적이 없는 경우에는 바로 퍼미션 요청.
                 // 요청 결과는 onRequestPermissionResult에서 수신
-                requestPermissions(REQUIRED_PERMISSIONS, PERMISSIONS_REQUEST_CODE);
+                ActivityCompat.requestPermissions(getActivity(), REQUIRED_PERMISSIONS,
+                        PERMISSIONS_REQUEST_CODE);
             }
         }
     }
@@ -343,7 +334,6 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
 
     @Override
     public void onCalloutBalloonOfPOIItemTouched(MapView mapView, MapPOIItem mapPOIItem) {
-        Toast.makeText(getContext(), "Clicked " + mapPOIItem.getItemName() + " Callout Balloon", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -372,6 +362,11 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
         activity = null;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mapViewContainer.removeAllViews();
+    }
 
 
 }

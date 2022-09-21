@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -49,7 +48,7 @@ public class ChildResultFragment extends Fragment {
     ImageButton imgbtnStar;
     ViewGroup mapViewContainer;
     TextView storeName, storeLoct, storeOper, storePage, storeDial;
-    ImageView imgStore;
+    ImageView[] imgStore = new ImageView[3];
     static int storeId=7;
 
     @Override
@@ -64,7 +63,9 @@ public class ChildResultFragment extends Fragment {
         storeOper = v.findViewById(R.id.text_store_operation);
         storePage = v.findViewById(R.id.text_store_page);
         storeDial = v.findViewById(R.id.text_store_dial);
-        imgStore = v.findViewById(R.id.img_store);
+        imgStore[0] = v.findViewById(R.id.img_store1);
+        imgStore[1] = v.findViewById(R.id.img_store2);
+        imgStore[2] = v.findViewById(R.id.img_store3);
 
         //가게 정보 가져와서 text 바꾸기
         Store s;
@@ -195,7 +196,6 @@ public class ChildResultFragment extends Fragment {
 //                        //에러 처리
 //                    }
 //                });
-                Toast.makeText(getContext(), "넘어옴", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -9,7 +9,6 @@
 
     <!--지도-->
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:background="#8BC34A"
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent">
         <RelativeLayout
@@ -70,7 +69,7 @@
             android:id="@+id/recycle_favorite"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="23dp"><!--왼쪽으로 넘어가도 다 보이게 추후 수정-->
         </androidx.recyclerview.widget.RecyclerView>
 

@@ -137,6 +137,20 @@ public class home_news extends Fragment {
             }
 
         });
+        Button videoBtn = v.findViewById(R.id.videoBtn);
+        videoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).replaceFragment(home_video.newInstance());
+            }
+        });
+        Button newsBtn = v.findViewById(R.id.newsBtn);
+        newsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).replaceFragment(home_news.newInstance());
+            }
+        });
 
         RecyclerNewsAdapter.setOnItemClickListener(new RecyclerVIewAdapter.OnItemClickListener()
         {

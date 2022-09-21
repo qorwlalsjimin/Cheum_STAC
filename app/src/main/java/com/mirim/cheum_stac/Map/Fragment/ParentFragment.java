@@ -23,6 +23,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.mirim.cheum_stac.FragmentListener;
+import com.mirim.cheum_stac.MainActivity;
 import com.mirim.cheum_stac.R;
 
 public class ParentFragment extends Fragment implements View.OnClickListener {
@@ -30,7 +31,7 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
     public static EditText editSearch;
     Toolbar toolSearch;
     ImageButton imgSearch;
-    public static Button btnCheck;
+    public static Button btnCheck, btnFavoriteCheck;
     FragmentListener fragmentListener;
     public static int storeId;
     InputMethodManager imm;
@@ -60,7 +61,9 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
         toolSearch = v.findViewById(R.id.toolbar_search);
         imgSearch = v.findViewById(R.id.img_search_icon);
         btnCheck = v.findViewById(R.id.btn_listview_check);
+        btnFavoriteCheck = v.findViewById(R.id.btn_favorite_check);
 
+        //리스트뷰에서 아이템 클릭
         btnCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +75,14 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
                 imgSearch.setTag("x");
 
                 imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
+            }
+        });
+
+        //지도 첫 화면에서 즐겨찾기 아이콘 클릭
+        btnFavoriteCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).replaceFragment(ChildResultFragment.newInstance());
             }
         });
 
