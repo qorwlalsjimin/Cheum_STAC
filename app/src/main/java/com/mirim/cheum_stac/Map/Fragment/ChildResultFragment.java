@@ -1,5 +1,6 @@
 package com.mirim.cheum_stac.Map.Fragment;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,13 +9,23 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.ListResult;
+import com.google.firebase.storage.StorageReference;
 import com.mirim.cheum_stac.Map.FavorList;
 import com.mirim.cheum_stac.Map.Store;
 import com.mirim.cheum_stac.Map.StoreList;
@@ -78,6 +89,29 @@ public class ChildResultFragment extends Fragment {
                 storeOper.setText(s.opertime);
                 storePage.setText(s.page);
                 storeDial.setText(s.dial);
+
+                FirebaseStorage storage = FirebaseStorage.getInstance("gs://stac-cheum.appspot.com/");
+                StorageReference storageRef = storage.getReference();
+                for(int j=1; j<=3; j++) {
+                    int finalJ = j-1;
+                    storageRef.child(Integer.toString(s.id) + "/i" + Integer.toString(s.id) + "_" + j + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            //이미지 로드 성공시
+
+                            Glide.with(getActivity())
+                                    .load(uri)
+                                    .into(imgStore[finalJ]);
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            //이미지 로드 실패시
+                            Toast.makeText(getActivity(), "실패", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
 
                 latitude = s.lat;
                 longitude = s.lug;
