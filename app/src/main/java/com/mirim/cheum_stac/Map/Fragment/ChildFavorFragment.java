@@ -48,17 +48,17 @@ public class ChildFavorFragment extends Fragment {
 //        if(adapter.getCount()==0)
 //            listData.setEmptyView(linearEmpty);
 //        else if(adapter.getCount()!=0){
-        //리스트뷰에 데이터 추가
-        Store s;
-        int favorId=-1;
-        for(int i = 0; i< StoreList.storeList.size(); i++){
-            if(FavorList.favorList[i]==1) {
-                favorId = i;
+            //리스트뷰에 데이터 추가
+            Store s;
+            int favorId=-1;
+            for(int i = 0; i< StoreList.storeList.size(); i++){
+                if(FavorList.favorList[i]==1) {
+                    favorId = i;
+                }
+                s = (Store) (StoreList.storeList.get(i));
+                if(s.id == favorId)
+                    adapter.addItem(s.title, s.address, s.id);
             }
-            s = (Store) (StoreList.storeList.get(i));
-            if(s.id == favorId)
-                adapter.addItem(s.title, s.address, s.id);
-        }
 //        }
 
 

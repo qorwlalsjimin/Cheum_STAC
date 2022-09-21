@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -61,6 +62,9 @@ public class ChildSearchFragment extends Fragment {
 
         //ListView 필터링
         if(isSearch) ((ListViewAdapter) listData.getAdapter()).getFilter().filter(strSearch);
+
+        TextView textEmpty = v.findViewById(R.id.text_empty);
+        listData.setEmptyView(textEmpty);
 
         listData.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

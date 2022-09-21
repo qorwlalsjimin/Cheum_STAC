@@ -14,23 +14,26 @@ import com.mirim.cheum_stac.R;
 import java.util.ArrayList;
 
 public class ListViewAdapter extends BaseAdapter implements Filterable {
-    public ListViewAdapter() {}
+    public ListViewAdapter() {
+    }
 
     private ArrayList<ListViewItem> listViewItemList = new ArrayList<ListViewItem>(); //원본 데이터 리스트
     private ArrayList<ListViewItem> filteredItemList = listViewItemList; //필터링 데이터 리스트
-    Filter listFilter ;
+    Filter listFilter;
 
     @Override
     public int getCount() {
-        return filteredItemList.size() ;
+        return filteredItemList.size();
     }
+
     @Override
     public long getItemId(int position) {
-        return position ;
+        return position;
     }
+
     @Override
     public Object getItem(int position) {
-        return filteredItemList.get(position) ;
+        return filteredItemList.get(position);
     }
 
     @Override
@@ -72,32 +75,32 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
     @Override
     public Filter getFilter() {
         if (listFilter == null) {
-            listFilter = new ListFilter() ;
+            listFilter = new ListFilter();
         }
-        return listFilter ;
+        return listFilter;
     }
 
     private class ListFilter extends Filter {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
-            FilterResults results = new FilterResults() ;
+            FilterResults results = new FilterResults();
 
             if (constraint == null || constraint.length() == 0) {
-                results.values = listViewItemList ;
-                results.count = listViewItemList.size() ;
+                results.values = listViewItemList;
+                results.count = listViewItemList.size();
             } else {
-                ArrayList<ListViewItem> itemList = new ArrayList<ListViewItem>() ;
+                ArrayList<ListViewItem> itemList = new ArrayList<ListViewItem>();
 
                 for (ListViewItem item : listViewItemList) {
                     if (item.getTitle().toUpperCase().contains(constraint.toString().toUpperCase()) ||
-                            item.getDesc().toUpperCase().contains(constraint.toString().toUpperCase()))
-                    {
-                        itemList.add(item) ;
+                            item.getDesc().toUpperCase().contains(constraint.toString().toUpperCase())) {
+                        itemList.add(item);
+                    } else {
                     }
                 }
 
-                results.values = itemList ;
-                results.count = itemList.size() ;
+                results.values = itemList;
+                results.count = itemList.size();
             }
             return results;
         }
@@ -105,12 +108,12 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
 
-            filteredItemList = (ArrayList<ListViewItem>) results.values ;
+            filteredItemList = (ArrayList<ListViewItem>) results.values;
 
             if (results.count > 0) {
-                notifyDataSetChanged() ;
+                notifyDataSetChanged();
             } else {
-                notifyDataSetInvalidated() ;
+                notifyDataSetInvalidated();
             }
         }
     }
