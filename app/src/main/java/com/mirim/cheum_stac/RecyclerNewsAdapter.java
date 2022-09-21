@@ -20,6 +20,19 @@ public class RecyclerNewsAdapter extends RecyclerView.Adapter<RecyclerNewsAdapte
     Context context;
     ArrayList<homeNews> list;
 
+    //리사이클러뷰 아이템 클릭 리스너
+    // 리스너 객체 참조를 저장하는 변수
+    private static RecyclerVIewAdapter.OnItemClickListener mListener = null;
+    // OnItemClickListener 객체 참조를 어댑터에 전달하는 메서드
+    public static void setOnItemClickListener(RecyclerVIewAdapter.OnItemClickListener listener)
+    {
+        mListener = listener;
+    }
+    public interface OnItemClickListener
+    {
+        void onItemClick(View v, int pos);
+    }
+
     public RecyclerNewsAdapter(Context context, ArrayList<homeNews> list) {
         super();
         this.context = context;
@@ -59,6 +72,17 @@ public class RecyclerNewsAdapter extends RecyclerView.Adapter<RecyclerNewsAdapte
             name = itemView.findViewById(R.id.news1_2);
             best = itemView.findViewById(R.id.news1_1);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int pos = getAdapterPosition();
+                    // 리스너 객체의 메서드 호출
+                    if (pos != RecyclerView.NO_POSITION)
+                    {
+                        mListener.onItemClick(view, pos);
+                    }
+                }
+            });
         }
     }
 
