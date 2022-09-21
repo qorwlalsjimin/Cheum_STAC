@@ -43,6 +43,7 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
     MainActivity activity;
     FragmentListener fragmentListener;
     TextView textStoreName;
+    LinearLayout linearFavorite;
 
     //리사이클러뷰
     RecyclerView recyclerView;
@@ -92,6 +93,17 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
             }
         }};
 
+        //즐겨찾기 아이콘 클릭
+        View layout = inflater.inflate(R.layout.favorite_recycler_item, container, false);
+        linearFavorite = layout.findViewById(R.id.linear_favorite);
+        linearFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "클릭!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //리사이클러뷰 구현
         recyclerView = (RecyclerView)v.findViewById(R.id.recycle_favorite);
         adapter = new StoreRecyclerVIewAdapter(getActivity().getApplicationContext(), list);
 
@@ -103,36 +115,10 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
                         LinearLayout.LayoutParams.WRAP_CONTENT
                 );
 
-
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
-        View layout = inflater.inflate(R.layout.favorite_recycler_item, null);
-        textStoreName = layout.findViewById(R.id.text_store_name);
-
-        textStoreName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //온클릭 안 됨.
-                Log.d("흥", "클릭!");
-                Toast.makeText(activity, "클릭!!!!", Toast.LENGTH_SHORT).show();
-//                fragmentListener.onCommand(1, Integer.toString(store.id));
-//                ParentFragment.btnCheck.performClick();
-            }
-        });
-
-        //즐겨찾기된 가게만 추가
-//        for(int i = 0; i< FavorList.favorList.length; i++){
-//            if(FavorList.favorList[i]){
-//                frameFavor[1] = v.findViewById(R.id.frameLayout);
-//
-//            }
-//        }
-
-        mapView = new MapView(getActivity());
-        mapViewContainer = (ViewGroup) v.findViewById(R.id.map_view);
-        mapViewContainer.addView(mapView);
-
+        //검색어 입력하기 전 자식 Fragment 이동
         EditText editSearch = v.findViewById(R.id.editTextFilter);
         editSearch.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -146,6 +132,11 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
                 ((MainActivity)getActivity()).replaceFragment(ParentFragment.newInstance());
             }
         });
+
+        //지도 띄우기
+        mapView = new MapView(getActivity());
+        mapViewContainer = (ViewGroup) v.findViewById(R.id.map_view);
+        mapViewContainer.addView(mapView);
 
         //현재 위치로 중심점 변경
         mapView.setMapViewEventListener(this);
@@ -196,7 +187,7 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
             // 요청 코드가 PERMISSIONS_REQUEST_CODE 이고, 요청한 퍼미션 개수만큼 수신되었다면
             boolean check_result = true;
 
-            // 모든 퍼미션을 허용했는지 체크합니다.
+            // 모든 퍼미션을 허용했는지 체크
             for (int result : grandResults) {
                 if (result != PackageManager.PERMISSION_GRANTED) {
                     check_result = false;
@@ -209,7 +200,7 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
                 //위치 값을 가져올 수 있음
 
             } else {
-                // 거부한 퍼미션이 있다면 앱을 사용할 수 없는 이유를 설명해주고 앱을 종료합니다.2 가지 경우가 있다
+                // 거부한 퍼미션이 있다면 앱을 사용할 수 없는 이유를 설명해주고 앱을 종료. 2가지 경우가 있다
                 if (ActivityCompat.shouldShowRequestPermissionRationale(MapFragment.newInstance().getActivity(), REQUIRED_PERMISSIONS[0])) {
                     Toast.makeText(getContext(), "퍼미션이 거부되었습니다. 앱을 다시 실행하여 퍼미션을 허용해주세요.", Toast.LENGTH_LONG).show();
 
@@ -227,31 +218,30 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
     void checkRunTimePermission(){
 
         //런타임 퍼미션 처리
-        // 1. 위치 퍼미션을 가지고 있는지 체크합니다.
+        // 1. 위치 퍼미션을 가지고 있는지 체크
         int hasFineLocationPermission = ContextCompat.checkSelfPermission(getContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION);
 
         if (hasFineLocationPermission == PackageManager.PERMISSION_GRANTED ) {
             // 2. 이미 퍼미션을 가지고 있다면
-            // ( 안드로이드 6.0 이하 버전은 런타임 퍼미션이 필요없기 때문에 이미 허용된 걸로 인식합니다.)
             // 3.  위치 값을 가져올 수 있음
 
-        } else {  //2. 퍼미션 요청을 허용한 적이 없다면 퍼미션 요청이 필요합니다. 2가지 경우(3-1, 4-1)가 있습니다.
-            // 3-1. 사용자가 퍼미션 거부를 한 적이 있는 경우에는
+        } else {  //2. 퍼미션 요청을 허용한 적이 없다면 퍼미션 요청이 필요
+            // 사용자가 퍼미션 거부를 한 적이 있는 경우에는
             if (shouldShowRequestPermissionRationale(REQUIRED_PERMISSIONS[0])) {
-                // 3-2. 요청을 진행하기 전에 사용자가에게 퍼미션이 필요한 이유를 설명해줄 필요가 있습니다.
+                // 3-2. 요청을 진행하기 전에 사용자가에게 퍼미션이 필요한 이유 설명
                 Toast.makeText(getContext(), "이 앱을 실행하려면 위치 접근 권한이 필요합니다.", Toast.LENGTH_LONG).show();
-                // 3-3. 사용자게에 퍼미션 요청을 합니다. 요청 결과는 onRequestPermissionResult에서 수신됩니다.
+                // 3-3. 사용자게에 퍼미션 요청. 요청 결과는 onRequestPermissionResult에서 수신
                 requestPermissions(REQUIRED_PERMISSIONS, PERMISSIONS_REQUEST_CODE);
             } else {
-                // 4-1. 사용자가 퍼미션 거부를 한 적이 없는 경우에는 퍼미션 요청을 바로 합니다.
-                // 요청 결과는 onRequestPermissionResult에서 수신됩니다.
+                // 4-1. 사용자가 퍼미션 거부를 한 적이 없는 경우에는 바로 퍼미션 요청.
+                // 요청 결과는 onRequestPermissionResult에서 수신
                 requestPermissions(REQUIRED_PERMISSIONS, PERMISSIONS_REQUEST_CODE);
             }
         }
     }
 
-    //여기부터는 GPS 활성화를 위한 메소드들
+    //GPS 활성화
     private void showDialogForLocationServiceSetting() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -366,7 +356,7 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
 
     }
 
-
+    //데이터를 다른 Fragment로 보내기 위함
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -381,6 +371,7 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
         mapViewContainer.removeAllViews();
         activity = null;
     }
+
 
 
 }
