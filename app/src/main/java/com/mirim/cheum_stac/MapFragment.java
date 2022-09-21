@@ -96,25 +96,28 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
         //즐겨찾기 아이콘 클릭
         View layout = inflater.inflate(R.layout.favorite_recycler_item, container, false);
         linearFavorite = layout.findViewById(R.id.linear_favorite);
-        linearFavorite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "클릭!", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         //리사이클러뷰 구현
         recyclerView = (RecyclerView)v.findViewById(R.id.recycle_favorite);
         adapter = new StoreRecyclerVIewAdapter(getActivity().getApplicationContext(), list);
 
+        //클릭 이벤트 구현
+        adapter.setOnItemClickListener(new StoreRecyclerVIewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClicked(int position, String data) {
+                int storeId=-1;
+                for(int i = 0; i<StoreList.storeList.size(); i++){
+                    Store s = StoreList.storeList.get(i);
+                    if(s.title.equals(data)) storeId = s.id;
+                }
+                fragmentListener.onCommand(1, Integer.toString(storeId));
+                ParentFragment.btnFavoriteCheck.performClick();
+                mapViewContainer.removeAllViews();
+            }
+        });
+
         layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         layoutManager.setOrientation(RecyclerView.HORIZONTAL);
-        LinearLayout.LayoutParams params =
-                new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT
-                );
-
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
@@ -343,7 +346,6 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
 
     @Override
     public void onCalloutBalloonOfPOIItemTouched(MapView mapView, MapPOIItem mapPOIItem) {
-        Toast.makeText(getContext(), "Clicked " + mapPOIItem.getItemName() + " Callout Balloon", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -372,6 +374,11 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
         activity = null;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mapViewContainer.removeAllViews();
+    }
 
 
 }

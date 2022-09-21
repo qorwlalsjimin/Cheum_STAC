@@ -44,17 +44,22 @@ public class ChildFavorFragment extends Fragment {
         listData.setAdapter(adapter);
 
         LinearLayout linearEmpty = v.findViewById(R.id.empty);
-        //listData.setEmptyView(linearEmpty); //아이템이 있어도 보임. 추후 수정
+//        if(adapter.getCount()==0)
+//            listData.setEmptyView(linearEmpty);
+//        else if(adapter.getCount()!=0){
+            //리스트뷰에 데이터 추가
+            Store s;
+            int favorId=-1;
+            for(int i = 0; i< StoreList.storeList.size(); i++){
+                if(FavorList.favorList[i]==1) {
+                    favorId = i;
+                }
+                s = (Store) (StoreList.storeList.get(i));
+                if(s.id == favorId)
+                    adapter.addItem(s.title, s.address, s.id);
+            }
+//        }
 
-        //리스트뷰에 데이터 추가
-        Store s;
-        int favorId=-1;
-        for(int i = 0; i< StoreList.storeList.size(); i++){
-            if(FavorList.favorList[i]==1) favorId = i;
-            s = (Store) (StoreList.storeList.get(i));
-            if(s.id == favorId)
-                adapter.addItem(s.title, s.address, s.id);
-        }
 
         //즐겨찾기 가게 클릭시
         listData.setOnItemClickListener(new AdapterView.OnItemClickListener() {
