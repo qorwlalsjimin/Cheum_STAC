@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -24,7 +24,7 @@ import java.util.List;
 
 public class fill_product extends Fragment {
     MainActivity activity;
-    ImageButton imgbtnHeart;
+    ImageView imgbtnHeart;
     static int productId=7;
 
     @Override
@@ -59,9 +59,9 @@ public class fill_product extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_fill_product, container, false);
         imgbtnHeart = v.findViewById(R.id.imgbtnHeart);
+
         //파이어베이스 실시간 DB 연동
         DatabaseReference reference = FirebaseUtils.getUserReference(); //reference는 user 속성을 받음
-
 
         //  위에서 갖고온 store 주소값의 데이터를 읽어서 버튼 상태값 바꿔주기
         reference.addValueEventListener(new ValueEventListener() {
@@ -69,14 +69,14 @@ public class fill_product extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {//dataSnapshot : user
                 //즐겨찾기 유무에 따른 boolean값 DB에 insert
                 String path = UserUtils.getHash() + "/heart/" + Integer.toString(productId);
-                boolean heart = false;
+                Boolean heart = false;
                 if (dataSnapshot.child(path).exists()) {
                     heart = dataSnapshot.child(path).getValue(Boolean.class);
-                    imgbtnHeart.setBackgroundResource(getBGR(heart));
+                    imgbtnHeart.setImageResource(getBGR(heart));
                 }
                 reference.child(path).setValue(heart);
 
-                //즐겨찾기 설정 유무 분별을 위한 setTag
+                //찜 설정 유무 분별을 위한 setTag
                 if (heart) imgbtnHeart.setTag("heart");
                 else imgbtnHeart.setTag("heart_empty");
 
@@ -94,8 +94,6 @@ public class fill_product extends Fragment {
                     String path2 = UserUtils.getHash() + "/heart/" + existArr.get(i).toString();
                     if (dataSnapshot.child(path2).getValue(Boolean.class) == Boolean.valueOf(true)) {
                         HeartList.heartList[existArr.get(i).intValue()] = 1;
-                        //favoriteList 클래스 보고 HeartList 만들면 돼
-                        //그 클래스 안에서 hearList까지 만들면 됨
                     }
                 }
             }
@@ -104,7 +102,8 @@ public class fill_product extends Fragment {
                     //에러 처리
                 }
             });
-            String path = UserUtils.getHash() + "/heart/" + Integer.toString(productId);
+
+        String path = UserUtils.getHash() + "/heart/" + Integer.toString(productId);
         imgbtnHeart.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
