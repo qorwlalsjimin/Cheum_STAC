@@ -3,24 +3,20 @@ package com.mirim.cheum_stac;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mirim.cheum_stac.Product.Fragment.fill_product;
 import com.mirim.cheum_stac.Product.Product;
 import com.mirim.cheum_stac.Product.ProductList;
 import com.mirim.cheum_stac.Product.fillProduct;
@@ -79,21 +75,14 @@ public class FillFragment extends Fragment{
 
     }
 
-    View.OnClickListener onClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance());
-        }
-    };
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_fill, container, false);
+        ;
 
-        //초기에 전체 내용 나오게 하는 거 필요
-
+        //초기에 전체 내용
         list = new ArrayList<fillProduct>() {{
             for(int i=0; i<ProductList.productList.size(); i++){
                 product = (Product) (ProductList.productList.get(i));
@@ -121,6 +110,16 @@ public class FillFragment extends Fragment{
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
+        //리사이클러 클릭 이벤트 처리
+        //왜... 이렇게 해야하나요... 난 지쳤어요... 하여간 아이템 클릭 이벤트는 여기서 처리합니다..
+        RecyclerVIewAdapter.setOnItemClickListener(new RecyclerVIewAdapter.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(View v, int pos)
+            {
+                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance());
+            }
+        });
 
         //검색기능
         imgSearch = v.findViewById(R.id.img_search_icon);

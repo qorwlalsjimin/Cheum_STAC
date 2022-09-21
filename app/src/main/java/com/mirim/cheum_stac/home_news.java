@@ -96,7 +96,6 @@ public class home_news extends Fragment {
                 return 0;
             }
         });
-
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 

@@ -18,16 +18,19 @@ public class RecyclerVIewAdapter extends RecyclerView.Adapter<RecyclerVIewAdapte
 
     Context context;
     ArrayList<fillProduct> list;
-    private OnItemClickListener itemClickListener;
 
-    //인터페이스 선언
-    public interface OnItemClickListener{
-        //클릭시 동작할 함수
-        void onItemClick(View v, int pos);
+    // 리스너 객체 참조를 저장하는 변수
+    private static OnItemClickListener mListener = null;
+
+    // OnItemClickListener 객체 참조를 어댑터에 전달하는 메서드
+    public static void setOnItemClickListener(OnItemClickListener listener)
+    {
+        mListener = listener;
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener){
-        this.itemClickListener = listener;
+    public interface OnItemClickListener
+    {
+        void onItemClick(View v, int pos);
     }
 
     public RecyclerVIewAdapter(Context context, ArrayList<fillProduct> list) {
@@ -51,6 +54,8 @@ public class RecyclerVIewAdapter extends RecyclerView.Adapter<RecyclerVIewAdapte
         return new MyViewHolder(view);
     }
 
+
+
     @Override
     public int getItemCount() {
         return list.size();
@@ -73,7 +78,17 @@ public class RecyclerVIewAdapter extends RecyclerView.Adapter<RecyclerVIewAdapte
             best = itemView.findViewById(R.id.news1_1);
             price = itemView.findViewById(R.id.news1_3);
 
-
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int pos = getAdapterPosition();
+                    // 리스너 객체의 메서드 호출
+                    if (pos != RecyclerView.NO_POSITION)
+                    {
+                        mListener.onItemClick(view, pos);
+                    }
+                }
+            });
         }
     }
 
