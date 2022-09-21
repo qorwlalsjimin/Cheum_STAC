@@ -63,8 +63,8 @@
                 android:layout_marginTop="8dp"/>
             <GridLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:columnCount="3"
                 android:rowCount="2">
                 <TextView
@@ -76,14 +76,6 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="18dp"
                     android:layout_columnSpan="2"/>
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="27dp"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="20dp"
-                    android:id="@+id/ivheart"
-                    android:src="@drawable/heart"/>
                 <TextView
                     android:text="3,100원"
                     android:textSize="18dp"
@@ -100,18 +92,26 @@
                     android:textColor="#8F8F8F"
                     android:id="@+id/tvml"
                     android:layout_marginLeft="13dp"/>
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="27dp"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/heart"
+                    android:src="@drawable/heart_empty"/>
                 <TextView
                     android:text="196"
                     android:textColor="#F44336"
                     android:layout_gravity="right"
                     android:layout_marginRight="20dp"
                     android:id="@+id/tvCount"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="8dp"
-                    android:background="#DFDFDF"
-                    android:layout_marginTop="26dp"/>
             </GridLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="#DFDFDF"
+                android:layout_marginTop="26dp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
