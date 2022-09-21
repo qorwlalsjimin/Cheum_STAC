@@ -3,9 +3,6 @@ package com.mirim.cheum_stac;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mirim.cheum_stac.Product.Fragment.fill_product;
 import com.mirim.cheum_stac.Product.Product;
 import com.mirim.cheum_stac.Product.ProductList;
 import com.mirim.cheum_stac.Product.fillProduct;
