@@ -113,10 +113,9 @@
             android:layout_weight="1"/>
         <Switch
             android:layout_width="80dp"
-            android:layout_height="32dp"
+            android:layout_height="20dp"
             android:layout_marginRight="29dp"
             android:minWidth="80dp"
-            android:minHeight="26dp"
             android:thumb="@drawable/switch_thumb"
             android:track="@drawable/switch_selector" />
     </LinearLayout>

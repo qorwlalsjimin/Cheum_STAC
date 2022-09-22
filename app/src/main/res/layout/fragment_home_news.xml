@@ -42,17 +42,19 @@
             android:id="@+id/field_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <EditText
                 android:id="@+id/edit_search_text"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:focusable="true"
-                android:singleLine="true"
-                android:hint="장소, 브랜드, 상품 종류 검색"
-                android:textSize="17dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="15dp"
-                android:background="@android:color/transparent" />
+                android:background="@android:color/transparent"
+                android:focusable="true"
+                android:hint="장소, 브랜드, 상품 종류 검색"
+                android:singleLine="true"
+                android:textSize="17dp"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <ImageView
                 android:id="@+id/img_search_icon"

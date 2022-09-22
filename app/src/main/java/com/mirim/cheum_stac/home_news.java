@@ -83,7 +83,7 @@ public class home_news extends Fragment {
             }
         }};
 
-        recyclerView = (RecyclerView)v.findViewById(R.id.home_recycler);
+        recyclerView = (RecyclerView)v.findViewById(R.id.news_recycler);
         adapter = new RecyclerNewsAdapter(getActivity().getApplicationContext(), list);
 
         layoutManager = new GridLayoutManager(getActivity().getApplicationContext(), 6);
@@ -118,7 +118,7 @@ public class home_news extends Fragment {
                 }};
 
 
-                recyclerView = (RecyclerView)v.findViewById(R.id.home_recycler);
+                recyclerView = (RecyclerView)v.findViewById(R.id.news_recycler);
                 adapter = new RecyclerNewsAdapter(getActivity().getApplicationContext(), list);
 
                 layoutManager = new GridLayoutManager(getActivity().getApplicationContext(), 6);
