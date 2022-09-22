@@ -92,7 +92,7 @@ public class fill_product extends Fragment {
 
         FirebaseStorage storage = FirebaseStorage.getInstance("gs://stac-cheum.appspot.com/");
         StorageReference storageRef = storage.getReference();
-        storageRef.child("product/radius/"+Integer.toString(id) + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        storageRef.child("product/"+Integer.toString(id) + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 //이미지 로드 성공시
