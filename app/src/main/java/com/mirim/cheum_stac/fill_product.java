@@ -1,19 +1,27 @@
 package com.mirim.cheum_stac;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.mirim.cheum_stac.Product.HeartList;
 import com.mirim.cheum_stac.Product.ProductList;
 import com.mirim.cheum_stac.util.FirebaseUtils;
@@ -26,6 +34,9 @@ public class fill_product extends Fragment {
     MainActivity activity;
     ImageView imgbtnHeart;
     static int productId=7;
+    ImageView productImg;
+
+    static int id;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -57,6 +68,34 @@ public class fill_product extends Fragment {
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_fill_product, container, false);
+        Button backBtn = v.findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
+        productImg = v.findViewById(R.id.product_img);
+        FirebaseStorage storage = FirebaseStorage.getInstance("gs://stac-cheum.appspot.com/");
+        StorageReference storageRef = storage.getReference();
+            storageRef.child("product/radius/"+Integer.toString(id) + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    //이미지 로드 성공시
+                  Glide.with(getActivity())
+                           .load(uri)
+                          .into(productImg);
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    //이미지 로드 실패시
+                    Toast.makeText(getActivity(), "실패", Toast.LENGTH_SHORT).show();
+                }
+            });
+
         imgbtnHeart = v.findViewById(R.id.imgbtnHeart);
 
         //파이어베이스 실시간 DB 연동
@@ -122,5 +161,9 @@ public class fill_product extends Fragment {
 
     public int getBGR(Boolean heart) {
         return heart ? R.drawable.heart : R.drawable.heart_empty;
+    }
+
+    public void displayMessage(String data) {
+        id = Integer.parseInt(data);
     }
 }

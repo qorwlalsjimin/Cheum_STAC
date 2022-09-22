@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
 
     //상품
     private fill_detail fillDetail;
+    private fill_product fillProduct;
     FragmentTransaction transaction;
 
     @Override
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         childResultFragment = new ChildResultFragment();
         childMapFragment = new ChildMapFragment();
         fillDetail = new fill_detail();
+        fillProduct = new fill_product();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.btn_navi_menu);
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
@@ -100,6 +102,8 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
                 childResultFragment.displayMessage(data);
                 childMapFragment.displayMessage(data);
                 break;
+                case 2:
+                fillProduct.displayMessage(data);
             case 3:
                 fillDetail.displayMessage(data);
                 break;

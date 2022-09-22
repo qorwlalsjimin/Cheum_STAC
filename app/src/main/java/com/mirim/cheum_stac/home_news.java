@@ -70,8 +70,7 @@ public class home_news extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home_news, container, false);
 
-        //초기에 전체 내용 나오게 하는 거 필요
-
+        //초기에 전체 내용
         list = new ArrayList<homeNews>() {{
             for(int i = 0; i< NewsList.newsList.size(); i++){
                 news =  (News) (NewsList.newsList.get(i));

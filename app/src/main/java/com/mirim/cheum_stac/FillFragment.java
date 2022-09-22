@@ -90,7 +90,7 @@ public class FillFragment extends Fragment{
         list = new ArrayList<fillProduct>() {{
             for(int i=0; i<ProductList.productList.size(); i++){
                 product = (Product) (ProductList.productList.get(i));
-                add(new fillProduct(product.img, product.best, product.name, product.price));
+                add(new fillProduct(product.simg, product.best, product.name, product.price));
             }
         }};
 
@@ -121,7 +121,9 @@ public class FillFragment extends Fragment{
             @Override
             public void onItemClick(View v, int pos)
             {
-                ((MainActivity)getActivity()).replaceFragment(fill_product_only.newInstance());
+                id = pos;
+                fragmentListener.onCommand(2, String.valueOf(id));
+                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance());
             }
         });
 
@@ -136,7 +138,8 @@ public class FillFragment extends Fragment{
                     for(int i=0; i<ProductList.productList.size(); i++){
                         product = (Product) (ProductList.productList.get(i));
                         if(product.name.contains(SearchWord)){
-                            add(new fillProduct(product.img, product.best, product.name, product.price));
+                            add(new fillProduct(product.simg, product.best, product.name, product.price));
+
                         }
                     }
                 }};

@@ -85,7 +85,7 @@ public class fill_detail extends Fragment {
             for(int i=0; i<ProductList.productList.size(); i++){
                 product = (Product) (ProductList.productList.get(i));
                 if(kate.equals(product.kate)) {
-                    add(new fillProduct(product.img, product.best, product.name, product.price));
+                    add(new fillProduct(product.simg, product.best, product.name, product.price));
                 }
             }
         }};
@@ -123,7 +123,7 @@ public class fill_detail extends Fragment {
                     for(int i=0; i<ProductList.productList.size(); i++){
                         product = (Product) (ProductList.productList.get(i));
                         if(product.name.contains(SearchWord)&&kate.equals(product.kate)){
-                            add(new fillProduct(product.img, product.best, product.name, product.price));
+                         add(new fillProduct(product.simg, product.best, product.name, product.price));
                         }
                     }
                 }};

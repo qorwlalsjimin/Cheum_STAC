@@ -1,14 +1,22 @@
 package com.mirim.cheum_stac;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.mirim.cheum_stac.Product.fillProduct;
 
 import java.util.ArrayList;
@@ -69,8 +77,6 @@ public class RecyclerVIewAdapter extends RecyclerView.Adapter<RecyclerVIewAdapte
         public TextView price;
 
 
-
-
         public MyViewHolder(View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.news1);
@@ -85,6 +91,7 @@ public class RecyclerVIewAdapter extends RecyclerView.Adapter<RecyclerVIewAdapte
                     // 리스너 객체의 메서드 호출
                     if (pos != RecyclerView.NO_POSITION)
                     {
+
                         mListener.onItemClick(view, pos);
                     }
                 }
