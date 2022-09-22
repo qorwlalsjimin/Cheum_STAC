@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.mirim.cheum_stac.FragmentListener;
-import com.mirim.cheum_stac.MainActivity;
 import com.mirim.cheum_stac.Map.FavorList;
 import com.mirim.cheum_stac.Map.ListView.ListViewAdapter;
 import com.mirim.cheum_stac.Map.ListView.ListViewItem;
@@ -52,7 +51,7 @@ public class ChildFavorFragment extends Fragment {
                 if(FavorList.favorList[i]==1) favorId = i;
 
                 //아이템 추가
-                s = (Store) (StoreList.storeList.get(favorId));
+                s = (Store) (StoreList.storeList.get(i));
                 if(s.id == favorId) adapter.addItem(s.title, s.address, s.id);
             }
 
@@ -68,7 +67,7 @@ public class ChildFavorFragment extends Fragment {
                 storeId = obj.getId(); //클릭한 가게의 아이디 받기
 
                 fragmentListener.onCommand(1, Integer.toString(storeId)); //가게 아이디 다른 프래그먼트에 넘겨주기
-                ((MainActivity)getActivity()).replaceFragment(ChildMapFragment.newInstance()); //가게 위치가 보이는 지도화면으로 이동
+                ParentFragment.btnFavoriteCheck.performClick();
 
                 //키보드 내리는 코드 추가. 추후 수정
             }

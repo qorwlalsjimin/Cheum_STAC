@@ -5,12 +5,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
@@ -60,6 +63,8 @@ public class ChildResultFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v =  inflater.inflate(R.layout.fragment_child_result, container, false);
+
+        keyBordHide();
 
         imgbtnStar = v.findViewById(R.id.imgbtn_star);
         storeName = v.findViewById(R.id.text_store_name);
@@ -113,6 +118,10 @@ public class ChildResultFragment extends Fragment {
         MapView mapView = new MapView(getActivity());
         mapViewContainer = (ViewGroup) v.findViewById(R.id.map_view);
         mapViewContainer.addView(mapView);
+
+        //  현재 위치 추적 기능 off
+        mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOff);
+        mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(latitude, longitude), true);
 
         //  지도 중심점을 가게 위치로
         mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(latitude, longitude), true);
@@ -211,6 +220,12 @@ public class ChildResultFragment extends Fragment {
     //즐겨찾기 화면, 검색된 화면에서 가게 아이디 값 받아오기
     public void displayMessage(String data){
         storeId = Integer.parseInt(data);
+    }
+
+    //키보드 숨기기
+    void keyBordHide() {
+        Window window = getActivity().getWindow();
+        new WindowInsetsControllerCompat(window, window.getDecorView()).hide(WindowInsetsCompat.Type.ime());
     }
 
 }

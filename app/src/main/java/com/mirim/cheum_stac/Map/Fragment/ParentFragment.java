@@ -87,6 +87,7 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
             public void onClick(View v) {
                 //가게 상세 정보 프래그먼트로 이동
                 ((MainActivity)getActivity()).replaceFragment(ChildResultFragment.newInstance());
+                keyBordHide();
             }
         });
 
