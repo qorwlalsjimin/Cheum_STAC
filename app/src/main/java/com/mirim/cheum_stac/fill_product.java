@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.mirim.cheum_stac.Product.HeartList;
+import com.mirim.cheum_stac.Product.Product;
 import com.mirim.cheum_stac.Product.ProductList;
 import com.mirim.cheum_stac.util.FirebaseUtils;
 import com.mirim.cheum_stac.util.UserUtils;
@@ -35,7 +37,8 @@ public class fill_product extends Fragment {
     ImageView imgbtnHeart;
     static int productId=7;
     ImageView productImg;
-
+    TextView  titleText, priceText, mlText, hashText, contText;
+    Product product;
     static int id;
 
     @Override
@@ -68,6 +71,16 @@ public class fill_product extends Fragment {
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_fill_product, container, false);
+
+        productImg = v.findViewById(R.id.product_img);
+        titleText = v.findViewById(R.id.tvTitle);
+        priceText = v.findViewById(R.id.tvPrice);
+        mlText = v.findViewById(R.id.tvml);
+        hashText = v.findViewById(R.id.tvContentTitle);
+        contText = v.findViewById(R.id.tvContent);
+
+        product = (Product) (ProductList.productList.get(id));
+
         Button backBtn = v.findViewById(R.id.backBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,25 +89,34 @@ public class fill_product extends Fragment {
             }
         });
 
-        productImg = v.findViewById(R.id.product_img);
+
         FirebaseStorage storage = FirebaseStorage.getInstance("gs://stac-cheum.appspot.com/");
         StorageReference storageRef = storage.getReference();
-            storageRef.child("product/radius/"+Integer.toString(id) + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                @Override
-                public void onSuccess(Uri uri) {
-                    //이미지 로드 성공시
-                  Glide.with(getActivity())
-                           .load(uri)
-                          .into(productImg);
+        storageRef.child("product/radius/"+Integer.toString(id) + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                //이미지 로드 성공시
+              Glide.with(getActivity())
+                       .load(uri)
+                      .into(productImg);
 
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    //이미지 로드 실패시
-                    Toast.makeText(getActivity(), "실패", Toast.LENGTH_SHORT).show();
-                }
-            });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                //이미지 로드 실패시
+                Toast.makeText(getActivity(), "실패", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+        titleText.setText(product.name);
+        String price = product.price;
+        priceText.setText(price.substring(price.lastIndexOf(" ")+1));
+        mlText.setText(price.substring(0,price.indexOf(" ")));
+        hashText.setText(product.hash);
+        contText.setText(product.cont);
 
         imgbtnHeart = v.findViewById(R.id.imgbtnHeart);
 
