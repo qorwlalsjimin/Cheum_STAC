@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
                         break;
                     case R.id.tab_map:
                         transaction.replace(R.id.frameLayout,mapFragment).commit();
-//                        ChildResultFragment.btnCheck.performClick();
                         break;
                     case R.id.tab_fill:
                         transaction.replace(R.id.frameLayout,fillFragment).commit();

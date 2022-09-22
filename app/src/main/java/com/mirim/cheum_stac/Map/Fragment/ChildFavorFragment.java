@@ -44,15 +44,15 @@ public class ChildFavorFragment extends Fragment {
         listData.setAdapter(adapter);
 
             //리스트뷰에 데이터 추가
-            Store s;
+            Store store;
             int favorId=-1;
             for(int i = 0; i< StoreList.storeList.size(); i++){
                 //즐겨찾기가 설정된 가게라면 favorId에 가게 아이디 주기
                 if(FavorList.favorList[i]==1) favorId = i;
 
                 //아이템 추가
-                s = (Store) (StoreList.storeList.get(i));
-                if(s.id == favorId) adapter.addItem(s.title, s.address, s.id);
+                store = (Store) (StoreList.storeList.get(i));
+                if(store.id == favorId) adapter.addItem(store.title, store.address, store.id);
             }
 
         //리스트뷰에 아이템 없을때 안내 텍스트

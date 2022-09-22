@@ -21,21 +21,7 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
     private ArrayList<ListViewItem> filteredItemList = listViewItemList; //필터링 데이터 리스트
     Filter listFilter;
 
-    @Override
-    public int getCount() {
-        return filteredItemList.size();
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return filteredItemList.get(position);
-    }
-
+    //BaseAdapter
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final int pos = position;
@@ -61,6 +47,15 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
         return convertView;
     }
 
+    @Override
+    public int getCount() { return filteredItemList.size(); }
+
+    @Override
+    public long getItemId(int position) { return position; }
+
+    @Override
+    public Object getItem(int position) { return filteredItemList.get(position); }
+
     // 데이터 추가
     public void addItem(String name, String location, int id) {
         ListViewItem item = new ListViewItem();
@@ -72,11 +67,10 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
         listViewItemList.add(item);
     }
 
+    //Filterable
     @Override
     public Filter getFilter() {
-        if (listFilter == null) {
-            listFilter = new ListFilter();
-        }
+        if (listFilter == null) listFilter = new ListFilter();
         return listFilter;
     }
 

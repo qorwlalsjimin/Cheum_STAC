@@ -1,16 +1,18 @@
 package com.mirim.cheum_stac;
 
 import android.content.Context;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,9 +20,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.mirim.cheum_stac.News.News;
 import com.mirim.cheum_stac.News.NewsList;
 import com.mirim.cheum_stac.News.homeNews;
-import com.mirim.cheum_stac.Product.Product;
-import com.mirim.cheum_stac.Product.ProductList;
-import com.mirim.cheum_stac.Product.fillProduct;
 
 import java.util.ArrayList;
 
@@ -115,6 +114,7 @@ public class home_news extends Fragment {
                             add(new homeNews(news.mimg, news.best, news.title));
                         }
                     }
+                    keyBordHide();
                 }};
 
 
@@ -168,5 +168,10 @@ public class home_news extends Fragment {
 
 
         return v;
+    }
+
+    void keyBordHide() {
+        Window window = getActivity().getWindow();
+        new WindowInsetsControllerCompat(window, window.getDecorView()).hide(WindowInsetsCompat.Type.ime());
     }
 }

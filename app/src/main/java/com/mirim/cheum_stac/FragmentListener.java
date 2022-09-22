@@ -8,7 +8,5 @@ public interface FragmentListener {
     //index
     //0: Map에서 검색어
     //1: 가게 아이디
-    //2: 상품 아이디
     //3: 상품 리스트
-    //4: 뉴스 아이디
 }
