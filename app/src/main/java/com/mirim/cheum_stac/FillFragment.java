@@ -46,17 +46,11 @@ public class FillFragment extends Fragment{
 
     //상품 값
     int id;
-    String kate;
-    int img;
-    boolean best;
-    String name;
-    String price;
 
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-
         if(context instanceof FragmentListener) fragmentListener = (FragmentListener) context;
     }
 

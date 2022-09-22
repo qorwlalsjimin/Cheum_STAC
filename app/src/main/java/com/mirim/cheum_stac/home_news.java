@@ -31,6 +31,7 @@ import java.util.ArrayList;
  */
 public class home_news extends Fragment {
     MainActivity activity;
+    FragmentListener fragmentListener;
     RecyclerView recyclerView;
     RecyclerNewsAdapter adapter;
     GridLayoutManager layoutManager;
@@ -41,17 +42,21 @@ public class home_news extends Fragment {
     News news;
     ArrayList<homeNews> list;
 
+    //뉴스 값
+    int id;
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        activity = (MainActivity) getActivity();
+        if(context instanceof FragmentListener) fragmentListener = (FragmentListener) context;
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        activity = null;
+        if(fragmentListener != null) fragmentListener = null;
     }
+
     public home_news() {
         // Required empty public constructor
     }
@@ -155,7 +160,8 @@ public class home_news extends Fragment {
             @Override
             public void onItemClick(View v, int pos)
             {
-
+                id = pos;
+                fragmentListener.onCommand(4, String.valueOf(id));
                 ((MainActivity)getActivity()).replaceFragment(home_news_page.newInstance());
             }
         });

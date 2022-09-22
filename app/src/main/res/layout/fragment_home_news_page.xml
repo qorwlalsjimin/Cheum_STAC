@@ -15,6 +15,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="15dp"/>
     <TextView
+        android:id="@+id/tvNTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="21dp"
@@ -24,24 +25,22 @@
         android:textColor="#000000"
         android:textSize="24dp" />
     <TextView
+        android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="21dp"
         android:textColor="#7C7C7C"
         android:fontFamily="@font/noto_sans"
         android:text="작성일: 2022.07.22" />
-    <FrameLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="20dp">
+        android:layout_height="match_parent">
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#BABABA"/>
-        <TextView
+            android:id="@+id/imgNews"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="기사내용"/>
-    </FrameLayout>
+            android:adjustViewBounds="true"
+            android:background="@drawable/news_content1"/>
+    </ScrollView>
 
 </LinearLayout>

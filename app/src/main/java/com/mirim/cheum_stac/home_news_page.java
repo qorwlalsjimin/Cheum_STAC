@@ -7,9 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import com.bumptech.glide.Glide;
+import com.mirim.cheum_stac.News.News;
+import com.mirim.cheum_stac.News.NewsList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,6 +24,10 @@ import androidx.fragment.app.Fragment;
  */
 public class home_news_page extends Fragment {
     MainActivity activity;
+    static int id;
+    TextView titleText, dateText;
+    ImageView newsImg;
+    News news;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -49,7 +59,11 @@ public class home_news_page extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home_news_page, container, false);
 
+        newsImg = v.findViewById(R.id.imgNews);
+        titleText = v.findViewById(R.id.tvNTitle);
+        dateText = v.findViewById(R.id.tvDate);
 
+        news = (News) (NewsList.newsList.get(id));
 
         Button backBtn = v.findViewById(R.id.backBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +72,15 @@ public class home_news_page extends Fragment {
                 ((MainActivity)getActivity()).replaceFragment(home_news.newInstance());
             }
         });
+
+        newsImg.setImageResource(news.news);
+        titleText.setText(news.title);
+        dateText.setText(news.days);
+
         return v;
+    }
+
+    public void displayMessage(String data) {
+        id = Integer.parseInt(data);
     }
 }

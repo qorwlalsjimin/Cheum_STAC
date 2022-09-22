@@ -41,6 +41,9 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
     private fill_product fillProduct;
     FragmentTransaction transaction;
 
+    //뉴스
+    private home_news_page homeNewsPage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         childMapFragment = new ChildMapFragment();
         fillDetail = new fill_detail();
         fillProduct = new fill_product();
+        homeNewsPage = new home_news_page();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.btn_navi_menu);
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
@@ -107,6 +111,8 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
             case 3:
                 fillDetail.displayMessage(data);
                 break;
+            case 4:
+                homeNewsPage.displayMessage(data);
 
         }
     }
