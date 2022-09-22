@@ -155,6 +155,7 @@ public class home_news extends Fragment {
             @Override
             public void onItemClick(View v, int pos)
             {
+
                 ((MainActivity)getActivity()).replaceFragment(home_news_page.newInstance());
             }
         });
