@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
 
     }
 
+    //프래그먼트 바꾸기
     public void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         transaction = fragmentManager.beginTransaction();
