@@ -27,13 +27,16 @@ import com.mirim.cheum_stac.MainActivity;
 import com.mirim.cheum_stac.R;
 
 public class ParentFragment extends Fragment implements View.OnClickListener {
+    // 검색창 + 자식 프래그먼트 띄우는 창
+    // 으로 구성되어있음
 
-    public static EditText editSearch;
-    Toolbar toolSearch;
-    ImageButton imgSearch;
-    public static Button btnCheck, btnFavoriteCheck;
     FragmentListener fragmentListener;
-    public static int storeId;
+
+    public static EditText editSearch; //검색어
+    Toolbar toolSearch; //검색창
+    ImageButton imgSearch; //검색창 아이콘
+    public static Button btnListCheck, btnFavoriteCheck; //다른 자식 프래그먼트로 이동. 자식 프래그먼트에서 호출하는 용도
+    public static int storeId; //가게 아이디
 
     public static ParentFragment newInstance() {
         return new ParentFragment();
@@ -49,30 +52,31 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_parent, container, false);
 
-        //즐겨찾기로 이동
-        Fragment fg;
-        fg = com.mirim.cheum_stac.Map.Fragment.ChildFavorFragment.newInstance();
+        //즐겨찾기 ListView 화면으로 이동
+        Fragment fg = com.mirim.cheum_stac.Map.Fragment.ChildFavorFragment.newInstance();
         setChildFragment(fg);
 
         editSearch = (EditText) v.findViewById(R.id.editTextFilter);
         toolSearch = v.findViewById(R.id.toolbar_search);
         imgSearch = v.findViewById(R.id.img_search_icon);
-        btnCheck = v.findViewById(R.id.btn_listview_check);
+        btnListCheck = v.findViewById(R.id.btn_listview_check);
         btnFavoriteCheck = v.findViewById(R.id.btn_favorite_check);
 
-        //리스트뷰에서 아이템 클릭
-        btnCheck.setOnClickListener(new View.OnClickListener() {
+        //즐겨찾기, 검색 리스트뷰(자식 프래그먼트)에서 아이템 클릭
+        btnListCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 keyBordHide();
 
-                Fragment fg;
-                fg = com.mirim.cheum_stac.Map.Fragment.ChildMapFragment.newInstance();
+                //지도 검색 결과 프래그먼트로 이동
+                Fragment fg = com.mirim.cheum_stac.Map.Fragment.ChildMapFragment.newInstance();
                 setChildFragment(fg);
 
+                //검색 아이콘 => X 아이콘
                 imgSearch.setImageResource(R.drawable.x);
                 imgSearch.setTag("x");
 
+                //키보드 숨기기
                 keyBordHide();
             }
         });
@@ -81,30 +85,44 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
         btnFavoriteCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //가게 상세 정보 프래그먼트로 이동
                 ((MainActivity)getActivity()).replaceFragment(ChildResultFragment.newInstance());
-
             }
         });
 
-        //x 눌렀을때 검색 화면으로
+        //검색창 아이콘 클릭
         imgSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // X 아이콘이면
                 if(imgSearch.getTag().equals("x")){
                     keyBordShow();
+                    // 돋보기 아이콘으로
                     imgSearch.setImageResource(R.drawable.map_search_icon);
                     imgSearch.setTag("o");
                     editSearch.setText("");
                 }
+                // 돋보기 아이콘이면
                 else if(imgSearch.getTag().equals("o")){
                     keyBordHide();
+                    // X 아이콘으로
                     imgSearch.setImageResource(R.drawable.x);
                     imgSearch.setTag("x");
                 }
             }
         });
 
-        editSearch.setOnClickListener(oneListener);
+        //검색어 클릭
+        editSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //즐겨찾기 ListView 화면으로 이동
+                Fragment fg = com.mirim.cheum_stac.Map.Fragment.ChildFavorFragment.newInstance();
+                setChildFragment(fg);
+            }
+        });
+
+        //검색어 입력시
         editSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -112,27 +130,29 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
             }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                Fragment fg;
-                fg = com.mirim.cheum_stac.Map.Fragment.ChildSearchFragment.newInstance();
+                //검색 ListView 화면으로 이동
+                Fragment fg = com.mirim.cheum_stac.Map.Fragment.ChildSearchFragment.newInstance();
                 setChildFragment(fg);
             }
             @Override
             public void afterTextChanged(Editable s) {
                 //입력했다가 다시 다 지웠을때 즐겨찾기 Fragment로
                 if(editSearch.getText().length() == 0){
-                    Fragment fg = com.mirim.cheum_stac.Map.Fragment.ChildFavorFragment.newInstance();
+                    Fragment fg = ChildFavorFragment.newInstance();
                     setChildFragment(fg);
                 }
                 else{
-                    //데이터 보내기
+                    //검색어값 다른 프래그먼트로 이동
                     fragmentListener.onCommand(0, editSearch.getText().toString());
-                    com.mirim.cheum_stac.Map.Fragment.ChildSearchFragment childSearchFragment = new com.mirim.cheum_stac.Map.Fragment.ChildSearchFragment();
+
+                    //검색 ListView 화면으로 이동
+                    ChildSearchFragment childSearchFragment = new ChildSearchFragment();
                     childSearchFragment.isSearch(true);
                 }
             }
         });
 
-        //검색어 입력 후 완료 버튼 눌렀을때
+        //검색어 입력 후 키보드의 완료 버튼 눌렀을때
         editSearch.setOnEditorActionListener(new TextView.OnEditorActionListener()
         {
             @Override
@@ -140,29 +160,16 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
             {
                 if(actionId == EditorInfo.IME_ACTION_DONE)
                 {
-                    imgSearch.setImageResource(R.drawable.x);
-                    keyBordHide();
+                    imgSearch.setImageResource(R.drawable.x); //검색창 아이콘 이미지 변경
+                    keyBordHide(); //키보드 숨기기
                     return true;
                 }
                 return false;
             }
         });
-//        imgSearch.setOnClickListener(twoListener);
 
         return v;
     }
-
-
-
-    //자식 Fragment로 이동(즐겨찾기 리스트뷰)
-    View.OnClickListener oneListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Fragment fg;
-            fg = com.mirim.cheum_stac.Map.Fragment.ChildFavorFragment.newInstance();
-            setChildFragment(fg);
-        }
-    };
 
     @Override
     public void onClick(View view) {}
@@ -179,6 +186,7 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
         if(fragmentListener != null) fragmentListener = null;
     }
 
+    //자식 프래그먼트 이동
     public void setChildFragment(Fragment child) {
         FragmentTransaction childFt = getChildFragmentManager().beginTransaction();
 
@@ -189,16 +197,18 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    //ParentFragment에서 값 받아오기
+    //ParentFragment에서 가게 아이디값 받아오기
     public void displayMessage(String message){
         storeId = Integer.parseInt(message);
     }
 
+    //키보드 숨기기
     void keyBordHide() {
         Window window = getActivity().getWindow();
         new WindowInsetsControllerCompat(window, window.getDecorView()).hide(WindowInsetsCompat.Type.ime());
     }
 
+    //키보드 보이게 하기
     void keyBordShow() {
         Window window = getActivity().getWindow();
         new WindowInsetsControllerCompat(window, window.getDecorView()).show(WindowInsetsCompat.Type.ime());

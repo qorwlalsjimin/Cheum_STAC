@@ -56,7 +56,6 @@ public class fill_product extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_fill_product, container, false);
         imgbtnHeart = v.findViewById(R.id.imgbtnHeart);
 

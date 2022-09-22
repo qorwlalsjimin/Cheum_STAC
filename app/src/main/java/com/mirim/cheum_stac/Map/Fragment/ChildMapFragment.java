@@ -50,7 +50,7 @@ public class ChildMapFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_child_map, container, false);
 
-        //하단에 가게 정보
+        //하단에 가게 정보 - 이름, 주소
         storeName = v.findViewById(R.id.text_store_name);
         storeLoct = v.findViewById(R.id.text_store_location);
 
@@ -83,8 +83,7 @@ public class ChildMapFragment extends Fragment {
         marker.setTag(0);
         MapPoint MARKER_POINT = MapPoint.mapPointWithGeoCoord(latitude, longitude);
         marker.setMapPoint(MARKER_POINT);
-        marker.setMarkerType(MapPOIItem.MarkerType.RedPin); // 기본으로 제공하는 BluePin 마커 모양.
-
+        marker.setMarkerType(MapPOIItem.MarkerType.RedPin);
         mapView.addPOIItem(marker);
 
         // 우측 하단 zoom level 변경하는 버튼
@@ -104,6 +103,7 @@ public class ChildMapFragment extends Fragment {
             }
         });
 
+        //하단에 가게 정보 Layout
         linearInfo = v.findViewById(R.id.linear_store_info);
         linearInfo.setOnClickListener(new View.OnClickListener() {
             @Override

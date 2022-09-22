@@ -48,11 +48,12 @@ public class ChildFavorFragment extends Fragment {
             Store s;
             int favorId=-1;
             for(int i = 0; i< StoreList.storeList.size(); i++){
-                if(FavorList.favorList[i]==1) favorId = i; //즐겨찾기가 설정된 가게라면 favorId에 가게 아이디 주기
-                //***여기 수정***
-                s = (Store) (StoreList.storeList.get(i));
-                if(s.id == favorId) //
-                    adapter.addItem(s.title, s.address, s.id);
+                //즐겨찾기가 설정된 가게라면 favorId에 가게 아이디 주기
+                if(FavorList.favorList[i]==1) favorId = i;
+
+                //아이템 추가
+                s = (Store) (StoreList.storeList.get(favorId));
+                if(s.id == favorId) adapter.addItem(s.title, s.address, s.id);
             }
 
         //리스트뷰에 아이템 없을때 안내 텍스트
@@ -73,14 +74,12 @@ public class ChildFavorFragment extends Fragment {
             }
         });
 
-
         return v;
     }
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-
         if(context instanceof FragmentListener) fragmentListener = (FragmentListener) context;
     }
 

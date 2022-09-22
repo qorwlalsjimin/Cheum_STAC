@@ -41,39 +41,43 @@ public class ChildSearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_child_search, container, false);
 
-        //가게 검색 필터링 기능(listview) 구현 시작
+        //가게 검색 필터링 기능(listview) 구현
         ListViewAdapter adapter;
         adapter = new ListViewAdapter() ;
 
         listData = (ListView) v.findViewById(R.id.list_search);
         listData.setAdapter(adapter);
 
-        //리스트뷰에 데이터 추가
+        //  리스트뷰에 전체 데이터 추가
         for(int i = 0; i<StoreList.storeList.size(); i++){
             Store s = (Store) (StoreList.storeList.get(i));
             adapter.addItem(s.title, s.address, s.id);
         }
 
-        //ParentFragment에서 검색어값 받아오기
+        //  ParentFragment에서 검색어값 받아오기
         LayoutInflater layoutInflater = getLayoutInflater();
         View layout = layoutInflater.inflate(R.layout.fragment_parent, v.findViewById(R.id.editTextFilter));
         editSearch = layout.findViewById(R.id.editTextFilter);
-        editSearch.setText(strSearch);
+        editSearch.setText(strSearch); //displayMessage()로 strSearch에 값이 들어있음
 
-        //ListView 필터링
+        //  ListView 필터링
         if(isSearch) ((ListViewAdapter) listData.getAdapter()).getFilter().filter(strSearch);
 
+        //  ListView에 item이 없을때 안내 text
         TextView textEmpty = v.findViewById(R.id.text_empty);
         listData.setEmptyView(textEmpty);
 
+        //  ListView item 온클릭
         listData.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ListViewItem obj = (ListViewItem) parent.getAdapter().getItem(position);
                 storeId = obj.getId();
 
+                // 가게 아이디 다른 프래그먼트로 보내고
                 fragmentListener.onCommand(1, Integer.toString(storeId));
-                ParentFragment.btnCheck.performClick();
+                // 검색 결과 프래그먼트로 이동
+                ParentFragment.btnListCheck.performClick();
             }
         });
 
@@ -85,7 +89,7 @@ public class ChildSearchFragment extends Fragment {
         isSearch = b;
     }
 
-    //ParentFragment에서 값 받아오기
+    //ParentFragment에서 검색어 값 받아오기
     public void displayMessage(String message){
         strSearch = message;
     }

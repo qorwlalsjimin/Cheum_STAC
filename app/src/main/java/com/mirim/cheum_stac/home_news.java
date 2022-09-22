@@ -68,7 +68,6 @@ public class home_news extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home_news, container, false);
 
         //초기에 전체 내용 나오게 하는 거 필요

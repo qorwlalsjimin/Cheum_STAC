@@ -51,6 +51,7 @@ public class StoreRecyclerVIewAdapter extends RecyclerView.Adapter<StoreRecycler
         View view = LayoutInflater.from(context).inflate(R.layout.favorite_recycler_item, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
 
+        //뷰 온클릭
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
