@@ -25,7 +25,7 @@ import java.security.MessageDigest;
 
 public class MainActivity extends AppCompatActivity implements FragmentListener {
     private FragmentManager fragmentManager = getSupportFragmentManager();
-    private HomeFragment homeFragment = new HomeFragment();
+    private home_video home_video = new home_video();
     private MapFragment mapFragment = new MapFragment();
     private FillFragment fillFragment = new FillFragment();
     private MypageFragment mypageFragment = new MypageFragment();
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         setContentView(R.layout.activity_main);
 
         transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.frameLayout,homeFragment).commit(); //초기화면 HomeFragment로 지정
+        transaction.replace(R.id.frameLayout,home_video).commit(); //초기화면 HomeFragment로 지정
 
         //Fragment들 정의
         parentFragment = new ParentFragment();
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 switch (item.getItemId()){
                     case R.id.tab_home:
-                        transaction.replace(R.id.frameLayout,homeFragment).commit();
+                        transaction.replace(R.id.frameLayout,home_video).commit();
                         break;
                     case R.id.tab_map:
                         transaction.replace(R.id.frameLayout,mapFragment).commit();

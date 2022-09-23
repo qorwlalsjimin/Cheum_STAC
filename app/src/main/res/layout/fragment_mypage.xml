@@ -140,6 +140,7 @@
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/right_arrow"
             android:layout_marginRight="24dp"
+            android:id="@+id/noticeBtn"
             android:background="#00ff0000"/>
     </LinearLayout>
     <LinearLayout
@@ -193,6 +194,7 @@
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/right_arrow"
             android:layout_marginRight="24dp"
+            android:id="@+id/checkBtn"
             android:background="#00ff0000"/>
     </LinearLayout>
     <LinearLayout
@@ -216,6 +218,7 @@
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/right_arrow"
             android:layout_marginRight="24dp"
+            android:id="@+id/customerBtn"
             android:background="#00ff0000"/>
     </LinearLayout>
 </LinearLayout>

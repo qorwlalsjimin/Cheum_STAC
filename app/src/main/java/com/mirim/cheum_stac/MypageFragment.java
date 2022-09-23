@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -42,7 +43,7 @@ public class MypageFragment extends Fragment {
 
 
     public static MypageFragment newInstance(String param1, String param2) {
-       return new MypageFragment();
+        return new MypageFragment();
 
     }
 
@@ -76,6 +77,20 @@ public class MypageFragment extends Fragment {
                 ((MainActivity)getActivity()).replaceFragment(good_product.newInstance(null,null));
             }
         });
+        Button checkBtn = v.findViewById(R.id.checkBtn);
+        checkBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity)getActivity()).replaceFragment(mypage_check.newInstance(null,null));
+            }
+        });
+        Button customerBtn = v.findViewById(R.id.customerBtn);
+        customerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity)getActivity()).replaceFragment(mypage_Customer.newInstance(null,null));
+            }
+        });
 
         loginToFl = v.findViewById(R.id.loginToFl);
         loginToTV = v.findViewById(R.id.loginTV);
@@ -93,14 +108,7 @@ public class MypageFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        LinearLayout notice = v.findViewById(R.id.notice);
-        notice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),Viewpager_main.class);
-                startActivity(intent);
-            }
-        });
+
 
 
         return v;
