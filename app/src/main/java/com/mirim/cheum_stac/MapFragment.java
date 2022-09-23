@@ -76,34 +76,6 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
                              Bundle savedInstanceStte) {
         View v = inflater.inflate(R.layout.fragment_map, container, false);
 
-//        //파이어베이스 연동
-//        DatabaseReference reference = FirebaseUtils.getUserReference();
-//        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                //즐겨찾기한 가게 리스트에 넣기
-//                List<Integer> existArr = new ArrayList<>(); //favorite 아래에 추가되어 있는 가게 아이디 리스트
-//                for(int i = 0; i<StoreList.storeList.size(); i++){
-//                    String path3 = UserUtils.getHash() + "/favorite/"+i;
-//                    if (dataSnapshot.child(path3).exists()) {
-//                        if (dataSnapshot.child(path3).getValue(Boolean.class)){
-//                            existArr.add(Integer.valueOf(i));
-//                        }
-//                    }
-//                }
-//
-//                for(int i = 0; i<existArr.size(); i++){ //true인 가게는 favorList에서 1로 표시
-//                    String path2 = UserUtils.getHash() + "/favorite/" + existArr.get(i).toString();
-//                    if(dataSnapshot.child(path2).getValue(Boolean.class) == Boolean.valueOf(true))
-//                        FavorList.favorList[existArr.get(i).intValue()] = 1;
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//            }
-//        });
-
         //리사이클러뷰 데이터값 설정
         list = new ArrayList<fillStore>() {{
             int favorId=-1;

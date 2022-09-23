@@ -7,7 +7,7 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 import com.mirim.cheum_stac.R;
 
-public class Viewpager_main extends AppCompatActivity {
+public class ViewpagerMain extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

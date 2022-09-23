@@ -7,19 +7,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.fragment.app.Fragment;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link home_video#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class home_video extends Fragment {
+public class HomeVideo extends Fragment {
     MainActivity activity;
 
     @Override
@@ -34,12 +32,12 @@ public class home_video extends Fragment {
         activity = null;
     }
 
-    public home_video() {
+    public HomeVideo() {
         // Required empty public constructor
     }
 
     public static Fragment newInstance() {
-        return new home_video();
+        return new HomeVideo();
     }
 
     @Override
@@ -51,18 +49,28 @@ public class home_video extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home_video, container, false);
+
+        ImageView imgSearch = v.findViewById(R.id.img_search_icon);
+        imgSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Window window = getActivity().getWindow();
+                new WindowInsetsControllerCompat(window, window.getDecorView()).hide(WindowInsetsCompat.Type.ime());
+            }
+        });
+
         Button videoBtn = v.findViewById(R.id.videoBtn);
         videoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).replaceFragment(home_video.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(HomeVideo.newInstance());
             }
         });
         Button newsBtn = v.findViewById(R.id.newsBtn);
         newsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(home_news.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(HomeNews.newInstance());
             }
         });
         TextView uptitle = v.findViewById(R.id.uptitle);

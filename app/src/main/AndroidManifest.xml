@@ -23,7 +23,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name="Viewpager_main"
+            android:name=".ViewpagerMain"
             android:exported="false">
         </activity>
         <activity

@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mirim.cheum_stac.News.homeNews;
-import com.mirim.cheum_stac.Product.fillProduct;
 
 import java.util.ArrayList;
 
@@ -62,9 +61,6 @@ public class RecyclerNewsAdapter extends RecyclerView.Adapter<RecyclerNewsAdapte
         public ImageView image;
         public TextView best;
         public TextView name;
-
-
-
 
         public MyViewHolder(View itemView) {
             super(itemView);

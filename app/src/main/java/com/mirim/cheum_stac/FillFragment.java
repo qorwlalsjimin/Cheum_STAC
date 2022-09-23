@@ -105,7 +105,6 @@ public class FillFragment extends Fragment{
         recyclerView.setAdapter(adapter);
 
         //리사이클러 클릭 이벤트 처리
-        //왜... 이렇게 해야하나요... 난 지쳤어요... 하여간 아이템 클릭 이벤트는 여기서 처리합니다..
         RecyclerVIewAdapter.setOnItemClickListener(new RecyclerVIewAdapter.OnItemClickListener()
         {
             @Override
@@ -113,7 +112,7 @@ public class FillFragment extends Fragment{
             {
                 id = pos;
                 fragmentListener.onCommand(2, String.valueOf(id));
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(FillProduct.newInstance());
             }
         });
 
@@ -164,7 +163,7 @@ public class FillFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 fragmentListener.onCommand(3, "hair");
-                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(FillDetail.newInstance());
             }
         });
         ImageButton bodyBtn = v.findViewById(R.id.bodyBtn);
@@ -172,7 +171,7 @@ public class FillFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 fragmentListener.onCommand(3, "body");
-                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(FillDetail.newInstance());
             }
         });
         ImageButton cosmeticBtn = v.findViewById(R.id.cosmeticBtn);
@@ -180,7 +179,7 @@ public class FillFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 fragmentListener.onCommand(3, "cos");
-                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(FillDetail.newInstance());
             }
         });
         ImageButton lundryBtn = v.findViewById(R.id.lundryBtn);
@@ -188,7 +187,7 @@ public class FillFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 fragmentListener.onCommand(3, "laund");
-                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(FillDetail.newInstance());
             }
         });
         ImageButton dishBtn = v.findViewById(R.id.dishBtn);
@@ -196,7 +195,7 @@ public class FillFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 fragmentListener.onCommand(3, "kit");
-                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(FillDetail.newInstance());
             }
         });
         ImageButton foodBtn = v.findViewById(R.id.foodBtn);
@@ -204,7 +203,7 @@ public class FillFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 fragmentListener.onCommand(3, "food");
-                ((MainActivity)getActivity()).replaceFragment(fill_detail.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(FillDetail.newInstance());
             }
         });
 

@@ -18,7 +18,7 @@ public class Intro3 extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        Viewpager_main = (Viewpager_main) getActivity();
+        Viewpager_main = (ViewpagerMain) getActivity();
     }
 
     @Override

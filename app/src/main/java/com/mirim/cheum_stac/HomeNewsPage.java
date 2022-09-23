@@ -6,23 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.bumptech.glide.Glide;
 import com.mirim.cheum_stac.News.News;
 import com.mirim.cheum_stac.News.NewsList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link home_news_page#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class home_news_page extends Fragment {
+public class HomeNewsPage extends Fragment {
     MainActivity activity;
     static int id;
     TextView titleText, dateText;
@@ -41,12 +34,12 @@ public class home_news_page extends Fragment {
         activity = null;
     }
 
-    public home_news_page() {
+    public HomeNewsPage() {
         // Required empty public constructor
     }
 
-    public static home_news_page newInstance() {
-        return new home_news_page();
+    public static HomeNewsPage newInstance() {
+        return new HomeNewsPage();
     }
 
     @Override
@@ -69,7 +62,7 @@ public class home_news_page extends Fragment {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceFragment(home_news.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(HomeNews.newInstance());
             }
         });
 

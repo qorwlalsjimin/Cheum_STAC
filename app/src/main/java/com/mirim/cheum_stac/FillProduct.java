@@ -3,7 +3,6 @@ package com.mirim.cheum_stac;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +32,7 @@ import com.mirim.cheum_stac.util.UserUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class fill_product extends Fragment {
+public class FillProduct extends Fragment {
     MainActivity activity;
     ImageView imgbtnHeart;
     ImageView productImg;
@@ -53,12 +52,12 @@ public class fill_product extends Fragment {
         activity = null;
     }
 
-    public fill_product() {
+    public FillProduct() {
         // Required empty public constructor
     }
 
-    public static fill_product newInstance() {
-        return new fill_product();
+    public static FillProduct newInstance() {
+        return new FillProduct();
     }
 
     @Override
@@ -95,7 +94,7 @@ public class fill_product extends Fragment {
         storageRef.child("product/"+Integer.toString(id) + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                //이미지 로드 성공시
+              //이미지 로드 성공시
               Glide.with(getActivity())
                        .load(uri)
                       .into(productImg);
@@ -108,8 +107,6 @@ public class fill_product extends Fragment {
                 Toast.makeText(getActivity(), "실패", Toast.LENGTH_SHORT).show();
             }
         });
-
-
 
         titleText.setText(product.name);
         String price = product.price;
@@ -138,7 +135,7 @@ public class fill_product extends Fragment {
                 if (heart) imgbtnHeart.setTag("heart");
                 else imgbtnHeart.setTag("heart_empty");
 
-                //즐겨찾기한 가게 리스트에 넣기
+                //찜한 상품 리스트에 넣기
                 List<Integer> existArr = new ArrayList<>();
                 for (int i = 0; i < ProductList.productList.size(); i++) {
                     String path3 = UserUtils.getHash() + "/heart/" + i;
@@ -165,13 +162,10 @@ public class fill_product extends Fragment {
         imgbtnHeart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("오늘도 합니다", "받은 값 "+imgbtnHeart.getTag().toString());
                 Boolean heart = !getBGRHeart(imgbtnHeart.getTag().toString());
                 reference.child(path).setValue(heart);
-                Log.d("오늘도 합니다", "불리언 "+heart.toString());
                 if(heart) imgbtnHeart.setTag("heart");
                 else imgbtnHeart.setTag("heart_empty");
-                Log.d("오늘도 합니다", "바뀐 값 "+imgbtnHeart.getTag().toString());
                 imgbtnHeart.setImageResource(getBGR(heart));
             }
         });

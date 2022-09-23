@@ -20,7 +20,7 @@ import com.mirim.cheum_stac.Product.fillProduct;
 
 import java.util.ArrayList;
 
-public class fill_detail extends Fragment {
+public class FillDetail extends Fragment {
 
     MainActivity activity;
     EditText editSearch;
@@ -52,8 +52,8 @@ public class fill_detail extends Fragment {
         activity = null;
     }
 
-    public static fill_detail newInstance() {
-        return new fill_detail();
+    public static FillDetail newInstance() {
+        return new FillDetail();
 
     }
 
@@ -75,7 +75,7 @@ public class fill_detail extends Fragment {
             @Override
             public void onItemClick(View v, int pos)
             {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(FillProduct.newInstance());
             }
         });
 

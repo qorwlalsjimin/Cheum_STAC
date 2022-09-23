@@ -6,8 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -22,25 +20,23 @@ import com.mirim.cheum_stac.Product.fillProduct;
 import java.util.ArrayList;
 
 
-public class good_product extends Fragment {
+public class GoodProduct extends Fragment {
     MainActivity activity;
-    static int productId;
-    EditText editSearch;
-    String SearchWord;
-    ImageView imgSearch;
+    static int productId = -1;
     ArrayList<fillProduct> list;
     Product product;
     RecyclerView recyclerView;
     RecyclerVIewAdapter adapter;
     GridLayoutManager layoutManager;
+    FragmentListener fragmentListener;
 
-    public good_product() {
+    public GoodProduct() {
         // Required empty public constructor
     }
 
 
-    public static good_product newInstance(String param1, String param2) {
-        return new good_product();
+    public static GoodProduct newInstance(String param1, String param2) {
+        return new GoodProduct();
     }
 
     @Override
@@ -54,7 +50,7 @@ public class good_product extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_good_product, container, false);
 
-        //뒤로 가는 버튼튼
+        //뒤로 가는 버튼
         Button backBtn = v.findViewById(R.id.backBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +65,8 @@ public class good_product extends Fragment {
             @Override
             public void onItemClick(View v, int pos)
             {
-                ((MainActivity)getActivity()).replaceFragment(fill_product.newInstance());
+                fragmentListener.onCommand(3, Integer.toString(productId));
+                ((MainActivity)getActivity()).replaceFragment(FillProduct.newInstance());
             }
         });
 
@@ -112,11 +109,13 @@ public class good_product extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         activity = (MainActivity) getActivity();
+        if(context instanceof FragmentListener) fragmentListener = (FragmentListener) context;
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
+        if(fragmentListener != null) fragmentListener = null;
         activity = null;
     }
 

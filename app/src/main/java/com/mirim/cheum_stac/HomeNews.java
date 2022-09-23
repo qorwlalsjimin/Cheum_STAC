@@ -23,13 +23,7 @@ import com.mirim.cheum_stac.News.homeNews;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link home_news#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class home_news extends Fragment {
-    MainActivity activity;
+public class HomeNews extends Fragment {
     FragmentListener fragmentListener;
     RecyclerView recyclerView;
     RecyclerNewsAdapter adapter;
@@ -56,12 +50,12 @@ public class home_news extends Fragment {
         if(fragmentListener != null) fragmentListener = null;
     }
 
-    public home_news() {
+    public HomeNews() {
         // Required empty public constructor
     }
 
     public static Fragment newInstance() {
-        return new home_news();
+        return new HomeNews();
     }
 
     @Override
@@ -144,14 +138,14 @@ public class home_news extends Fragment {
         videoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity) getActivity()).replaceFragment(home_video.newInstance());
+                ((MainActivity) getActivity()).replaceFragment(HomeVideo.newInstance());
             }
         });
         Button newsBtn = v.findViewById(R.id.newsBtn);
         newsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity) getActivity()).replaceFragment(home_news.newInstance());
+                ((MainActivity) getActivity()).replaceFragment(HomeNews.newInstance());
             }
         });
 
@@ -162,7 +156,7 @@ public class home_news extends Fragment {
             {
                 id = pos;
                 fragmentListener.onCommand(4, String.valueOf(id));
-                ((MainActivity)getActivity()).replaceFragment(home_news_page.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(HomeNewsPage.newInstance());
             }
         });
 

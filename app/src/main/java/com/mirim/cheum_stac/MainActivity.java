@@ -25,7 +25,7 @@ import java.security.MessageDigest;
 
 public class MainActivity extends AppCompatActivity implements FragmentListener {
     private FragmentManager fragmentManager = getSupportFragmentManager();
-    private home_video home_video = new home_video();
+    private HomeVideo home_video = new HomeVideo();
     private MapFragment mapFragment = new MapFragment();
     private FillFragment fillFragment = new FillFragment();
     private MypageFragment mypageFragment = new MypageFragment();
@@ -35,15 +35,15 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
     private ChildSearchFragment childSearchFragment;
     private ChildResultFragment childResultFragment;
     private ChildMapFragment childMapFragment;
-    private good_product good_product;
+    private GoodProduct good_product;
 
     //상품
-    private fill_detail fillDetail;
-    private fill_product fillProduct;
+    private FillDetail fillDetail;
+    private FillProduct fillProduct;
     FragmentTransaction transaction;
 
     //뉴스
-    private home_news_page homeNewsPage;
+    private HomeNewsPage homeNewsPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +58,10 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         childSearchFragment = new ChildSearchFragment();
         childResultFragment = new ChildResultFragment();
         childMapFragment = new ChildMapFragment();
-        fillDetail = new fill_detail();
-        fillProduct = new fill_product();
-        good_product = new good_product();
-        homeNewsPage = new home_news_page();
+        fillDetail = new FillDetail();
+        fillProduct = new FillProduct();
+        good_product = new GoodProduct();
+        homeNewsPage = new HomeNewsPage();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.btn_navi_menu);
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
