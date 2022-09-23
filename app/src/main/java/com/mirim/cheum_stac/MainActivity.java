@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         fillDetail = new fill_detail();
         fillProduct = new fill_product();
         good_product = new good_product();
+        homeNewsPage = new home_news_page();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.btn_navi_menu);
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){

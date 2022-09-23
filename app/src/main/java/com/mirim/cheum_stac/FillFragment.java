@@ -159,10 +159,6 @@ public class FillFragment extends Fragment{
 
         });
 
-
-
-
-
         ImageButton hariBtn = v.findViewById(R.id.hariBtn);
         hariBtn.setOnClickListener(new View.OnClickListener() {
             @Override

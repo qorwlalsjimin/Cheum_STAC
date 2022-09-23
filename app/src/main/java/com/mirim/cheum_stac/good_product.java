@@ -73,16 +73,19 @@ public class good_product extends Fragment {
             }
         });
 
-        //초기에 전체 내용 나오게 하는 거 필요
+        //데이터 추가
         list = new ArrayList<fillProduct>() {{
+            int favorId=-1;
             for(int i = 0; i< ProductList.productList.size(); i++){
+                if(HeartList.heartList[i]==1) favorId = i;
+
                 product = (Product) (ProductList.productList.get(i));
                 if(HeartList.heartList[i]==1)
                     add(new fillProduct(product.simg, product.best, product.name, product.price));
             }
         }};
 
-        recyclerView = (RecyclerView)v.findViewById(R.id.fill_recycler);
+        recyclerView = (RecyclerView)v.findViewById(R.id.good_recycler);
         adapter = new RecyclerVIewAdapter(getActivity().getApplicationContext(), list);
 
         layoutManager = new GridLayoutManager(getActivity().getApplicationContext(), 6);
