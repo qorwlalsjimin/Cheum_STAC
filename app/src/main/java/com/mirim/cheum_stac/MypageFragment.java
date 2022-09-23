@@ -12,7 +12,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -60,7 +59,7 @@ public class MypageFragment extends Fragment {
             @Override
             public void onClick(View v) {
 //                ((MainActivity)getActivity()).replaceFragment(Intro1.newInstance());
-                Toast.makeText(getContext(), "인트로로 연결", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "인트로로 연결", Toast.LENGTH_SHORT).show();
             }
         });
 
