@@ -3,6 +3,7 @@ package com.mirim.cheum_stac;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,6 @@ import java.util.List;
 public class fill_product extends Fragment {
     MainActivity activity;
     ImageView imgbtnHeart;
-    static int productId=7;
     ImageView productImg;
     TextView  titleText, priceText, mlText, hashText, contText;
     Product product;
@@ -122,13 +122,11 @@ public class fill_product extends Fragment {
 
         //파이어베이스 실시간 DB 연동
         DatabaseReference reference = FirebaseUtils.getUserReference(); //reference는 user 속성을 받음
-
-        //  위에서 갖고온 store 주소값의 데이터를 읽어서 버튼 상태값 바꿔주기
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {//dataSnapshot : user
-                //즐겨찾기 유무에 따른 boolean값 DB에 insert
-                String path = UserUtils.getHash() + "/heart/" + Integer.toString(productId);
+                //찜 유무에 따른 boolean값 DB에 insert
+                String path = UserUtils.getHash() + "/heart/" + Integer.toString(id);
                 Boolean heart = false;
                 if (dataSnapshot.child(path).exists()) {
                     heart = dataSnapshot.child(path).getValue(Boolean.class);
@@ -163,12 +161,18 @@ public class fill_product extends Fragment {
             }
         });
 
-        String path = UserUtils.getHash() + "/heart/" + Integer.toString(productId);
+        String path = UserUtils.getHash() + "/heart/" + Integer.toString(id);
         imgbtnHeart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("오늘도 합니다", "받은 값 "+imgbtnHeart.getTag().toString());
                 Boolean heart = !getBGRHeart(imgbtnHeart.getTag().toString());
                 reference.child(path).setValue(heart);
+                Log.d("오늘도 합니다", "불리언 "+heart.toString());
+                if(heart) imgbtnHeart.setTag("heart");
+                else imgbtnHeart.setTag("heart_empty");
+                Log.d("오늘도 합니다", "바뀐 값 "+imgbtnHeart.getTag().toString());
+                imgbtnHeart.setImageResource(getBGR(heart));
             }
         });
 

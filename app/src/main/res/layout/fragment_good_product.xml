@@ -15,21 +15,33 @@
             android:background="#00ff0000"
             android:layout_marginLeft="20dp"
             android:id="@+id/backBtn" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="좋아요 상품"
-        android:textSize="18dp"
-        android:layout_marginTop="15dp"
-        android:gravity="center"
-        android:fontFamily="@font/noto_sans_bold"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="좋아요 상품"
+            android:textSize="18dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:fontFamily="@font/noto_sans_bold"/>
     </FrameLayout>
+
     <TextView
+        android:id="@+id/text_good_empty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="최근 좋아요한 상품을 보여드려요"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="21dp"
         android:textColor="#919191"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/good_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/item_layout_shap">
+        </androidx.recyclerview.widget.RecyclerView>
+    </ScrollView>
 
 </LinearLayout>

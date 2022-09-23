@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
     private ChildSearchFragment childSearchFragment;
     private ChildResultFragment childResultFragment;
     private ChildMapFragment childMapFragment;
+    private good_product good_product;
 
     //상품
     private fill_detail fillDetail;
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         childMapFragment = new ChildMapFragment();
         fillDetail = new fill_detail();
         fillProduct = new fill_product();
-        homeNewsPage = new home_news_page();
+        good_product = new good_product();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.btn_navi_menu);
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
@@ -106,7 +107,8 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
                 childResultFragment.displayMessage(data);
                 childMapFragment.displayMessage(data);
                 break;
-                case 2:
+            case 2:
+                good_product.displayMessage(data);
                 fillProduct.displayMessage(data);
             case 3:
                 fillDetail.displayMessage(data);
