@@ -19,7 +19,7 @@
         android:textColor="#000000"
         android:layout_marginLeft="20dp"
         android:fontFamily="@font/noto_sans_bold"
-      />
+        />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,5 +28,30 @@
         android:fontFamily="@font/noto_sans"
         android:text="자체 제작 영상 콘텐츠 및 카드 뉴스를 통해\n리필스테이션에 한결 쉽게 도전해보세요. "
         android:textColor="#787878" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/backbtn"
+            android:drawableLeft="@drawable/ic_baseline_arrow_back_ios_24"
+            android:background="#00ff0000"
+            android:layout_marginLeft="20dp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nextbtn"
+            android:drawableRight="@drawable/ic_baseline_arrow_forward_ios_24"
+            android:background="#00ff0000"
+            android:layout_marginRight="20dp"/>
+    </LinearLayout>
 
 </LinearLayout>

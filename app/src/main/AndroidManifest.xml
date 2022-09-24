@@ -23,19 +23,34 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ViewpagerMain"
-            android:exported="false">
-        </activity>
+            android:name=".Intro_page4"
+            android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustPan">
+            android:name=".Intro_page3"
+            android:exported="false" />
+        <activity
+            android:name=".Intro_page2"
+            android:exported="false" />
+        <activity
+            android:name=".Intro_page1"
+            android:exported="true"/>
+
+        <activity android:name=".IntroActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
+
+        </activity>
+
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignUpActivity" />
 

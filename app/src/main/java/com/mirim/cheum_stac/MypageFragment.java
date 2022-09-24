@@ -107,6 +107,25 @@ public class MypageFragment extends Fragment {
             }
         });
 
+        LinearLayout notice = v.findViewById(R.id.notice);
+        notice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),Intro_page1.class); //fragment라서 activity intent와는 다른 방식
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
+        Button noticeBtn = v.findViewById(R.id.noticeBtn);
+        noticeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),Intro_page1.class); //fragment라서 activity intent와는 다른 방식
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
+
         loginToFl = v.findViewById(R.id.loginToFl);
         loginToTV = v.findViewById(R.id.loginTV);
         loginToFl.setOnClickListener(new View.OnClickListener() {
