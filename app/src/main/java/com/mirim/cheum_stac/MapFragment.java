@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -40,7 +39,6 @@ import java.util.ArrayList;
 public class MapFragment extends Fragment implements MapView.CurrentLocationEventListener, MapView.MapViewEventListener, MapView.POIItemEventListener{
     MainActivity activity;
     FragmentListener fragmentListener;
-    LinearLayout linearFavorite;
 
     //리사이클러뷰
     RecyclerView recyclerView;
@@ -50,9 +48,6 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
     //상품 정보, 레이아웃 정보 list
     Store store;
     ArrayList<fillStore> list;
-
-    //가게 이름
-    String storeName;
 
     //지도
     MapView mapView;

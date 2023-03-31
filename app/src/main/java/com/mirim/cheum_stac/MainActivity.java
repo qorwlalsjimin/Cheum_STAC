@@ -133,7 +133,6 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
                 UserUtils.setHash(something.replaceAll("\n",""));
             }
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             Log.e("name not found", e.toString());
         }
     }
