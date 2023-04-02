@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
@@ -61,7 +62,6 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
 
         //즐겨찾기 ListView 화면으로 이동
         Fragment fg = com.mirim.cheum_stac.Map.Fragment.ChildFavorFragment.newInstance();
-        Log.d("이동", "뿅");
         editSearch.requestFocus();
         setChildFragment(fg);
 
@@ -98,21 +98,26 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
         imgSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // X 아이콘이면
-                if(imgSearch.getTag().equals("x")){
-                    keyBordShow();
-                    Log.d("키보드", "올라옴!");
-                    // 돋보기 아이콘으로
-                    imgSearch.setImageResource(R.drawable.map_search_icon);
-                    imgSearch.setTag("o");
-                    editSearch.setText("");
+                if(editSearch.getText().length()==0) {
+                    Toast.makeText(getActivity(), "검색어를 입력해주세요.", Toast.LENGTH_SHORT).show();
                 }
-                // 돋보기 아이콘이면
-                else if(imgSearch.getTag().equals("o")){
-                    keyBordHide();
-                    // X 아이콘으로
-                    imgSearch.setImageResource(R.drawable.x);
-                    imgSearch.setTag("x");
+                else{  //검색어가 있을때만 실행
+                    // X 아이콘이면
+                    if(imgSearch.getTag().equals("x")){
+                        keyBordShow();
+                        Log.d("키보드", "올라옴!");
+                        // 돋보기 아이콘으로
+                        imgSearch.setImageResource(R.drawable.map_search_icon);
+                        imgSearch.setTag("o");
+                        editSearch.setText("");
+                    }
+                    // 돋보기 아이콘이면
+                    else if(imgSearch.getTag().equals("o")){
+                        keyBordHide();
+                        // X 아이콘으로
+                        imgSearch.setImageResource(R.drawable.x);
+                        imgSearch.setTag("x");
+                    }
                 }
             }
         });
