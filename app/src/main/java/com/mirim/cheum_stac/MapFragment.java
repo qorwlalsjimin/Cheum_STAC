@@ -110,6 +110,7 @@ public class MapFragment extends Fragment implements MapView.CurrentLocationEven
         editSearch.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
+                //부모프래그먼트+자식프래그먼트 화면으로 이동
                 ((MainActivity)getActivity()).replaceFragment(ParentFragment.newInstance());
             }
         });

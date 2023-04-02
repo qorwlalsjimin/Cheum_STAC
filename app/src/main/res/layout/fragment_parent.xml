@@ -49,20 +49,6 @@
         </FrameLayout>
     </FrameLayout>
 
-    <Button
-        android:id="@+id/btn_listview_check"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="리스트뷰 클릭시 자식 프래그먼트가 바뀌는 명령을 위해 리스너가 필요함."
-        android:visibility="invisible"/>
-
-    <Button
-        android:id="@+id/btn_favorite_check"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="MapFragment에서 눌럿을때..ㅠㅠ"
-        android:visibility="invisible"/>
-
     <FrameLayout
         android:id="@+id/child_fragment_container"
         android:layout_width="match_parent"
