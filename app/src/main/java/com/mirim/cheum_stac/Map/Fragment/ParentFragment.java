@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,15 +53,17 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_parent, container, false);
 
-        //즐겨찾기 ListView 화면으로 이동
-        Fragment fg = com.mirim.cheum_stac.Map.Fragment.ChildFavorFragment.newInstance();
-        setChildFragment(fg);
-
         editSearch = (EditText) v.findViewById(R.id.editTextFilter);
         toolSearch = v.findViewById(R.id.toolbar_search);
         imgSearch = v.findViewById(R.id.img_search_icon);
         btnListCheck = v.findViewById(R.id.btn_listview_check);
         btnFavoriteCheck = v.findViewById(R.id.btn_favorite_check);
+
+        //즐겨찾기 ListView 화면으로 이동
+        Fragment fg = com.mirim.cheum_stac.Map.Fragment.ChildFavorFragment.newInstance();
+        Log.d("이동", "뿅");
+        editSearch.requestFocus();
+        setChildFragment(fg);
 
         //즐겨찾기, 검색 리스트뷰(자식 프래그먼트)에서 아이템 클릭
         btnListCheck.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +101,7 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
                 // X 아이콘이면
                 if(imgSearch.getTag().equals("x")){
                     keyBordShow();
+                    Log.d("키보드", "올라옴!");
                     // 돋보기 아이콘으로
                     imgSearch.setImageResource(R.drawable.map_search_icon);
                     imgSearch.setTag("o");
@@ -118,6 +122,7 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 //즐겨찾기 ListView 화면으로 이동
+                Log.d("얼라리", "즐겨찾기");
                 Fragment fg = com.mirim.cheum_stac.Map.Fragment.ChildFavorFragment.newInstance();
                 setChildFragment(fg);
             }
@@ -132,6 +137,7 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 //검색 ListView 화면으로 이동
+                Log.d("얼라리", "검색 리스트뷰");
                 Fragment fg = com.mirim.cheum_stac.Map.Fragment.ChildSearchFragment.newInstance();
                 setChildFragment(fg);
             }
