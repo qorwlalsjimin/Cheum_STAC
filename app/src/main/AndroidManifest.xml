@@ -23,19 +23,19 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".Intro_page4"
+            android:name=".intro_page.IntroPage4"
             android:exported="false" />
         <activity
-            android:name=".Intro_page3"
+            android:name=".intro_page.IntroPage3"
             android:exported="false" />
         <activity
-            android:name=".Intro_page2"
+            android:name=".intro_page.IntroPage2"
             android:exported="false" />
         <activity
-            android:name=".Intro_page1"
+            android:name=".intro_page.IntroPage1"
             android:exported="true"/>
 
-        <activity android:name=".IntroActivity"
+        <activity android:name=".intro_page.IntroActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

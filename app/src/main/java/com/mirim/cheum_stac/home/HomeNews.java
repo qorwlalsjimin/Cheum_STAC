@@ -1,4 +1,4 @@
-package com.mirim.cheum_stac;
+package com.mirim.cheum_stac.home;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -17,9 +17,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mirim.cheum_stac.FragmentListener;
+import com.mirim.cheum_stac.MainActivity;
 import com.mirim.cheum_stac.News.News;
 import com.mirim.cheum_stac.News.NewsList;
 import com.mirim.cheum_stac.News.homeNews;
+import com.mirim.cheum_stac.R;
+import com.mirim.cheum_stac.RecyclerNewsAdapter;
+import com.mirim.cheum_stac.RecyclerVIewAdapter;
 
 import java.util.ArrayList;
 

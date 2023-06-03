@@ -1,4 +1,4 @@
-package com.mirim.cheum_stac;
+package com.mirim.cheum_stac.fill;
 
 import android.app.FragmentManager;
 import android.content.Context;
@@ -18,9 +18,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mirim.cheum_stac.FillProduct;
+import com.mirim.cheum_stac.FragmentListener;
+import com.mirim.cheum_stac.MainActivity;
 import com.mirim.cheum_stac.Product.Product;
 import com.mirim.cheum_stac.Product.ProductList;
 import com.mirim.cheum_stac.Product.fillProduct;
+import com.mirim.cheum_stac.R;
+import com.mirim.cheum_stac.RecyclerVIewAdapter;
 
 import java.util.ArrayList;
 

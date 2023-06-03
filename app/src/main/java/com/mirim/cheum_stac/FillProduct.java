@@ -28,6 +28,9 @@ import com.mirim.cheum_stac.Product.Product;
 import com.mirim.cheum_stac.Product.ProductList;
 import com.mirim.cheum_stac.util.FirebaseUtils;
 import com.mirim.cheum_stac.util.UserUtils;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import com.mongodb.client.MongoDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,6 +91,11 @@ public class FillProduct extends Fragment {
             }
         });
 
+        //Mongo DB 연동
+        MongoClientURI uri = new MongoClientURI( "mongodb://localhost:27017/cheum" );
+//        MongoClientURI uri = new MongoClientURI( "mongodb://user:password@www.example.com:12345/cheum" );
+        MongoClient mongoClient = new MongoClient(uri);
+        MongoDatabase db = mongoClient.getDatabase(uri.getDatabase());
 
         FirebaseStorage storage = FirebaseStorage.getInstance("gs://stac-cheum.appspot.com/");
         StorageReference storageRef = storage.getReference();

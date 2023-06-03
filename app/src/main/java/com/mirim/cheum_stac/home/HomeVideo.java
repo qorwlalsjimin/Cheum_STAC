@@ -1,4 +1,4 @@
-package com.mirim.cheum_stac;
+package com.mirim.cheum_stac.home;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +16,10 @@ import androidx.annotation.NonNull;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.fragment.app.Fragment;
+
+import com.mirim.cheum_stac.HomeFragment;
+import com.mirim.cheum_stac.MainActivity;
+import com.mirim.cheum_stac.R;
 
 public class HomeVideo extends Fragment {
     MainActivity activity;

@@ -1,10 +1,13 @@
-package com.mirim.cheum_stac;
+package com.mirim.cheum_stac.intro_page;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.mirim.cheum_stac.MainActivity;
+import com.mirim.cheum_stac.R;
 
 public class IntroActivity extends AppCompatActivity {
 

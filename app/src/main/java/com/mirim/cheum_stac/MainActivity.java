@@ -19,6 +19,10 @@ import com.mirim.cheum_stac.Map.Fragment.ChildMapFragment;
 import com.mirim.cheum_stac.Map.Fragment.ChildResultFragment;
 import com.mirim.cheum_stac.Map.Fragment.ChildSearchFragment;
 import com.mirim.cheum_stac.Map.Fragment.ParentFragment;
+import com.mirim.cheum_stac.fill.FillDetail;
+import com.mirim.cheum_stac.fill.FillFragment;
+import com.mirim.cheum_stac.home.HomeNewsPage;
+import com.mirim.cheum_stac.home.HomeVideo;
 import com.mirim.cheum_stac.util.UserUtils;
 
 import java.security.MessageDigest;

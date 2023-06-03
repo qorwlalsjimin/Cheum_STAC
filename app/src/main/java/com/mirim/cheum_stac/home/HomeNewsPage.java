@@ -1,4 +1,4 @@
-package com.mirim.cheum_stac;
+package com.mirim.cheum_stac.home;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,8 +12,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.mirim.cheum_stac.MainActivity;
 import com.mirim.cheum_stac.News.News;
 import com.mirim.cheum_stac.News.NewsList;
+import com.mirim.cheum_stac.R;
 
 public class HomeNewsPage extends Fragment {
     MainActivity activity;

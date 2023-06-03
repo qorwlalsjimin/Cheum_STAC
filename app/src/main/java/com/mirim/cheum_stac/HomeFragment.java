@@ -15,6 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.mirim.cheum_stac.home.HomeNews;
+import com.mirim.cheum_stac.home.HomeVideo;
+
 public class HomeFragment extends Fragment {
     MainActivity activity;
 
