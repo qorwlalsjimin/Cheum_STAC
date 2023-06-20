@@ -11,4 +11,13 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="LightTheme.Cheum_STAC.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="LightTheme.Cheum_STAC.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="LightTheme.Cheum_STAC.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

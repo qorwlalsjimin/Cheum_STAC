@@ -16,7 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.mirim.cheum_stac.intro_page.IntroPage1;
+import com.mirim.cheum_stac.intro_page.Intro_Page;
 
 public class MypageFragment extends Fragment {
     MainActivity activity;
@@ -113,7 +113,7 @@ public class MypageFragment extends Fragment {
         notice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), IntroPage1.class); //fragment라서 activity intent와는 다른 방식
+                Intent intent = new Intent(getActivity(), Intro_Page.class); //fragment라서 activity intent와는 다른 방식
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }
@@ -122,7 +122,7 @@ public class MypageFragment extends Fragment {
         noticeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), IntroPage1.class); //fragment라서 activity intent와는 다른 방식
+                Intent intent = new Intent(getActivity(), Intro_Page.class); //fragment라서 activity intent와는 다른 방식
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }

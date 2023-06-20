@@ -23,34 +23,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".intro_page.IntroPage4"
-            android:exported="false" />
-        <activity
-            android:name=".intro_page.IntroPage3"
-            android:exported="false" />
-        <activity
-            android:name=".intro_page.IntroPage2"
-            android:exported="false" />
-        <activity
-            android:name=".intro_page.IntroPage1"
-            android:exported="true"/>
-
-        <activity android:name=".intro_page.IntroActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustPan">
-
-        </activity>
-
+        <activity android:name=".intro_page.Intro_Page"/>
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignUpActivity" />
 
